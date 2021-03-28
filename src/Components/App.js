@@ -1,21 +1,19 @@
-import { /**BottomNavigation, BottomNavigationAction,*/ Box, Typography} from '@material-ui/core';
-//import PhotoIcon from '@material-ui/icons/Photo';
-//import VideocamIcon from '@material-ui/icons/Videocam';
-//import GamesIcon from '@material-ui/icons/Games';
-//import InfoIcon from '@material-ui/icons/Info';
-//import ComputerIcon from '@material-ui/icons/Computer';
-//import { useState } from 'react';
+import { BottomNavigation, BottomNavigationAction, Box, Typography} from '@material-ui/core';
+import PhotoIcon from '@material-ui/icons/Photo';
+import VideocamIcon from '@material-ui/icons/Videocam';
+import GamesIcon from '@material-ui/icons/Games';
+import InfoIcon from '@material-ui/icons/Info';
+import ComputerIcon from '@material-ui/icons/Computer';
+import { useState } from 'react';
 
-//import Photos from './Sections/Photos';
+import Photos from './Sections/Photos';
 
  
 export default function App() {
-  //const [activeSection, setActiveSection] = useState(3); 
-  //const sections = [<br />, <br />, <br />, <Photos />, <br />];
+  const [activeSection, setActiveSection] = useState(3); 
+  const sections = [<br />, <br />, <br />, <Photos />, <br />];
   return (
     <Box>
-      <Typography variant="h1" style={{textAlign: "center", paddingTop: "20%", fontFamily: "Josefin Sans"}}>Coming Soon...</Typography>
-      {/** 
       {sections[activeSection]}
       <BottomNavigation 
         showLabels 
@@ -29,7 +27,6 @@ export default function App() {
         <BottomNavigationAction icon={<PhotoIcon />} label="Photography" />
         <BottomNavigationAction icon={<VideocamIcon />}label="Videography" />
       </BottomNavigation>
-      */}
     </Box>
   );
 }
