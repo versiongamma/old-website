@@ -1,4 +1,4 @@
-import { BottomNavigation, BottomNavigationAction, Box, Breadcrumbs, Link, Typography} from '@material-ui/core';
+import { BottomNavigation, BottomNavigationAction, Box} from '@material-ui/core';
 import PhotoIcon from '@material-ui/icons/Photo';
 import VideocamIcon from '@material-ui/icons/Videocam';
 import GamesIcon from '@material-ui/icons/Games';

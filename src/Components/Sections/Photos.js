@@ -1,5 +1,4 @@
-import { Typography, Container, Grid, Card, CardMedia, CardHeader, CardContent, Fade } from "@material-ui/core";
-import Image from 'material-ui-image';
+import { Container, Grid, Card, CardMedia, Fade } from "@material-ui/core";
 import { useEffect, useState } from "react";
 
 import image from './../../img/DSCF4873.jpg';
