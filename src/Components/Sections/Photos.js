@@ -1,25 +1,29 @@
 import { Container, Grid, Card, CardMedia, Fade } from "@material-ui/core";
-import { Skeleton } from '@material-ui/lab';
 import { useEffect, useState } from "react";
 
-import image from './../../img/Wallpaper.jpg'
+const clientID = '8c3be964eba99d7';
 
 export default function Photos(props) {
-  const importAll = (r) => { return r.keys().map(r); }
-  const images = importAll(require.context('./../../img/', false, /\.(png|jpe?g|svg)$/));
-
   const [visible, setVisible] = useState(false);
+  const [images, setImages] = useState([]);
 
   useEffect(() => {
     setVisible(true);
+
+    fetch("https://api.imgur.com/3/album/JKELiQA", {headers: {Authorization: 'CLIENT-ID ' + clientID}}).then(res => res.json())
+    .then((result) => {
+      console.log(result.data.images)
+      setImages(result.data.images)
+    });
   }, []);
 
   return (
     <Fade in={visible}>
       <Container maxWidth="xl" style={{textAlign: 'center'}}>
-          {images.map((img) => (
+          {images.map((img, i) => (
               <img 
-                src={img.default} 
+                id={i}
+                src={img.link} 
                 style={{width: '20vw', padding: 40}}
               />
           ))}
@@ -27,13 +31,3 @@ export default function Photos(props) {
     </Fade>
   );
 }
-
-/**
- * <Card style={{ minWidth: 500, margin: 20 }}>
-                <CardMedia
-                  style={{ height: 0, paddingTop: '56.25%' }}
-                  image={img.default}
-                />
-              </Card>
- * 
- */
