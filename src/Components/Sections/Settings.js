@@ -1,28 +1,35 @@
-import { BottomNavigation, BottomNavigationAction, Box, Container, CssBaseline, Switch, ThemeProvider, FormGroup, FormControlLabel, Typography} from '@material-ui/core';
-import { useState } from 'react';
+import { BottomNavigation, BottomNavigationAction, Box, Container, CssBaseline, Switch, ThemeProvider, FormGroup, FormControlLabel, Typography, Fade } from '@material-ui/core';
+import { useEffect, useState } from 'react';
 
 export default function Settings(props) {
   const [themeSelector, setThemeSelector] = useState(props.settings.themeSelector);
+  const [visible, setVisible] = useState(false);
 
   const themeSelectorChange = (event) => {
     setThemeSelector(prev => !prev);
     props.updateTheme();
   }
 
+  useEffect(() => {
+    setVisible(true)
+  }, []);
+
   return (
-    <Container ml style={{paddingTop: '2vh', textAlign: 'center'}}>
-      <FormGroup style={{paddingTop: '5vh'}}>
-        <FormControlLabel 
-          control={
-            <Switch 
-              color='primary'
-              checked={themeSelector}
-              onChange={themeSelectorChange}
-            />}
-          label='Dark Mode'
-        />
-      
-      </FormGroup>
-    </Container>
+    <Fade in={visible} mountOnEnter unmountOnExit>
+      <Container ml style={{ textAlign: 'center' }}>
+        <FormGroup style={{ paddingTop: '2vh' }}>
+          <FormControlLabel
+            control={
+              <Switch
+                color='primary'
+                checked={themeSelector}
+                onChange={themeSelectorChange}
+              />}
+            label='Dark Mode'
+          />
+
+        </FormGroup>
+      </Container>
+    </Fade>
   );
 }
