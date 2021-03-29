@@ -1,4 +1,4 @@
-import { BottomNavigation, BottomNavigationAction, Box, Container, CssBaseline, Switch, ThemeProvider, FormGroup, FormControlLabel, Typography, Fade } from '@material-ui/core';
+import { Container, Switch, FormGroup, FormControlLabel, Fade } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 
 export default function Settings(props) {

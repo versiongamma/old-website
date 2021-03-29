@@ -1,4 +1,4 @@
-import { BottomNavigation, BottomNavigationAction, Box, CssBaseline, ThemeProvider, AppBar, Toolbar, Fade, Paper, Divider } from '@material-ui/core';
+import { BottomNavigation, BottomNavigationAction, Box, CssBaseline, ThemeProvider, AppBar, Toolbar, Fade } from '@material-ui/core';
 import PhotoIcon from '@material-ui/icons/Photo';
 import VideocamIcon from '@material-ui/icons/Videocam';
 import GamesIcon from '@material-ui/icons/Games';
@@ -20,7 +20,7 @@ import darkTheme from './../themes/darkTheme';
 
 export default function App() {
   const updateTheme = () => {
-    setTheme(prev => prev == 'lightTheme' ? 'darkTheme' : 'lightTheme');
+    setTheme(prev => prev === 'lightTheme' ? 'darkTheme' : 'lightTheme');
     setSettings(prev => ({ ...prev, themeSelector: !prev.themeSelector }))
   }
 
@@ -38,13 +38,14 @@ export default function App() {
   }, [])
 
   return (
-    <ThemeProvider theme={theme == 'lightTheme' ? lightTheme : darkTheme}>
+    <ThemeProvider theme={theme === 'lightTheme' ? lightTheme : darkTheme}>
       <CssBaseline>
         <Fade in={visible}>
           <AppBar position='fixed' style={{ alignItems: 'center' }}>
             <Toolbar>
               <img
                 src='http://i.imgur.com/u5vk60X.jpg'
+                alt='logo'
                 style={{ width: '15vw', padding: '0.5vh' }} />
             </Toolbar>
           </AppBar>
@@ -61,7 +62,7 @@ export default function App() {
                 width: '100%', 
                 position: 'fixed', 
                 bottom: 0, 
-                backgroundColor: theme == 'darkTheme' ? '#303030' : '#fff' }}
+                backgroundColor: theme === 'darkTheme' ? '#303030' : '#fff' }}
             >
               <BottomNavigationAction icon={<InfoIcon />} label="About" />
               <BottomNavigationAction icon={<GamesIcon />} label="Game Design" />

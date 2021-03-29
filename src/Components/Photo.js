@@ -12,7 +12,8 @@ export default function Photo(props) {
   return (
     <Grow in={visible}>
       <img
-        src={props.url}
+        src={props.photo.link}
+        alt={props.photo.description}
         onLoad={imageLoaded}
         style={{ width: '20vw', padding: 40, borderRadius: 50}}
       />

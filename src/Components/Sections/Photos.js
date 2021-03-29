@@ -1,4 +1,4 @@
-import { Container, Grid, Card, CardMedia, Fade, Grow } from "@material-ui/core";
+import { Container, Fade } from "@material-ui/core";
 import { useEffect, useState } from "react";
 
 import Photo from './../Photo';
@@ -21,7 +21,7 @@ export default function Photos(props) {
     <Fade in={visible} mountOnEnter unmountOnExit>
       <Container maxWidth="xl" style={{textAlign: 'center'}}>
           {images.map((img, i) => (
-              <Photo key={i} url={img.link}/>
+              <Photo key={i} photo={img}/>
           ))}
       </Container>
     </Fade>
