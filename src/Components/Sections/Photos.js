@@ -1,4 +1,4 @@
-import { Container, Grid, Card, CardMedia, Fade } from "@material-ui/core";
+import { Container, Grid, Card, CardMedia, Fade, Grow } from "@material-ui/core";
 import { useEffect, useState } from "react";
 
 import Photo from './../Photo';

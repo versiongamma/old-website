@@ -1,7 +1,5 @@
-import { CircularProgress, Fade } from "@material-ui/core";
-import { Skeleton } from "@material-ui/lab";
+import { Grow } from "@material-ui/core";
 import { useState } from "react";
-
 
 export default function Photo(props) {
   const [visible, setVisible] = useState(false);
@@ -12,12 +10,12 @@ export default function Photo(props) {
   }
 
   return (
-    <Fade in={visible}>
+    <Grow in={visible}>
       <img
         src={props.url}
         onLoad={imageLoaded}
-        style={{ width: '20vw', padding: 40 }}
+        style={{ width: '20vw', padding: 40, borderRadius: 50}}
       />
-    </Fade>
+    </Grow>
   );
 }
