@@ -10,7 +10,7 @@ import Photos from './Sections/Photos';
 
  
 export default function App() {
-  const [activeSection, setActiveSection] = useState(0); 
+  const [activeSection, setActiveSection] = useState(3); 
   const sections = [<br />, <br />, <br />, <Photos />, <br />];
   return (
     <Box>
