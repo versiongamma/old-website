@@ -5,7 +5,6 @@ export default function Photo(props) {
   const [visible, setVisible] = useState(false);
 
   const imageLoaded = () => {
-    console.log("loaded");
     setVisible(true)
   }
 
