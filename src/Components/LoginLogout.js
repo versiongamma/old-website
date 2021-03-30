@@ -1,11 +1,12 @@
 import { Button, Avatar, Snackbar, Typography } from '@material-ui/core';
-import MuiAlert from '@material-ui/lab/Alert';
 import React, { Fragment, useState } from "react";
 import { useGoogleLogout, useGoogleLogin } from 'react-google-login';
 
+import Alert from './Alert';
+
 const clientID = '832619183791-r534f3obl501j6og7frtue8qrathjv76.apps.googleusercontent.com';
 
-function Alert(props) { return <MuiAlert elevation={6} variant="filled" {...props} />;}
+
 
 export default function LoginLogout() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -84,11 +85,11 @@ export default function LoginLogout() {
       >
         <Typography variant='h6' style={{fontWeight: 600}}>{loggedIn ? 'Sign Out' : 'Sign In'}</Typography>
       </Button>
-      <Snackbar open={loginAlert} autoHideDuration={6000} onClose={handleLoginAlertClose}>
-        <Alert severity='success' onClose={handleLoginAlertClose}>{`You Have Been Signed In As: ${name}`}</Alert>
+      <Snackbar open={loginAlert} autoHideDuration={6000} onClose={handleLoginAlertClose} style={{bottom: '5vh'}}>
+        <Alert severity='success' onClose={handleLoginAlertClose}>{`You have been Signed In as: ${name}`}</Alert>
       </Snackbar>
-      <Snackbar open={logoutAlert} autoHideDuration={6000} onClose={handleLogoutAlertClose}>
-        <Alert severity='info' onClose={handleLogoutAlertClose}>You Have Been Signed Out</Alert>
+      <Snackbar open={logoutAlert} autoHideDuration={6000} onClose={handleLogoutAlertClose} style={{bottom: '5vh'}}>
+        <Alert severity='info' onClose={handleLogoutAlertClose}>You have been Signed Out</Alert>
       </Snackbar>
     </Fragment>
 
