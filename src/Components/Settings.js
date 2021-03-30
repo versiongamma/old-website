@@ -2,11 +2,12 @@ import { Container, Switch, FormGroup, FormControlLabel, Fade } from '@material-
 import { useEffect, useState } from 'react';
 
 export default function Settings(props) {
-  const [settings, setSettings] = useState({darkMode: false})
+  const [settings, setSettings] = useState(props.settings);
 
-  const themeSelectorChange = () => {
+  const themeSelectorChange = (event) => {
     setSettings(prev => ({...prev, darkMode: !prev.darkMode}));
-    props.updateTheme();
+    document.cookie = "darkMode = " + !settings.darkMode;
+    props.update();
   }
 
   return (

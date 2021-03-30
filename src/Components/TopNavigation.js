@@ -41,7 +41,7 @@ export default function TopNavigation(props) {
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
       >
-          <Settings updateTheme={props.updateTheme}/>
+          <Settings update={props.update} settings={props.settings}/>
       </Drawer>
     </Fragment>
   );
