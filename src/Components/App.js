@@ -44,9 +44,7 @@ export default function App() {
   return (
     <ThemeProvider theme={settings.darkMode === false ? lightTheme : darkTheme}>
       <CssBaseline>
-        <Fade in={visible}>
-          <TopNavigation update={update} settings={settings} />
-        </Fade>
+      <TopNavigation update={update} settings={settings} />
         <Fade in={visible}>
           <Box style={{ paddingTop: '12vh' }}>
             {sections[activeSection]}
