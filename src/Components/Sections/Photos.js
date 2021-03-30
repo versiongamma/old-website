@@ -1,4 +1,4 @@
-import { Container, Fade, Snackbar, Typography } from "@material-ui/core";
+import { Container, Fade, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import { useEffect, useState } from "react";
 
@@ -9,7 +9,6 @@ const clientID = '8c3be964eba99d7';
 export default function Photos(props) {
   const [visible, setVisible] = useState(false);
   const [images, setImages] = useState([]);
-  const [alert, setAlert] = useState(false);
 
   useEffect(() => {
     setVisible(true);

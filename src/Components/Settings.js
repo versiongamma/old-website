@@ -1,5 +1,5 @@
-import { Drawer, Switch, FormGroup, FormControlLabel, Fade, Divider, List, ListItem, ListItemIcon, ListItemText, IconButton } from '@material-ui/core';
-import { Fragment, useEffect, useState } from 'react';
+import { Switch, FormGroup, FormControlLabel, Divider,  IconButton } from '@material-ui/core';
+import { Fragment, useState } from 'react';
 
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 

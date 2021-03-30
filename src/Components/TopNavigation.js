@@ -1,19 +1,14 @@
-import { AppBar, Toolbar, IconButton, Grid, Fade, Drawer } from '@material-ui/core';
+import { AppBar, Toolbar, IconButton, Grid, Drawer } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useState } from 'react';
 import LoginLogout from './LoginLogout';
 
 import Settings from './Settings';
 
 export default function TopNavigation(props) {
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [visible, setVisible] = useState(false);
 
   const closeDrawer = () => { setDrawerOpen(false); }
-
-  useEffect(() => {
-    setVisible(true)
-  }, []);
 
   return (
     <Fragment>
@@ -28,7 +23,7 @@ export default function TopNavigation(props) {
           </IconButton>
           <Grid container justify='center' style={{paddingLeft: '5vw'}}>
             <img
-              src='http://i.imgur.com/u5vk60X.jpg'
+              src='https://i.imgur.com/u5vk60X.jpg'
               alt='logo'
               style={{ width: '15vw', padding: '0.5vh'}}
             />

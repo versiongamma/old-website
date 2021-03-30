@@ -27,9 +27,9 @@ export default function App() {
 
   const update = () => {
     let updatedSettings = {};
-    document.cookie.split('; ').map((cookie) => {
-      updatedSettings[cookie.split('=')[0]] = cookie.split('=')[1] === 'true'
-    }); 
+    for (const cookie of document.cookie.split('; ')) {
+      updatedSettings[cookie.split('=')[0]] = cookie.split('=')[1] === 'true'; 
+    } 
     setSettings(updatedSettings);
   } 
 
