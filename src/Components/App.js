@@ -33,7 +33,7 @@ export default function App() {
     setSettings(updatedSettings);
   } 
 
-  const [activeSection, setActiveSection] = useState(0);
+  const [activeSection, setActiveSection] = useState(parseInt(document.cookie.split('; ').find(row => row.startsWith('section')).split('=')[1]));
   const [visible, setVisible] = useState(false)
   const sections = [<About />, <GameDev />, <Software />, <Photos />, <Videos />];
 
@@ -52,7 +52,11 @@ export default function App() {
             <BottomNavigation
               showLabels
               value={activeSection}
-              onChange={(event, value) => { setActiveSection(value) }}
+              onChange={(event, value) => { 
+                setActiveSection(value);
+                let now = new Date(); now.setTime(now.getTime() + 24*60*60);
+                document.cookie = `section = ${value};expires=${now.toUTCString()}` ;
+              }}
               style={{
                 width: '100%',
                 position: 'fixed',
