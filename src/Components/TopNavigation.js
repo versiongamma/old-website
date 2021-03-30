@@ -1,47 +1,47 @@
-import { AppBar, Toolbar, IconButton, Grid, Avatar, Drawer, FormGroup, FormControlLabel, Switch } from '@material-ui/core';
+import { AppBar, Toolbar, IconButton, Grid, Fade, Drawer } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import PersonIcon from '@material-ui/icons/Person';
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
+import LoginLogout from './LoginLogout';
 
 import Settings from './Settings';
 
 export default function TopNavigation(props) {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [visible, setVisible] = useState(false);
+
+  const closeDrawer = () => { setDrawerOpen(false); }
+
+  useEffect(() => {
+    setVisible(true)
+  }, []);
 
   return (
     <Fragment>
-      <nav style={{ flexGrow: 1 }}>
-        <AppBar position='fixed' style={{ flexGrow: 1 }}>
-          <Toolbar>
-            <IconButton
-              color='inherit'
-              edge='start'
-              onClick={() => setDrawerOpen(prev => !prev)}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Grid container justify='center'>
-              <img
-                src='http://i.imgur.com/u5vk60X.jpg'
-                alt='logo'
-                style={{ width: '15vw', padding: '0.5vh' }}
-              />
-            </Grid>
-            <IconButton edge='end'>
-              <Avatar style={{ color: '#bbb', backgroundColor: "#fff" }}>
-                <PersonIcon />
-              </Avatar>
-            </IconButton>
-          </Toolbar>
-        </AppBar>
-      </nav>
-
+      <AppBar position='fixed'>
+        <Toolbar>
+          <IconButton
+            color='inherit'
+            edge='start'
+            onClick={() => setDrawerOpen(prev => !prev)}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Grid container justify='center' style={{paddingLeft: '5vw'}}>
+            <img
+              src='http://i.imgur.com/u5vk60X.jpg'
+              alt='logo'
+              style={{ width: '15vw', padding: '0.5vh'}}
+            />
+          </Grid>
+          <LoginLogout />
+        </Toolbar>
+      </AppBar>
       <Drawer
         anchor='left'
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
       >
-          <Settings update={props.update} settings={props.settings}/>
+        <Settings update={props.update} settings={props.settings} closeDrawer={closeDrawer} />
       </Drawer>
     </Fragment>
   );
