@@ -21,7 +21,7 @@ export default function TopNavigation(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Grid container justify='center' style={{paddingLeft: '5vw'}}>
+          <Grid container justify='center' style={{paddingRight: '.5vw'}}>
             <img
               src='https://i.imgur.com/u5vk60X.jpg'
               alt='logo'
