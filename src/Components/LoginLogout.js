@@ -1,4 +1,4 @@
-import { Button, Avatar, Snackbar } from '@material-ui/core';
+import { Button, Avatar, Snackbar, Typography } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 import React, { Fragment, useState } from "react";
 import { useGoogleLogout, useGoogleLogin } from 'react-google-login';
@@ -32,6 +32,7 @@ export default function LoginLogout() {
     // Setting an ass ton of state
     setLoggedIn(true);
     setName(res.profileObj.name);
+    // Don't alert the user if they are already signed in, i.e. it's happening on a refresh
     if (document.cookie.split('; ').find(row => row.startsWith('previouslySignedIn')).split('=')[1] === 'false') {
       setLogoutAlert(false);
       setLoginAlert(true);
@@ -76,10 +77,12 @@ export default function LoginLogout() {
   return (
     <Fragment>
       <Button
-        endIcon={<Avatar src={icon} style={{ color: '#bbb', backgroundColor: "#fff" }} />}
+        color='inherit'
+        style={{position: 'absolute', right: 5}}
+        endIcon={<Avatar src={icon} style={{ color: '#bbb', backgroundColor: "#fff"}} />}
         onClick={loggedIn ? signOut : signIn}
       >
-        {loggedIn ? 'Sign Out' : 'Sign In'}
+        <Typography variant='h6' style={{fontWeight: 600}}>{loggedIn ? 'Sign Out' : 'Sign In'}</Typography>
       </Button>
       <Snackbar open={loginAlert} autoHideDuration={6000} onClose={handleLoginAlertClose}>
         <Alert severity='success' onClose={handleLoginAlertClose}>{`You Have Been Signed In As: ${name}`}</Alert>
