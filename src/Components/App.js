@@ -22,16 +22,15 @@ import TopNavigation from './TopNavigation';
 export default function App() {
   // Loading previous settings from session cookie data
   const [settings, setSettings] = useState({
-    darkMode: document.cookie.split('; ').find(row => row.startsWith('darkMode')).split('=')[1] == 'true'
+    darkMode: document.cookie.split('; ').find(row => row.startsWith('darkMode')).split('=')[1] === 'true'
   })
 
   const update = () => {
     let updatedSettings = {};
     document.cookie.split('; ').map((cookie) => {
-      updatedSettings[cookie.split('=')[0]] = cookie.split('=')[1] == 'true'
+      updatedSettings[cookie.split('=')[0]] = cookie.split('=')[1] === 'true'
     }); 
     setSettings(updatedSettings);
-    console.log(settings)
   } 
 
   const [activeSection, setActiveSection] = useState(0);
@@ -40,11 +39,10 @@ export default function App() {
 
   useEffect(() => {
     setVisible(true);
-    console.log(settings)
   }, [])
 
   return (
-    <ThemeProvider theme={settings.darkMode == false ? lightTheme : darkTheme}>
+    <ThemeProvider theme={settings.darkMode === false ? lightTheme : darkTheme}>
       <CssBaseline>
         <Fade in={visible}>
           <TopNavigation update={update} settings={settings} />
@@ -61,7 +59,7 @@ export default function App() {
                 width: '100%',
                 position: 'fixed',
                 bottom: 0,
-                backgroundColor: settings.darkMode == true ? '#303030' : '#fff'
+                backgroundColor: settings.darkMode === true ? '#303030' : '#fff'
               }}
             >
               <BottomNavigationAction icon={<InfoIcon />} label="About" />
