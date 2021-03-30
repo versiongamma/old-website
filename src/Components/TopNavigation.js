@@ -6,18 +6,17 @@ import { Fragment, useState } from 'react';
 import Settings from './Settings';
 
 export default function TopNavigation(props) {
-  const [drawerOpen, setDrawerOpen] = useState(true);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
     <Fragment>
       <nav style={{ flexGrow: 1 }}>
         <AppBar position='fixed' style={{ flexGrow: 1 }}>
           <Toolbar>
-
             <IconButton
               color='inherit'
               edge='start'
-              size
+              onClick={() => setDrawerOpen(prev => !prev)}
             >
               <MenuIcon />
             </IconButton>
@@ -39,9 +38,10 @@ export default function TopNavigation(props) {
 
       <Drawer
         anchor='left'
-        open = {drawerOpen}
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
       >
-          <Settings />
+          <Settings updateTheme={props.updateTheme}/>
       </Drawer>
     </Fragment>
   );

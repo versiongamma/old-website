@@ -6,6 +6,7 @@ export default function Settings(props) {
 
   const themeSelectorChange = () => {
     setSettings(prev => ({...prev, darkMode: !prev.darkMode}));
+    props.updateTheme();
   }
 
   return (

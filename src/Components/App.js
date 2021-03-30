@@ -22,13 +22,7 @@ import TopNavigation from './TopNavigation';
 export default function App() {
   const updateTheme = () => {
     setTheme(prev => prev === 'lightTheme' ? 'darkTheme' : 'lightTheme');
-    setSettings(prev => ({ ...prev, themeSelector: !prev.themeSelector }))
   }
-
-  const [settings, setSettings] = useState({
-    themeSelector: false
-  });
-
   const [activeSection, setActiveSection] = useState(0);
   const [theme, setTheme] = useState('lightTheme');
   const [visible, setVisible] = useState(false)
@@ -42,7 +36,7 @@ export default function App() {
     <ThemeProvider theme={theme === 'lightTheme' ? lightTheme : darkTheme}>
       <CssBaseline>
         <Fade in={visible}>
-          <TopNavigation />
+          <TopNavigation updateTheme={updateTheme}/>
         </Fade>
         <Fade in={visible}>
           <Box style={{ paddingTop: '12vh' }}>
