@@ -77,7 +77,7 @@ export default function TopNavigation(props) {
             />
           </Grid>
           </Hidden>
-          {/**<LoginLogout />*/}
+          <LoginLogout />
         </Toolbar>
       </AppBar>
       <SwipeableDrawer
