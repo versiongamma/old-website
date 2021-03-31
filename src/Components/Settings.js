@@ -1,7 +1,7 @@
-import { Switch, FormGroup, FormControlLabel, Divider,  IconButton } from '@material-ui/core';
-import { Fragment, useState } from 'react';
+import { Switch,  List, ListItem, ListItemText, ListItemSecondaryAction, ListItemIcon} from '@material-ui/core';
+import { useState } from 'react';
 
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import Brightness4Icon from '@material-ui/icons/Brightness4';
 
 export default function Settings(props) {
 
@@ -14,24 +14,18 @@ export default function Settings(props) {
   }
 
   return (
-    <Fragment>
-      <div style={{ textAlign: 'right', padding: '.5vw'}}>
-        <IconButton onClick={props.closeDrawer}><ArrowBackIcon /></IconButton>
-      </div>
-
-      <Divider />
-
-      <FormGroup style={{ padding: '1vw 2vw 0 2vw' }}>
-        <FormControlLabel
-          control={
-            <Switch
-              color='primary'
-              checked={settings.darkMode}
-              onChange={themeSelectorChange}
-            />}
-          label='Dark Mode'
-        />
-      </FormGroup>
-    </Fragment>
+    <List style={{ padding: '1vw 2vw 0 2vw', width: document.body.scrollWidth >= 600 ? 400 : '100vw' }}>
+      <ListItem button onClick={themeSelectorChange}>
+        <ListItemIcon><Brightness4Icon /></ListItemIcon>
+        <ListItemText primary='Dark Mode' />
+        <ListItemSecondaryAction>
+          <Switch
+            color='primary'
+            checked={settings.darkMode}
+            onChange={themeSelectorChange}
+          />
+        </ListItemSecondaryAction>
+      </ListItem>
+    </List>
   );
 }

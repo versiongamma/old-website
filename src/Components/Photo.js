@@ -14,7 +14,10 @@ export default function Photo(props) {
         src={props.photo.link}
         alt={props.photo.description}
         onLoad={imageLoaded}
-        style={{ width: '20vw', padding: 40, borderRadius: 50}}
+        style={{ 
+          width: document.body.scrollWidth >= 600 ?'20vw' : '90vw', 
+          padding: document.body.scrollWidth >= 600 ? 40 : 15, 
+          borderRadius: document.body.scrollWidth >= 600 ? 50 : 30}}
       />
     </Grow>
   );
