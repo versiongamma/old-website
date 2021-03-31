@@ -1,4 +1,4 @@
-import { BottomNavigation, BottomNavigationAction, Box, CssBaseline, ThemeProvider, Fade } from '@material-ui/core';
+import { BottomNavigation, BottomNavigationAction, Box, CssBaseline, ThemeProvider, Fade, Hidden } from '@material-ui/core';
 import PhotoIcon from '@material-ui/icons/Photo';
 import VideocamIcon from '@material-ui/icons/Videocam';
 import GamesIcon from '@material-ui/icons/Games';
@@ -22,18 +22,28 @@ import TopNavigation from './TopNavigation';
 export default function App() {
   // Loading previous settings from session cookie data
   const [settings, setSettings] = useState({
-    darkMode: document.cookie.split('; ').find(row => row.startsWith('darkMode')).split('=')[1] === 'true'
+    darkMode: document.cookie.split('; ').find(row => row.startsWith('darkMode')).split('=')[1] === 'true',
+    section: parseInt(document.cookie.split('; ').find(row => row.startsWith('section')).split('=')[1])
   })
 
   const update = () => {
     let updatedSettings = {};
     for (const cookie of document.cookie.split('; ')) {
-      updatedSettings[cookie.split('=')[0]] = cookie.split('=')[1] === 'true'; 
+      // If the cookie is boolean, pass it as boolean
+      if (cookie.split('=')[1] === 'true' || cookie.split('=')[1] === 'false') {
+        updatedSettings[cookie.split('=')[0]] = cookie.split('=')[1] === 'true'
+      // If it is a number, parse it as a number
+      } else if (Number.isNaN(cookie.split('=')[1])) {
+        updatedSettings[cookie.split('=')[0]] = parseInt(cookie.split('=')[1]);
+      // Else parse it as a string
+      } else {
+        updatedSettings[cookie.split('=')[0]] = cookie.split('=')[1];
+      }
+    
     } 
     setSettings(updatedSettings);
   } 
 
-  const [activeSection, setActiveSection] = useState(parseInt(document.cookie.split('; ').find(row => row.startsWith('section')).split('=')[1]));
   const [visible, setVisible] = useState(false)
   const sections = [<About />, <GameDev />, <Software />, <Photos />, <Videos />];
 
@@ -47,13 +57,14 @@ export default function App() {
       <TopNavigation update={update} settings={settings} />
         <Fade in={visible}>
           <Box style={{ paddingTop: '12vh' }}>
-            {sections[activeSection]}
+            {sections[settings.section]}
 
+            <Hidden only='xs'>
             <BottomNavigation
               showLabels
-              value={activeSection}
+              value={settings.section}
               onChange={(event, value) => { 
-                setActiveSection(value);
+                setSettings(prev => ({...prev, section: value}));
                 let now = new Date(); now.setTime(now.getTime() + 24*60*60);
                 document.cookie = `section = ${value};expires=${now.toUTCString()}` ;
               }}
@@ -70,6 +81,7 @@ export default function App() {
               <BottomNavigationAction icon={<PhotoIcon />} label="Photography" />
               <BottomNavigationAction icon={<VideocamIcon />} label="Videography" />
             </BottomNavigation>
+            </Hidden>
           </Box>
         </Fade>
       </CssBaseline>
