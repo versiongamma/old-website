@@ -79,7 +79,7 @@ export default function TopNavigation(props) {
               style={{ width: '15vw', padding: '0.5vh'}}
             />
           </Grid>
-          {/**<LoginLogout />*/}
+          <LoginLogout />
           </Hidden>
         </Toolbar>
       </AppBar>
@@ -125,7 +125,7 @@ export default function TopNavigation(props) {
         <Settings update={props.update} settings={settings} />
         <Hidden mdUp>
           <Divider />
-          {/**<LoginLogout style={{paddingTop: '5vh'}}/>*/}
+          <LoginLogout style={{paddingTop: '5vh'}}/>
         </Hidden>
       </SwipeableDrawer>
     </Fragment>
