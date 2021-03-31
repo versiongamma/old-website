@@ -85,6 +85,7 @@ export default function TopNavigation(props) {
       </AppBar>
       <SwipeableDrawer
         anchor='left'
+        swipeAreaWidth={130}
         open={drawerOpen}
         onOpen={() => setDrawerOpen(true)}
         onClose={() => setDrawerOpen(false)}
