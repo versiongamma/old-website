@@ -59,7 +59,7 @@ export default function App() {
           <Box style={{ paddingTop: '12vh' }}>
             {sections[settings.section]}
 
-            <Hidden only='xs'>
+            <Hidden smDown>
             <BottomNavigation
               showLabels
               value={settings.section}

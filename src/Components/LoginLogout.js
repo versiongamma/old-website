@@ -8,7 +8,7 @@ const clientID = '832619183791-r534f3obl501j6og7frtue8qrathjv76.apps.googleuserc
 
 
 
-export default function LoginLogout() {
+export default function LoginLogout(props) {
   const [loggedIn, setLoggedIn] = useState(false);
   const [loginAlert, setLoginAlert] = useState(false);
   const [logoutAlert, setLogoutAlert] = useState(false);
@@ -79,7 +79,7 @@ export default function LoginLogout() {
     <Fragment>
       <Button
         color='inherit'
-        style={{position: 'absolute', right: 5}}
+        style={{position: document.body.scrollWidth >= 960 ? 'absolute' : '', right: 5, ...props.style}}
         endIcon={<Avatar src={icon} style={{ color: '#bbb', backgroundColor: "#fff"}} />}
         onClick={loggedIn ? signOut : signIn}
       >
