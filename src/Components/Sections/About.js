@@ -1,4 +1,5 @@
-import { Box, Fade, Typography } from '@material-ui/core'
+import { Box, Fade, Typography, Hidden } from '@material-ui/core'
+import  ArrowBackIcon  from '@material-ui/icons/ArrowBack';
 import { useEffect, useState } from 'react';
 
 export default function About(props) {
@@ -11,7 +12,10 @@ export default function About(props) {
   return (
     <Fade in={visible}>
     <Box>
-      <Typography variant="h1" style={{textAlign: "center", paddingTop: "20%", fontFamily: "Josefin Sans"}}>Coming Soon...</Typography>
+      <Typography variant="h2" style={{textAlign: "center", paddingTop: "10vh", fontFamily: "Josefin Sans"}}>Coming Soon...</Typography>
+      <Hidden mdUp>
+        <Typography variant='h5' style={{textAlign: 'center', verticalAlign: 'center', paddingTop: '10vh'}}>Swipe from the left <ArrowBackIcon /> to see more!</Typography>
+      </Hidden>
     </Box>
     </Fade>
   );
