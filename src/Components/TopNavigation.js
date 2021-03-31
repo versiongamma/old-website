@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, IconButton, Grid, Hidden, List, ListItem, ListItemIcon, ListItemText, SwipeableDrawer, Divider } from '@material-ui/core';
+import { AppBar, Toolbar, IconButton, Grid, Hidden, List, ListItem, ListItemIcon, ListItemText, SwipeableDrawer, Divider, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Fragment, useState } from 'react';
 import LoginLogout from './LoginLogout';
@@ -68,7 +68,10 @@ export default function TopNavigation(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Hidden mdDown>
+          <Hidden mdUp>
+            <Typography variant='h5' style={{fontFamily: 'Josefin Sans', paddingTop: '1vh'}}>{['About', 'Game Design', 'Software Development', 'Photography', 'Videography'][settings.section]}</Typography>
+          </Hidden>
+          <Hidden smDown>
           <Grid container justify='center' style={{paddingRight: '.5vw'}}>
             <img
               src='https://i.imgur.com/u5vk60X.jpg'
@@ -76,12 +79,13 @@ export default function TopNavigation(props) {
               style={{ width: '15vw', padding: '0.5vh'}}
             />
           </Grid>
-          </Hidden>
           {/**<LoginLogout />*/}
+          </Hidden>
         </Toolbar>
       </AppBar>
       <SwipeableDrawer
         anchor='left'
+        swipeAreaWidth={130}
         open={drawerOpen}
         onOpen={() => setDrawerOpen(true)}
         onClose={() => setDrawerOpen(false)}
@@ -91,7 +95,7 @@ export default function TopNavigation(props) {
         </div>
 
         {/** Navigation in the drawer for mobile */}
-        <Hidden smUp>
+        <Hidden mdUp>
           <List>
             <ListItem button style={{backgroundColor: settings.section === 0 ? lightTheme.palette.primary.main : ''}} onClick={handleClickAbout}>
               <ListItemIcon><InfoIcon /></ListItemIcon>
@@ -119,6 +123,10 @@ export default function TopNavigation(props) {
         {/** Settings implementation into drawer */}
         <Divider />
         <Settings update={props.update} settings={settings} />
+        <Hidden mdUp>
+          <Divider />
+          {/**<LoginLogout style={{paddingTop: '5vh'}}/>*/}
+        </Hidden>
       </SwipeableDrawer>
     </Fragment>
   );

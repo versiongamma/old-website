@@ -1,8 +1,10 @@
 import { Grow } from "@material-ui/core";
 import { useState } from "react";
+import useWindowSize from './../hooks/useWindowSize';
 
 export default function Photo(props) {
   const [visible, setVisible] = useState(false);
+  const windowSize = useWindowSize();
 
   const imageLoaded = () => {
     setVisible(true)
@@ -15,9 +17,9 @@ export default function Photo(props) {
         alt={props.photo.description}
         onLoad={imageLoaded}
         style={{ 
-          width: document.body.scrollWidth >= 600 ?'20vw' : '90vw', 
-          padding: document.body.scrollWidth >= 600 ? 40 : 15, 
-          borderRadius: document.body.scrollWidth >= 600 ? 50 : 30}}
+          width: windowSize.width > 960 ? windowSize.width > 1920 ? '20vw' : '40vw' : '90vw', 
+          padding: document.body.scrollWidth >= 960 ? 40 : 15, 
+          borderRadius: document.body.scrollWidth >= 960 ? 50 : 30}}
       />
     </Grow>
   );
