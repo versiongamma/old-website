@@ -17,7 +17,7 @@ import Videos from './Sections/Videos';
 
 import lightTheme from './../themes/lightTheme';
 import darkTheme from './../themes/darkTheme';
-import TopNavigation from './TopNavigation';
+import TopNavigation from './Navigation/TopNavigation';
 
 export default function App() {
   // Loading previous settings from session cookie data
@@ -33,7 +33,7 @@ export default function App() {
       if (cookie.split('=')[1] === 'true' || cookie.split('=')[1] === 'false') {
         updatedSettings[cookie.split('=')[0]] = cookie.split('=')[1] === 'true'
       // If it is a number, parse it as a number
-      } else if (Number.isNaN(cookie.split('=')[1])) {
+      } else if (!Number.isNaN(cookie.split('=')[1])) {
         updatedSettings[cookie.split('=')[0]] = parseInt(cookie.split('=')[1]);
       // Else parse it as a string
       } else {
@@ -63,11 +63,7 @@ export default function App() {
             <BottomNavigation
               showLabels
               value={settings.section}
-              onChange={(event, value) => { 
-                setSettings(prev => ({...prev, section: value}));
-                let now = new Date(); now.setTime(now.getTime() + 24*60*60);
-                document.cookie = `section = ${value};expires=${now.toUTCString()}` ;
-              }}
+              onChange={(event, value) => setSettings(prev => ({...prev, section: value}))}
               style={{
                 width: '100%',
                 position: 'fixed',

@@ -80,16 +80,16 @@ export default function LoginLogout(props) {
       <Button
         color='inherit'
         style={{position: document.body.scrollWidth >= 960 ? 'absolute' : '', right: 5, ...props.style}}
-        endIcon={<Avatar src={icon} style={{ color: '#bbb', backgroundColor: "#fff"}} />}
+        endIcon={<Avatar src={icon} />}
         onClick={loggedIn ? signOut : signIn}
       >
         <Typography variant='h6' style={{fontWeight: 600}}>{loggedIn ? 'Sign Out' : 'Sign In'}</Typography>
       </Button>
       <Snackbar open={loginAlert} autoHideDuration={6000} onClose={handleLoginAlertClose} style={{bottom: '5vh'}}>
-        <Alert severity='success' onClose={handleLoginAlertClose}>{`You have been Signed In as: ${name}`}</Alert>
+        <Alert severity='success' onClose={handleLoginAlertClose}>{`You have been signed in as: ${name}`}</Alert>
       </Snackbar>
       <Snackbar open={logoutAlert} autoHideDuration={6000} onClose={handleLogoutAlertClose} style={{bottom: '5vh'}}>
-        <Alert severity='info' onClose={handleLogoutAlertClose}>You have been Signed Out</Alert>
+        <Alert severity='info' onClose={handleLogoutAlertClose}>You have been signed out</Alert>
       </Snackbar>
     </Fragment>
 
