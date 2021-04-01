@@ -34,7 +34,7 @@ export default function TopNavigation(props) {
           </IconButton>
           </Hidden>
           <Hidden mdUp>
-            <Typography variant='h5' style={{ fontFamily: 'Josefin Sans', paddingTop: '1vh'}}>{['About', 'Game Design', 'Software Development', 'Photography', 'Videography'][props.settings.section]}</Typography>
+            <Typography variant='h6' style={{ fontFamily: 'Josefin Sans', paddingTop: '1vh'}}>{['ABOUT', 'GAME DESIGN', 'SOFTWARE DEVELOPMENT', 'PHOTOGRAPHY', 'VIDEOGRAPHY'][props.settings.section]}</Typography>
           </Hidden>
           <Hidden smDown>
           <Grid container justify='center' style={{paddingRight: '.5vw'}}>
@@ -45,6 +45,11 @@ export default function TopNavigation(props) {
             />
           </Grid>
           <LoginLogout />
+          </Hidden>
+          <Hidden mdUp>
+            <img src='https://i.imgur.com/k9iE2gH.jpg' 
+              alt='logo'
+              style={{height: 40, position: 'absolute', right: '3vw'}}/>
           </Hidden>
         </Toolbar>
       </AppBar>
