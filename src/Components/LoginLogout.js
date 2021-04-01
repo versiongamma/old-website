@@ -2,6 +2,8 @@ import { Button, Avatar, Snackbar, Typography } from '@material-ui/core';
 import React, { Fragment, useState } from "react";
 import { useGoogleLogout, useGoogleLogin } from 'react-google-login';
 
+import useWindowSize from '../hooks/useWindowSize';
+
 import Alert from './Alert';
 
 const clientID = '832619183791-r534f3obl501j6og7frtue8qrathjv76.apps.googleusercontent.com';
@@ -14,6 +16,8 @@ export default function LoginLogout(props) {
   const [logoutAlert, setLogoutAlert] = useState(false);
   const [icon, setIcon] = useState();
   const [name, setName] = useState();
+
+  const windowSize = useWindowSize();
 
   /** Alert handlers */
 
@@ -79,8 +83,8 @@ export default function LoginLogout(props) {
     <Fragment>
       <Button
         color='inherit'
-        style={{position: document.body.scrollWidth >= 960 ? 'absolute' : '', right: 5, ...props.style}}
-        endIcon={<Avatar src={icon} />}
+        style={{position: windowSize.width >= 960 ? 'absolute' : '', right: 15, ...props.style}}
+        endIcon={<Avatar src={icon} style={windowSize.width >= 960 ? {color: '#bbb', backgroundColor: '#fff'} : {}}/>}
         onClick={loggedIn ? signOut : signIn}
       >
         <Typography variant='h6' style={{fontWeight: 600}}>{loggedIn ? 'Sign Out' : 'Sign In'}</Typography>
