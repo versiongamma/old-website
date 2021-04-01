@@ -74,7 +74,7 @@ export default function TopNavigation(props) {
           </IconButton>
           </Hidden>
           <Hidden mdUp>
-            <Typography variant='h5' style={{ fontFamily: 'Josefin Sans', paddingTop: '1vh' }}>{['About', 'Game Design', 'Software Development', 'Photography', 'Videography'][settings.section]}</Typography>
+            <Typography variant='h5' style={{ fontFamily: 'Josefin Sans', paddingTop: '1vh'}}>{['About', 'Game Design', 'Software Development', 'Photography', 'Videography'][settings.section]}</Typography>
           </Hidden>
           <Hidden smDown>
           <Grid container justify='center' style={{paddingRight: '.5vw'}}>
@@ -103,24 +103,24 @@ export default function TopNavigation(props) {
         <Hidden mdUp>
           <List>
             <ListItem button style={{ backgroundColor: settings.section === 0 ? lightTheme.palette.primary.main : '' }} onClick={handleClickAbout}>
-              <ListItemIcon><InfoIcon /></ListItemIcon>
-              <ListItemText primary='About' />
+              <ListItemIcon style={{color: settings.section === 0 ? 'white' : ''}}><InfoIcon /></ListItemIcon>
+              <ListItemText style={{color: settings.section === 0 ? 'white' : ''}} primary='About' />
             </ListItem>
             <ListItem button style={{ backgroundColor: settings.section === 1 ? lightTheme.palette.primary.main : '' }} onClick={handleClickGames}>
-              <ListItemIcon><GamesIcon /></ListItemIcon>
-              <ListItemText primary='Game Design' />
+              <ListItemIcon style={{color: settings.section === 1 ? 'white' : ''}}><GamesIcon /></ListItemIcon>
+              <ListItemText style={{color: settings.section === 1 ? 'white' : ''}} primary='Game Design' />
             </ListItem>
-            <ListItem button style={{ backgroundColor: settings.section === 2 ? lightTheme.palette.primary.main : '' }} onClick={handleClickSoftware}>
-              <ListItemIcon><ComputerIcon /></ListItemIcon>
-              <ListItemText primary='Software Development' />
+            <ListItem button style={{ backgroundColor: settings.section === 2 ? lightTheme.palette.primary.main : ''}} onClick={handleClickSoftware}>
+              <ListItemIcon style={{color: settings.section === 2 ? 'white' : ''}}><ComputerIcon /></ListItemIcon>
+              <ListItemText style={{color: settings.section === 2 ? 'white' : ''}} primary='Software Development' />
             </ListItem>
             <ListItem button style={{ backgroundColor: settings.section === 3 ? lightTheme.palette.primary.main : '' }} onClick={handleClickPhotos}>
-              <ListItemIcon><PhotoIcon /></ListItemIcon>
-              <ListItemText primary='Photography' />
+              <ListItemIcon style={{color: settings.section === 3 ? 'white' : ''}}><PhotoIcon /></ListItemIcon>
+              <ListItemText style={{color: settings.section === 3 ? 'white' : ''}} primary='Photography' />
             </ListItem>
             <ListItem button style={{ backgroundColor: settings.section === 4 ? lightTheme.palette.primary.main : '' }} onClick={handleClickVideos}>
-              <ListItemIcon><VideocamIcon /></ListItemIcon>
-              <ListItemText primary='Videography' />
+              <ListItemIcon style={{color: settings.section === 4 ? 'white' : ''}}><VideocamIcon /></ListItemIcon>
+              <ListItemText style={{color: settings.section === 4 ? 'white' : ''}}primary='Videography' />
             </ListItem>
           </List>
         </Hidden>
