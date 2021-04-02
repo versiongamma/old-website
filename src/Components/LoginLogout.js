@@ -1,6 +1,7 @@
 import { Button, Avatar, Snackbar, Typography } from '@material-ui/core';
 import React, { Fragment, useState } from "react";
 import { useGoogleLogout, useGoogleLogin } from 'react-google-login';
+import createCookie from '../functions/createCookie';
 
 import useWindowSize from '../hooks/useWindowSize';
 
@@ -44,7 +45,7 @@ export default function LoginLogout(props) {
     }
     setIcon(res.profileObj.imageUrl);
 
-    document.cookie = 'previouslySignedIn = true';
+    createCookie('previouslySignedIn', true, 365);
 
     console.log(res.profileObj);
   }
@@ -55,7 +56,7 @@ export default function LoginLogout(props) {
     setLogoutAlert(true);
     setIcon('');
 
-    document.cookie = 'previouslySignedIn = false';
+    createCookie('previouslySignedIn', false, 365);
   }
 
   const onLoginFailure = (res) => { }
