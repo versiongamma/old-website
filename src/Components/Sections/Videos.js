@@ -1,5 +1,4 @@
 import { Container, Divider, Fade, Hidden, Typography } from '@material-ui/core'
-import { FormatTextdirectionLToR } from '@material-ui/icons';
 import { useEffect, useState, Fragment } from 'react';
 import ReactPlayer from 'react-player';
 import useWindowSize from '../../hooks/useWindowSize';

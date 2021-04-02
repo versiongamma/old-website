@@ -8,6 +8,7 @@ import VideocamIcon from '@material-ui/icons/Videocam';
 import GamesIcon from '@material-ui/icons/Games';
 import InfoIcon from '@material-ui/icons/Info';
 import ComputerIcon from '@material-ui/icons/Computer';
+import createCookie from '../../functions/createCookie';
 
 /**
  * Compenent that handles the section navigation when in mobile view
@@ -29,7 +30,7 @@ export default function MobileSections(props) {
   const handleClick = (event, i) => {
     props.closeDrawer();
     setSettings(prev => ({ ...prev, section: i }));
-    document.cookie = `section = ${i}`;
+    createCookie('section', i, 365);
     props.update();
   }
 
