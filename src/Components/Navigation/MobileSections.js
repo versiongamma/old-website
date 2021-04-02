@@ -30,7 +30,7 @@ export default function MobileSections(props) {
   const handleClick = (event, i) => {
     props.closeDrawer();
     setSettings(prev => ({ ...prev, section: i }));
-    createCookie('section', i, 365);
+    createCookie('section', i, 0);
     props.update();
   }
 

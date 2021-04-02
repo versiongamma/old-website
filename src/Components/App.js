@@ -18,6 +18,7 @@ import Videos from './Sections/Videos';
 import lightTheme from './../themes/lightTheme';
 import darkTheme from './../themes/darkTheme';
 import TopNavigation from './Navigation/TopNavigation';
+import createCookie from '../functions/createCookie';
 
 export default function App() {
   // Loading previous settings from session cookie data
@@ -63,7 +64,10 @@ export default function App() {
             <BottomNavigation
               showLabels
               value={settings.section}
-              onChange={(event, value) => setSettings(prev => ({...prev, section: value}))}
+              onChange={(event, value) => {
+                setSettings(prev => ({...prev, section: value}));
+                createCookie('section', value, 0);
+              }}
               style={{
                 width: '100%',
                 position: 'fixed',
