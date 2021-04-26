@@ -4,13 +4,20 @@ import { useState } from 'react';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import createCookie from '../functions/createCookie';
 
-export default function Settings(props) {
+import { Settings } from '../types';
+
+type Props = {
+  settings: Settings
+  update: () => void
+}
+ 
+const SettingsList: React.FunctionComponent<Props> = (props) => {
 
   const [settings, setSettings] = useState(props.settings);
 
-  const themeSelectorChange = (event) => {
+  const themeSelectorChange = (event: any) => {
     setSettings(prev => ({ ...prev, darkMode: !prev.darkMode }));
-    createCookie('darkMode', !settings.darkMode, 365)
+    createCookie('darkMode', (!settings.darkMode).toString(), 365)
     props.update();
   }
 
@@ -30,3 +37,5 @@ export default function Settings(props) {
     </List>
   );
 }
+
+export default SettingsList;

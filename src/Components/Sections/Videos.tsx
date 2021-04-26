@@ -3,21 +3,22 @@ import { useEffect, useState, Fragment } from 'react';
 import ReactPlayer from 'react-player';
 import useWindowSize from '../../hooks/useWindowSize';
 
-export default function Videos(props) {
+type VideoAPIResponse = {
+  snippet: { description: string, title: string, resourceId: {videoId: string} }
+}
+
+const Videos: React.FunctionComponent = () => {
   const [visible, setVisible] = useState(false);
   const windowSize = useWindowSize();
 
-  const [videos, setVideos] = useState([])
+  const [videos, setVideos] = useState<VideoAPIResponse[]>([]);
 
   useEffect(() => {
     setVisible(true);
 
-    fetch('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PLAI9kflqAm9E0d_ExQ2tYdk9UwdD2PKD4&key=AIzaSyBGrWo2FzmCmxRIl14m2ivIIwnrsfNydmU')
+    fetch('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PLAI9kflqAm9E0d_ExQ2tYdk9UwdD2PKD4&key=' + process.env.GOOGLE_API_KEY)
       .then(res => res.json())
-      .then(res => {
-        setVideos(res.items)
-        console.log(res.items[0]);
-      });
+      .then(res => { setVideos(res.items) });
   }, [])
 
   return (
@@ -46,3 +47,6 @@ export default function Videos(props) {
     </Fade>
   );
 }
+
+export default Videos;
+

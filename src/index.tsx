@@ -1,3 +1,5 @@
+import ReactDOM from 'react-dom';
+
 import { BottomNavigation, BottomNavigationAction, Box, CssBaseline, ThemeProvider, Fade, Hidden } from '@material-ui/core';
 import PhotoIcon from '@material-ui/icons/Photo';
 import VideocamIcon from '@material-ui/icons/Videocam';
@@ -5,30 +7,35 @@ import GamesIcon from '@material-ui/icons/Games';
 import InfoIcon from '@material-ui/icons/Info';
 import ComputerIcon from '@material-ui/icons/Computer';
 
-
 import { useEffect, useState } from 'react';
 
-import About from './Sections/About';
-import GameDev from './Sections/GameDev';
-import Software from './Sections/Software';
-import Photos from './Sections/Photos';
-import Videos from './Sections/Videos';
+import About from './Components/Sections/About';
+import GameDev from './Components/Sections/GameDev';
+import Software from './Components/Sections/Software';
+import Photos from './Components/Sections/Photos';
+import Videos from './Components/Sections/Videos';
+
+import lightTheme from './themes/lightTheme';
+import darkTheme from './themes/darkTheme';
+import TopNavigation from './Components/Navigation/TopNavigation';
+import createCookie from './functions/createCookie';
+
+import { Settings } from './types';
 
 
-import lightTheme from './../themes/lightTheme';
-import darkTheme from './../themes/darkTheme';
-import TopNavigation from './Navigation/TopNavigation';
-import createCookie from '../functions/createCookie';
+// Creating default settings if they do not exist yet
+if (document.cookie.split('; ').find(row => row.startsWith('darkMode')) === undefined) { document.cookie = 'darkMode = false' }
+if (document.cookie.split('; ').find(row => row.startsWith('section')) === undefined) { document.cookie = 'section = 0' }
 
-export default function App() {
+const App = () => {
   // Loading previous settings from session cookie data
-  const [settings, setSettings] = useState({
-    darkMode: document.cookie.split('; ').find(row => row.startsWith('darkMode')).split('=')[1] === 'true',
-    section: parseInt(document.cookie.split('; ').find(row => row.startsWith('section')).split('=')[1])
+  const [settings, setSettings] = useState<Settings>({
+    darkMode: false,
+    section: 0
   })
 
   const update = () => {
-    let updatedSettings = {};
+    let updatedSettings: Settings = {darkMode: false, section: 0};
     for (const cookie of document.cookie.split('; ')) {
       // If the cookie is boolean, pass it as boolean
       if (cookie.split('=')[1] === 'true' || cookie.split('=')[1] === 'false') {
@@ -45,11 +52,13 @@ export default function App() {
     setSettings(updatedSettings);
   } 
 
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(false);
+
   const sections = [<About />, <GameDev />, <Software />, <Photos />, <Videos />];
 
   useEffect(() => {
     setVisible(true);
+    update();
   }, [])
 
   return (
@@ -89,4 +98,7 @@ export default function App() {
   );
 }
 
-
+ReactDOM.render(
+    <App />,
+  document.getElementById('root')
+);

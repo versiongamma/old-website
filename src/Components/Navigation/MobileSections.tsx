@@ -10,27 +10,33 @@ import InfoIcon from '@material-ui/icons/Info';
 import ComputerIcon from '@material-ui/icons/Computer';
 import createCookie from '../../functions/createCookie';
 
-/**
- * Compenent that handles the section navigation when in mobile view
- * @param {*} props closeDrawer: Function that closes the drawer, settings: The application settings
- * @returns 
- */
-export default function MobileSections(props) {
-  const [settings, setSettings] = useState(props.settings);
+type Props = {
+  settings: Settings,
+  closeDrawer: () => void,
+  update: () => void
+}
+
+type Settings = {
+  darkMode: boolean,
+  section: number
+}
+
+const MobileSections: React.FunctionComponent<Props> = (props) => {
+  const [settings, setSettings] = useState<Settings>(props.settings);
 
   const icons = [<InfoIcon />, <GamesIcon />, <ComputerIcon />, <PhotoIcon />, <VideocamIcon /> ]
   const names = ['About', 'Game Design', 'Software Development', 'Photography', 'Videography']
 
-  const handleAbout = (event) => handleClick(event, 0);
-  const handleGames = (event) => handleClick(event, 1);
-  const handleSoftware = (event) => handleClick(event, 2);
-  const handlePhotos = (event) => handleClick(event, 3);
-  const handleVideos = (event) => handleClick(event, 4);
+  const handleAbout = (event: any) => handleClick(event, 0);
+  const handleGames = (event: any) => handleClick(event, 1);
+  const handleSoftware = (event: any) => handleClick(event, 2);
+  const handlePhotos = (event: any) => handleClick(event, 3);
+  const handleVideos = (event: any) => handleClick(event, 4);
 
-  const handleClick = (event, i) => {
+  const handleClick = (event: any, i: number) => {
     props.closeDrawer();
     setSettings(prev => ({ ...prev, section: i }));
-    createCookie('section', i, 0);
+    createCookie('section', i.toString(), 0);
     props.update();
   }
 
@@ -47,3 +53,5 @@ export default function MobileSections(props) {
     </List>
   );
 }
+
+export default MobileSections;

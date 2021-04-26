@@ -2,11 +2,11 @@ import { Container, Fade, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import { useEffect, useState } from "react";
 
-import Photo from './../Photo';
+import Photo from '../Photo';
 
 const clientID = '8c3be964eba99d7';
 
-export default function Photos(props) {
+const Photos: React.FunctionComponent = () => {
   const [visible, setVisible] = useState(false);
   const [images, setImages] = useState([]);
 
@@ -32,3 +32,5 @@ export default function Photos(props) {
     </Fade>
   );
 }
+
+export default Photos;

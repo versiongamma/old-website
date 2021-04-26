@@ -1,13 +1,15 @@
 import { Grow } from "@material-ui/core";
 import { useState } from "react";
-import useWindowSize from './../hooks/useWindowSize';
+import useWindowSize from '../hooks/useWindowSize';
 
-/**
- * 
- * @param {*} props photo: The photo to render
- * @returns 
- */
-export default function Photo(props) {
+type Props = {
+  photo: {
+    link: string,
+    description: string
+  }
+}
+
+const Photo = (props: Props) => {
   const [visible, setVisible] = useState(false);
   const windowSize = useWindowSize();
 
@@ -29,3 +31,5 @@ export default function Photo(props) {
     </Grow>
   );
 }
+
+export default Photo;
