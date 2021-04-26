@@ -1,4 +1,5 @@
-import { Container, Divider, Fade, Hidden, Typography } from '@material-ui/core'
+import { Container, Divider, Fade, Hidden, Typography, Snackbar } from '@material-ui/core'
+import Alert from "@material-ui/lab/Alert";
 import { useEffect, useState, Fragment } from 'react';
 import ReactPlayer from 'react-player';
 import useWindowSize from '../../hooks/useWindowSize';
@@ -24,7 +25,7 @@ const Videos: React.FunctionComponent = () => {
   return (
     <Fade in={visible}>
       <Container maxWidth='md'>
-        {videos.map(vid => (
+        {videos !== undefined ? videos.map(vid => (
           <Fragment>
             <Typography variant='h4' style={{ fontFamily: 'Josefin Sans', textAlign: 'center', paddingBottom: '2vh' }}>{vid.snippet.title}</Typography>
             <Hidden smDown>
@@ -42,7 +43,10 @@ const Videos: React.FunctionComponent = () => {
 
             <Divider style={{ margin: 50 }} />
           </Fragment>
-        ))}
+        )) :  
+        <Snackbar open={true} autoHideDuration={6000} style={{bottom: '5vh'}}>
+          <Alert severity='error'>Videos Failed to Load!</Alert>
+        </Snackbar>}
       </Container>
     </Fade>
   );
