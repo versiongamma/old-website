@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 
 import Photo from '../Photo';
 
-const clientID = '8c3be964eba99d7';
-
 const Photos: React.FunctionComponent = () => {
   const [visible, setVisible] = useState(false);
   const [images, setImages] = useState([]);
@@ -13,7 +11,7 @@ const Photos: React.FunctionComponent = () => {
   useEffect(() => {
     setVisible(true);
 
-    fetch("https://api.imgur.com/3/album/JKELiQA", { headers: { Authorization: 'CLIENT-ID ' + clientID } })
+    fetch("https://api.imgur.com/3/album/JKELiQA", { headers: { Authorization: 'CLIENT-ID ' + process.env.IMGUR_API_KEY } })
       .then(res => res.json())
       .then(result => setImages(result.data.images));
   }, []);
