@@ -11,7 +11,7 @@ const Photos: React.FunctionComponent = () => {
   useEffect(() => {
     setVisible(true);
 
-    fetch("https://api.imgur.com/3/album/JKELiQA", { headers: { Authorization: 'CLIENT-ID ' + process.env.IMGUR_API_KEY } })
+    fetch("https://api.imgur.com/3/album/JKELiQA", { headers: { Authorization: 'CLIENT-ID ' + process.env.REACT_APP_IMGUR_API_KEY } })
       .then(res => res.json())
       .then(result => setImages(result.data.images));
   }, []);

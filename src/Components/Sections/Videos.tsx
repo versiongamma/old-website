@@ -17,7 +17,7 @@ const Videos: React.FunctionComponent = () => {
   useEffect(() => {
     setVisible(true);
 
-    fetch('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PLAI9kflqAm9E0d_ExQ2tYdk9UwdD2PKD4&key=' + process.env.GOOGLE_API_KEY)
+    fetch('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PLAI9kflqAm9E0d_ExQ2tYdk9UwdD2PKD4&key=' + process.env.REACT_APP_GOOGLE_API_KEY)
       .then(res => res.json())
       .then(res => { setVideos(res.items) });
   }, [])
