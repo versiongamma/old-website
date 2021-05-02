@@ -1,4 +1,4 @@
-![Logo](https://i.imgur.com/mlsob0a.png)
+![Logo](https://i.imgur.com/ItEnKju.jpg)
 
 # VersionGamma.com 
 ### Portfolio, About Site, and excuse to mess around in ReactJS
