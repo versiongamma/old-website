@@ -1,7 +1,7 @@
 import { Box, Typography, Fade } from '@material-ui/core'
 import { useEffect, useState } from 'react';
 
-export default function Software(props) {
+const Software: React.FunctionComponent = () => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -16,3 +16,5 @@ export default function Software(props) {
     </Fade>
   );
 }
+
+export default Software;

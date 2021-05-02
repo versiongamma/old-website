@@ -1,7 +1,7 @@
 import { Box, Fade, Typography } from '@material-ui/core'
 import { useEffect, useState } from 'react';
 
-export default function GameDev(props) {
+ const GameDev: React.FunctionComponent = () => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -16,3 +16,5 @@ export default function GameDev(props) {
     </Fade>
   );
 }
+
+export default GameDev;

@@ -2,7 +2,11 @@ import { Box, Fade, Typography, Hidden } from '@material-ui/core'
 import  ArrowBackIcon  from '@material-ui/icons/ArrowBack';
 import { useEffect, useState } from 'react';
 
-export default function About(props) {
+type Props = {
+
+}
+
+const About: React.FunctionComponent<Props> = () => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -20,3 +24,5 @@ export default function About(props) {
     </Fade>
   );
 }
+
+export default About;

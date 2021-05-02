@@ -1,27 +1,30 @@
 import { AppBar, Toolbar, IconButton, Grid, Hidden, SwipeableDrawer, Divider, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import { Fragment, useState } from 'react';
-import useWindowSize from '../../hooks/useWindowSize';
-import LoginLogout from '../LoginLogout';
 
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
-import Settings from '../Settings';
+import { useState } from 'react';
+import useWindowSize from '../../hooks/useWindowSize';
 
+
+import SettingsList from '../SettingsList';
 import MobileSections from './MobileSections';
 
+import { Settings } from '../../types';
 
-/** 
- * Component for rendering the app bar and drawer 
- */
-export default function TopNavigation(props) {
+type Props = {
+  settings: Settings,
+  update: () => void
+}
+
+const TopNavigation: React.FunctionComponent<Props> = (props) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const windowSize = useWindowSize();
 
   const closeDrawer = () => { setDrawerOpen(false); }
 
   return (
-    <Fragment>
+    <>
       <AppBar position='fixed'>
         <Toolbar>
           <Hidden smDown>
@@ -44,7 +47,6 @@ export default function TopNavigation(props) {
               style={{ width: '15vw', padding: '0.5vh'}}
             />
           </Grid>
-          <LoginLogout />
           </Hidden>
           <Hidden mdUp>
             <img src='https://i.imgur.com/k9iE2gH.jpg' 
@@ -71,12 +73,10 @@ export default function TopNavigation(props) {
 
         {/** Settings implementation into drawer */}
         <Divider />
-        <Settings update={props.update} settings={props.settings} />
-        <Hidden mdUp>
-          <Divider />
-          <LoginLogout style={{paddingTop: '5vh'}}/>
-        </Hidden>
+        <SettingsList update={props.update} settings={props.settings} />
       </SwipeableDrawer>
-    </Fragment>
+    </>
   );
 }
+
+export default TopNavigation

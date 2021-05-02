@@ -2,18 +2,16 @@ import { Container, Fade, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import { useEffect, useState } from "react";
 
-import Photo from './../Photo';
+import Photo from '../Photo';
 
-const clientID = '8c3be964eba99d7';
-
-export default function Photos(props) {
+const Photos: React.FunctionComponent = () => {
   const [visible, setVisible] = useState(false);
   const [images, setImages] = useState([]);
 
   useEffect(() => {
     setVisible(true);
 
-    fetch("https://api.imgur.com/3/album/JKELiQA", { headers: { Authorization: 'CLIENT-ID ' + clientID } })
+    fetch("https://api.imgur.com/3/album/JKELiQA", { headers: { Authorization: 'CLIENT-ID ' + process.env.REACT_APP_IMGUR_API_KEY } })
       .then(res => res.json())
       .then(result => setImages(result.data.images));
   }, []);
@@ -32,3 +30,5 @@ export default function Photos(props) {
     </Fade>
   );
 }
+
+export default Photos;
