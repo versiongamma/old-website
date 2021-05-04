@@ -1,5 +1,5 @@
-import { List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
-import lightTheme from '../../themes/lightTheme';
+import { List, ListItem, ListItemIcon, ListItemText, Divider } from '@material-ui/core';
+import { lightTheme } from '../../themes';
 
 import { useState } from 'react';
 
@@ -9,6 +9,7 @@ import GamesIcon from '@material-ui/icons/Games';
 import InfoIcon from '@material-ui/icons/Info';
 import ComputerIcon from '@material-ui/icons/Computer';
 import createCookie from '../../functions/createCookie';
+import DarkModeToggle from '../DarkModeToggle';
 
 type Props = {
   settings: Settings,
@@ -50,6 +51,8 @@ const MobileSections: React.FunctionComponent<Props> = (props) => {
         <ListItemText style={{ color: settings.section === i ? 'white' : '' }} primary={names[i]} />
       </ListItem>
       ))}
+      <Divider />
+      <DarkModeToggle settings={props.settings} update={props.update} />
     </List>
   );
 }
