@@ -37,7 +37,7 @@ const TopNavigation: React.FunctionComponent<Props> = (props) => {
             </IconButton>
           </Hidden>
           <Hidden mdUp>
-            <Typography variant='h6' style={{ fontFamily: 'Josefin Sans', paddingTop: '1vh' }}>{['ABOUT', 'GAME DESIGN', 'SOFTWARE DEVELOPMENT', 'PHOTOGRAPHY', 'VIDEOGRAPHY'][props.settings.section]}</Typography>
+            <Typography variant='h6' style={{ fontFamily: 'Josefin Sans', paddingTop: '1vh' }}>{['VERSION GAMMA', 'GAME DESIGN', 'SOFTWARE DEVELOPMENT', 'PHOTOGRAPHY', 'VIDEOGRAPHY'][props.settings.section]}</Typography>
           </Hidden>
 
           {/** Center elements */}
@@ -77,7 +77,7 @@ const TopNavigation: React.FunctionComponent<Props> = (props) => {
           open={drawerOpen}
           onClose={() => setDrawerOpen(false)}
         >
-          <div style={{ textAlign: 'right', padding: '.5vw' }}>
+          <div style={{ textAlign: 'right', padding: '0 5vw 0 0' }}>
             <IconButton onClick={closeDrawer}><ArrowBackIcon /></IconButton>
           </div>
           <MobileSections closeDrawer={closeDrawer} settings={props.settings} update={props.update} />
