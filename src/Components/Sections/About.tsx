@@ -29,7 +29,7 @@ const About: React.FunctionComponent<Props> = () => {
         <Container maxWidth='md'>
           <Typography variant="h4" style={{ textAlign: "center", fontFamily: "Josefin Sans" }}>Who... are you?</Typography>
           <Grid container justify='center'>
-            <img src='https://i.imgur.com/js4jZDQl.jpg' style={{ width: windowSize.width >= 960 ? 450 : '90vw', margin: 20 }} />
+            <img src='https://i.imgur.com/js4jZDQl.jpg' alt='me' style={{ width: windowSize.width >= 960 ? 450 : '90vw', margin: 20 }} />
           </Grid>
           <Typography style={{ textAlign: 'center', fontSize: windowSize.width >= 960 ? '1.5em' : '1em' }}>
             That's a great question. Many things, is probably the best answer for that. I'm Gamma, 
