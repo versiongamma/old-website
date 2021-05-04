@@ -15,8 +15,7 @@ import Software from './Components/Sections/Software';
 import Photos from './Components/Sections/Photos';
 import Videos from './Components/Sections/Videos';
 
-import lightTheme from './themes/lightTheme';
-import darkTheme from './themes/darkTheme';
+import { lightTheme, darkTheme } from './themes';
 import TopNavigation from './Components/Navigation/TopNavigation';
 import createCookie from './functions/createCookie';
 
