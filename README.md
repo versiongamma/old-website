@@ -1,5 +1,7 @@
 ![Logo](https://i.imgur.com/ItEnKju.jpg)
 
+![Vercel](https://therealsujitk-vercel-badge.vercel.app/?app=website-versiongamma) [![Compiles](https://github.com/versiongamma/Website/actions/workflows/compiles.yml/badge.svg)](https://github.com/versiongamma/Website/actions/workflows/compiles.yml)
+
 # VersionGamma.com 
 ### Portfolio, About Site, and excuse to mess around in ReactJS
 ---
