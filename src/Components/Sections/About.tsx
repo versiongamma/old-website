@@ -18,7 +18,7 @@ const About: React.FunctionComponent<Props> = () => {
     <Box>
       <Typography variant="h2" style={{textAlign: "center", paddingTop: "10vh", fontFamily: "Josefin Sans"}}>Coming Soon...</Typography>
       <Hidden mdUp>
-        <Typography variant='h5' style={{textAlign: 'center', verticalAlign: 'center', paddingTop: '10vh'}}>Swipe from the left <ArrowBackIcon /> to see more!</Typography>
+        <Typography variant='h5' style={{textAlign: 'center', verticalAlign: 'center', paddingTop: '10vh'}}>Tap the menu icon <ArrowBackIcon /> to see more!</Typography>
       </Hidden>
     </Box>
     </Fade>
