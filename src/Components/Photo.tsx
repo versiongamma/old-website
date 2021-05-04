@@ -20,7 +20,7 @@ const Photo = (props: Props) => {
   return (
     <Grow in={visible}>
       <img
-        src={props.photo.link}
+        src={props.photo.link.replace('.jpg', 'l.jpg')}
         alt={props.photo.description}
         onLoad={imageLoaded}
         style={{ 
