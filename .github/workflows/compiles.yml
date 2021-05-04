@@ -34,5 +34,5 @@ jobs:
         run: yarn install
 
       - name: Run react build script
-        run: yarn react-build
+        run: yarn build
         
