@@ -1,5 +1,3 @@
-![Logo](https://i.imgur.com/ItEnKju.jpg)
-
 # VersionGamma.com 
 ### Portfolio, About Site, and excuse to mess around in ReactJS
 ---
@@ -29,3 +27,5 @@ Sure, I don't need a dark mode, or the entire site loaded in one web page, but w
 ---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+<img align="right" width="300" height="75" src="https://i.imgur.com/XSfLngf.png"></img>
