@@ -9,7 +9,7 @@ import GamesIcon from '@material-ui/icons/Games';
 import InfoIcon from '@material-ui/icons/Info';
 import ComputerIcon from '@material-ui/icons/Computer';
 import createCookie from '../../functions/createCookie';
-import DarkModeToggle from '../DarkModeToggle';
+import DarkModeToggle from '../Elements/DarkModeToggle';
 
 type Props = {
   settings: Settings,

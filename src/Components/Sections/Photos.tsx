@@ -2,7 +2,7 @@ import { Container, Fade, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import { useEffect, useState } from "react";
 
-import Photo from '../Photo';
+import Photo from '../Elements/Photo';
 
 type ImgurResponse = {
   data: {

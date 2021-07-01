@@ -8,7 +8,7 @@ import { useState } from 'react';
 import MobileSections from './MobileSections';
 
 import { Settings } from '../../types';
-import DarkModeToggle from '../DarkModeToggle';
+import DarkModeToggle from '../Elements/DarkModeToggle';
 
 type Props = {
   settings: Settings,

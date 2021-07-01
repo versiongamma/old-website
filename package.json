@@ -13,6 +13,7 @@
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
     "dotenv": "^8.2.0",
+    "github-repo-display-react": "^1.0.2",
     "http2": "^3.3.7",
     "imgur": "^1.0.0",
     "material-ui-image": "^3.3.1",
