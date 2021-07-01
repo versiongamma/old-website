@@ -3,11 +3,7 @@ import { useEffect, useState } from 'react';
 
 import useWindowSize from '../../hooks/useWindowSize';
 
-type Props = {
-
-}
-
-const About: React.FunctionComponent<Props> = () => {
+const About = () => {
   const [visible, setVisible] = useState(false);
   const windowSize = useWindowSize();
 

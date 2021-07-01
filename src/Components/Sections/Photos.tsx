@@ -41,7 +41,7 @@ const Photos: React.FunctionComponent = () => {
     <Fade in={visible} mountOnEnter unmountOnExit>
       <Container maxWidth="xl" style={{ textAlign: 'center' }}>
         {response?.data.images !== undefined ? response.data.images.map((img, i) => (
-          <Photo key={i} photo={img} />
+          <Photo key={i} {...img} />
         )) : wait ? '' :
           <Snackbar open={true} autoHideDuration={6000} style={{bottom: '5vh'}}>
             <Alert severity='error'>Images Failed to Load!</Alert>

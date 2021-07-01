@@ -2,14 +2,9 @@ import { Grow } from "@material-ui/core";
 import { useState } from "react";
 import useWindowSize from '../../hooks/useWindowSize';
 
-type Props = {
-  photo: {
-    link: string,
-    description: string
-  }
-}
+import { PhotoType } from './../../types';
 
-const Photo = (props: Props) => {
+const Photo: React.FunctionComponent<PhotoType> = (props) => {
   const [visible, setVisible] = useState(false);
   const windowSize = useWindowSize();
 
@@ -20,8 +15,8 @@ const Photo = (props: Props) => {
   return (
     <Grow in={visible}>
       <img
-        src={props.photo.link.replace('.jpg', 'l.jpg')}
-        alt={props.photo.description}
+        src={props.link.replace('.jpg', 'l.jpg')}
+        alt={props.description}
         onLoad={imageLoaded}
         style={{ 
           width: windowSize.width > 960 ? windowSize.width > 1920 ? '20vw' : '40vw' : '90vw', 

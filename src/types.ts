@@ -11,3 +11,8 @@ export type RepoType = {
   language: string,
   description: string
 }
+
+export type PhotoType = {
+  link: string,
+  description: string
+}
