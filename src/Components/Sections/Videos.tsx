@@ -17,7 +17,7 @@ const Videos: React.FunctionComponent = () => {
   useEffect(() => {
     setVisible(true);
 
-    fetch('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PLAI9kflqAm9E0d_ExQ2tYdk9UwdD2PKD4&key=' + process.env.REACT_APP_GOOGLE_API_KEY)
+    fetch('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PUTxitBg-WrN_xTHKMbAzcIA&key=' + process.env.REACT_APP_GOOGLE_API_KEY)
       .then(res => res.json())
       .then(res => { setVideos(res.items) });
   }, [])
@@ -29,12 +29,7 @@ const Videos: React.FunctionComponent = () => {
           <Fragment>
             <Typography variant='h4' style={{ fontFamily: 'Josefin Sans', textAlign: 'center', paddingBottom: '2vh' }}>{vid.snippet.title}</Typography>
             <Hidden smDown>
-              <Typography style={{paddingBottom: '2vh'}}>
-                { vid.snippet.description.length > 50 ?
-                  `${vid.snippet.description.substring(0, 400)}
-                  ${vid.snippet.description.substring(0, 400).length === vid.snippet.description.length ? '' : '...'}` : ''
-                }
-              </Typography>
+              <Typography style={{paddingBottom: '2vh'}}>{vid.snippet.description.split('\n')[0]}</Typography>
             </Hidden>
             <ReactPlayer url={`https://www.youtube.com/watch?v=${vid.snippet.resourceId.videoId}`} controls
               width={windowSize.width >= 960 ? 960 : '90vw'}
