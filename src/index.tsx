@@ -70,7 +70,7 @@ const App = () => {
         <TopNavigation update={update} settings={settings} />
         <Fade in={visible}>
           <>
-            <Box style={{paddingTop: '12vh', overflow: 'hidden', height: windowSize.height - 56}}>
+            <Box style={{paddingTop: '12vh', overflow: 'hidden', height: windowSize.width >= 960 ? windowSize.height - 56 : windowSize.height}}>
             <Scrollbars>
               {sections[settings.section]}
             </Scrollbars>
