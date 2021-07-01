@@ -20,10 +20,10 @@ const typography = {
 export const lightTheme = createMuiTheme({
   typography: typography,
   palette: pallete
+  
 });
 
 export const darkTheme = createMuiTheme({
   typography: typography,
-  palette: {...pallete, type: 'dark'}
-
+  palette: {...pallete, type: 'dark'},
 });

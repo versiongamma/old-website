@@ -20,7 +20,10 @@ import TopNavigation from './Components/Navigation/TopNavigation';
 import createCookie from './functions/createCookie';
 
 import { Settings } from './types';
+import useWindowSize from './hooks/useWindowSize';
 
+//@ts-ignore
+import { Scrollbars } from 'react-custom-scrollbars';
 
 // Creating default settings if they do not exist yet
 if (document.cookie.split('; ').find(row => row.startsWith('darkMode')) === undefined) { document.cookie = 'darkMode = false' }
@@ -34,24 +37,25 @@ const App = () => {
   })
 
   const update = () => {
-    let updatedSettings: Settings = {darkMode: false, section: 0};
+    let updatedSettings: Settings = { darkMode: false, section: 0 };
     for (const cookie of document.cookie.split('; ')) {
       // If the cookie is boolean, pass it as boolean
       if (cookie.split('=')[1] === 'true' || cookie.split('=')[1] === 'false') {
         updatedSettings[cookie.split('=')[0]] = cookie.split('=')[1] === 'true'
-      // If it is a number, parse it as a number
+        // If it is a number, parse it as a number
       } else if (!Number.isNaN(cookie.split('=')[1])) {
         updatedSettings[cookie.split('=')[0]] = parseInt(cookie.split('=')[1]);
-      // Else parse it as a string
+        // Else parse it as a string
       } else {
         updatedSettings[cookie.split('=')[0]] = cookie.split('=')[1];
       }
-    
-    } 
+
+    }
     setSettings(updatedSettings);
-  } 
+  }
 
   const [visible, setVisible] = useState(false);
+  const windowSize = useWindowSize();
 
   const sections = [<About />, <GameDev />, <Software />, <Photos />, <Videos />];
 
@@ -63,34 +67,37 @@ const App = () => {
   return (
     <ThemeProvider theme={settings.darkMode === false ? lightTheme : darkTheme}>
       <CssBaseline>
-      <TopNavigation update={update} settings={settings} />
+        <TopNavigation update={update} settings={settings} />
         <Fade in={visible}>
-          <Box style={{ paddingTop: '12vh' }}>
-            {sections[settings.section]}
-
+          <>
+            <Box style={{paddingTop: '12vh', overflow: 'hidden', height: windowSize.height - 56}}>
+            <Scrollbars>
+              {sections[settings.section]}
+            </Scrollbars>
+            </Box>
             <Hidden smDown>
-            <BottomNavigation
-              showLabels
-              value={settings.section}
-              onChange={(event, value) => {
-                setSettings(prev => ({...prev, section: value}));
-                createCookie('section', value, 0);
-              }}
-              style={{
-                width: '100%',
-                position: 'fixed',
-                bottom: 0,
-                backgroundColor: settings.darkMode === true ? '#303030' : '#fff'
-              }}
-            >
-              <BottomNavigationAction icon={<InfoIcon />} label="About" />
-              <BottomNavigationAction icon={<GamesIcon />} label="Game Design" />
-              <BottomNavigationAction icon={<ComputerIcon />} label="Software Development" />
-              <BottomNavigationAction icon={<PhotoIcon />} label="Photography" />
-              <BottomNavigationAction icon={<VideocamIcon />} label="Videography" />
-            </BottomNavigation>
+              <BottomNavigation
+                showLabels
+                value={settings.section}
+                onChange={(event, value) => {
+                  setSettings(prev => ({ ...prev, section: value }));
+                  createCookie('section', value, 0);
+                }}
+                style={{
+                  width: '100%',
+                  position: 'fixed',
+                  bottom: 0,
+                  backgroundColor: settings.darkMode === true ? '#303030' : '#fff'
+                }}
+              >
+                <BottomNavigationAction icon={<InfoIcon />} label="About" />
+                <BottomNavigationAction icon={<GamesIcon />} label="Game Design" />
+                <BottomNavigationAction icon={<ComputerIcon />} label="Software Development" />
+                <BottomNavigationAction icon={<PhotoIcon />} label="Photography" />
+                <BottomNavigationAction icon={<VideocamIcon />} label="Videography" />
+              </BottomNavigation>
             </Hidden>
-          </Box>
+          </>
         </Fade>
       </CssBaseline>
     </ThemeProvider>
@@ -98,6 +105,6 @@ const App = () => {
 }
 
 ReactDOM.render(
-    <App />,
+  <App />,
   document.getElementById('root')
 );
