@@ -29,12 +29,7 @@ const Videos: React.FunctionComponent = () => {
           <Fragment>
             <Typography variant='h4' style={{ fontFamily: 'Josefin Sans', textAlign: 'center', paddingBottom: '2vh' }}>{vid.snippet.title}</Typography>
             <Hidden smDown>
-              <Typography style={{paddingBottom: '2vh'}}>
-                { vid.snippet.description.length > 50 ?
-                  `${vid.snippet.description.substring(0, 400)}
-                  ${vid.snippet.description.substring(0, 400).length === vid.snippet.description.length ? '' : '...'}` : ''
-                }
-              </Typography>
+              <Typography style={{paddingBottom: '2vh'}}>{vid.snippet.description.split('\n')[0]}</Typography>
             </Hidden>
             <ReactPlayer url={`https://www.youtube.com/watch?v=${vid.snippet.resourceId.videoId}`} controls
               width={windowSize.width >= 960 ? 960 : '90vw'}
