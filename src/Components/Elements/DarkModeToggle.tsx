@@ -3,10 +3,10 @@ import { useState } from 'react';
 
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
-import createCookie from '../functions/createCookie';
+import createCookie from '../../functions/createCookie';
 
-import { Settings } from '../types';
-import useWindowSize from '../hooks/useWindowSize';
+import { Settings } from '../../types';
+import useWindowSize from '../../hooks/useWindowSize';
 
 type Props = {
   settings: Settings

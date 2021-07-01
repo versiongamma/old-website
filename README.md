@@ -4,10 +4,10 @@
 ### Portfolio, About Site, and excuse to mess around in ReactJS
 ---
 
-This site is currently depolyed at https://versiongamma.com.
+This site is currently deployed at https://versiongamma.com.
 ---
 
-#### What is this projected developed with?
+#### What is this project developed with?
 This site is essencially pure ReactJS, with help from the Material UI framework. Most UI elements are from MUI, and any API calls are done client side with ES6 fetch calls, or from other React frameworks
 
 #### Why make a ReactJS site for essentially a portfolio?
@@ -25,6 +25,8 @@ Sure, I don't need a dark mode, or the entire site loaded in one web page, but w
 - [Material UI](https://material-ui.com/)
 - [Imgur](https://imgur.com)
 - [Google Cloud](https://cloud.google.com/)
+- [Programming Language Logos](https://github.com/abranhe/programming-languages-logos)
+- [React Custom Scrollbars](https://www.npmjs.com/package/react-custom-scrollbars)
 
 ---
 
