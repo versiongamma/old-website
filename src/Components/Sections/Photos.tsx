@@ -40,7 +40,7 @@ const Photos: React.FunctionComponent = () => {
   return (
     <Fade in={visible} mountOnEnter unmountOnExit>
       <Container maxWidth="xl" style={{ textAlign: 'center' }}>
-        {response !== undefined ? response.data.images.map((img, i) => (
+        {response?.data.images !== undefined ? response.data.images.map((img, i) => (
           <Photo key={i} photo={img} />
         )) : wait ? '' :
           <Snackbar open={true} autoHideDuration={6000} style={{bottom: '5vh'}}>

@@ -1,9 +1,0 @@
-.sections {
-  padding-top: '12vh'; 
-  overflow-y: 'scroll'; 
-
-  &::-webkit-scrollbar {
-    background-color: transparent;
-    width: 4px;
-  }
-}
