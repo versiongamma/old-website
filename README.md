@@ -11,10 +11,7 @@ This site is currently deployed at https://versiongamma.com.
 This site is essencially pure ReactJS, with help from the Material UI framework. Most UI elements are from MUI, and any API calls are done client side with ES6 fetch calls, or from other React frameworks
 
 #### Why make a ReactJS site for essentially a portfolio?
-Cause it's fun! Not really any more complicated than that, I just wanted an excuse to learn mordern frameworks.
-
-#### Why have so many unessecary features?
-Sure, I don't need a dark mode, or the entire site loaded in one web page, but what would be the fun in making something if all it amounted to was some images and text in a couple of html files?
+Cause it's fun! Not really any more complicated than that, I just wanted an excuse to learn mordern frameworks. I could've made this as pure HTML/CSS/Js, but that would've been no fun.
 
 
 ---
