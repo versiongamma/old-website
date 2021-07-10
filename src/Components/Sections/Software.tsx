@@ -18,7 +18,7 @@ const Software: React.FunctionComponent = () => {
 
   return (
     <Fade in={visible}>
-      <Container maxWidth="md">
+      <Container maxWidth="md" style={{paddingTop: 20}}>
         <Grid container spacing={3}>
           {repos !== undefined ?
             repos.map((repo, i) => (

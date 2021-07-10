@@ -55,6 +55,8 @@ const App = () => {
   }
 
   const [visible, setVisible] = useState(false);
+  const [topBarHeight, setTopBarHeight] = useState(0);
+  const [loaded, setLoaded] = useState(false);
   const windowSize = useWindowSize();
 
   const sections = [<About />, <GameDev />, <Software />, <Photos />, <Videos />];
@@ -64,13 +66,32 @@ const App = () => {
     update();
   }, [])
 
+  // Have to wait 1ms to have the class names load, otherwise shit hits the fan real fast
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setTopBarHeight(document.getElementsByClassName('logo')[0].clientHeight);
+      setLoaded(true);
+    }, 1);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // loaded state is used to check if the image class names have loaded yet, as to not crash when trying to access them
+  useEffect(() => {
+    if (loaded) setTopBarHeight(document.getElementsByClassName('logo')[0].clientHeight);
+  });
+
   return (
     <ThemeProvider theme={settings.darkMode === false ? lightTheme : darkTheme}>
       <CssBaseline>
         <TopNavigation update={update} settings={settings} />
         <Fade in={visible}>
           <>
-            <Box style={{paddingTop: '12vh', overflow: 'hidden', height: windowSize.width >= 960 ? windowSize.height - 56 : windowSize.height}}>
+            <Box 
+              style={{
+                overflow: 'hidden', 
+                paddingTop: topBarHeight,
+                height: windowSize.width >= 960 ? windowSize.height - 56 : windowSize.height}}>
             <Scrollbars>
               {sections[settings.section]}
             </Scrollbars>

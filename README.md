@@ -8,10 +8,10 @@ This site is currently deployed at https://versiongamma.com.
 ---
 
 #### What is this project developed with?
-This site is essencially pure ReactJS, with help from the Material UI framework. Most UI elements are from MUI, and any API calls are done client side with ES6 fetch calls, or from other React frameworks
+This site is essencially pure ReactJS, with help from the Material UI framework. Most UI elements are from MUI, and any API calls are done client side with ES6 fetch calls, or from other basic packages
 
 #### Why make a ReactJS site for essentially a portfolio?
-Cause it's fun! Not really any more complicated than that, I just wanted an excuse to learn mordern frameworks. I could've made this as pure HTML/CSS/Js, but that would've been no fun.
+Cause it's fun! Not really any more complicated than that, I just wanted an excuse to learn mordern frameworks. I could've made this as pure HTML/CSS/JS, but that would've been no fun.
 
 
 ---
@@ -24,6 +24,7 @@ Cause it's fun! Not really any more complicated than that, I just wanted an excu
 - [Google Cloud](https://cloud.google.com/)
 - [Programming Language Logos](https://github.com/abranhe/programming-languages-logos)
 - [React Custom Scrollbars](https://www.npmjs.com/package/react-custom-scrollbars)
+- [React Player](https://www.npmjs.com/package/react-player)
 
 ---
 
