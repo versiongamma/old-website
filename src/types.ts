@@ -16,3 +16,7 @@ export type PhotoType = {
   link: string,
   description: string
 }
+
+export type VideoType = {
+  snippet: { description: string, title: string, resourceId: {videoId: string} }
+}
