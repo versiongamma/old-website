@@ -19,8 +19,19 @@ const About = () => {
         style={{ objectFit: 'cover', position: 'absolute', zIndex: -1 }}
       />
 
-      <Box style={{ paddingTop: 20 }}>
-        <Typography variant='h1'>gnuidfgbsk</Typography>
+      <Box style={{ paddingTop: 50, paddingLeft: '25vw', textAlign: 'center' }}>
+        <Container maxWidth='md'>
+          <Typography variant='h1'>Who... am I?</Typography>
+          <br/>
+          <Typography style={{ fontSize: '2em' }}>
+            That is an excellent question. Many things, is probably the answer to that. 
+            I'm Matt, and I create stuff under the handle of 'Version Gamma'
+          </Typography>
+          <br/>
+          <Typography style={{ fontSize: '2em' }}>
+            Videos, Photos, Software, 
+          </Typography>
+        </Container>
       </Box>
     </Box>
   );
