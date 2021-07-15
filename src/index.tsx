@@ -87,13 +87,23 @@ const App = () => {
         <TopNavigation update={update} settings={settings} />
         <Fade in={visible}>
           <>
-            <Box 
+            <Box
               style={{
-                overflow: 'hidden', 
+                overflow: 'hidden',
                 paddingTop: topBarHeight,
-                height: windowSize.width >= 960 ? windowSize.height - 56 : windowSize.height}}>
-            <Scrollbars>
-              {sections[settings.section]}
+                height: windowSize.width >= 960 ? windowSize.height - 56 : windowSize.height
+              }}>
+              <Scrollbars>
+                { /** If first section, display background image */
+                settings.section === 0 ?
+                  <img src='https://i.imgur.com/FwIVqF5.jpg'
+                    width={windowSize.width}
+                    height={windowSize.height - 56 - topBarHeight}
+                    style={{ objectFit: 'cover', position: 'absolute', zIndex: -1 }}
+                  /> : null }
+
+                {/** Display the selected section */}
+                {sections[settings.section]}         
             </Scrollbars>
             </Box>
             <Hidden smDown>
