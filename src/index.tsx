@@ -79,7 +79,7 @@ const App = () => {
   // loaded state is used to check if the image class names have loaded yet, as to not crash when trying to access them
   useEffect(() => {
     if (loaded) setTopBarHeight(document.getElementsByClassName('logo')[0].clientHeight);
-  });
+  }, [loaded]);
 
   return (
     <ThemeProvider theme={settings.darkMode === false ? lightTheme : darkTheme}>
@@ -96,9 +96,10 @@ const App = () => {
               <Scrollbars>
                 { /** If first section, display background image */
                 settings.section === 0 ?
-                  <img src='https://i.imgur.com/FwIVqF5.jpg'
+                  <img src='https://i.imgur.com/Iwv6Ly5.jpg'
                     width={windowSize.width}
                     height={windowSize.height - 56 - topBarHeight}
+                    alt='bg'
                     style={{ objectFit: 'cover', position: 'absolute', zIndex: -1 }}
                   /> : null }
 

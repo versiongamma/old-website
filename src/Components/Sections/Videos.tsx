@@ -23,7 +23,7 @@ const Videos: React.FunctionComponent = () => {
   }, [])
 
   return (
-    <Fade in={visible}>
+    <Fade in={visible} mountOnEnter unmountOnExit timeout={700}>
       <Container maxWidth='md'>
         {videos !== undefined ? videos.map(vid => (
           <Fragment>
