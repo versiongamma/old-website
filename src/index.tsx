@@ -76,10 +76,6 @@ const App = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // loaded state is used to check if the image class names have loaded yet, as to not crash when trying to access them
-  useEffect(() => {
-    if (loaded) setTopBarHeight(document.getElementsByClassName('logo')[0].clientHeight);
-  }, [loaded]);
 
   return (
     <ThemeProvider theme={settings.darkMode === false ? lightTheme : darkTheme}>

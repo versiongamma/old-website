@@ -32,7 +32,7 @@ const About = () => {
           <Box>
             <Typography
               variant="h1"
-              style={{ color: "white", textShadow: "3px 3px 2px black" }}
+              style={{ color: "white", textShadow: "5px 5px 2px black" }}
             >
               Who... am I?
             </Typography>
@@ -42,7 +42,7 @@ const About = () => {
                 style={{
                   fontSize: "2em",
                   color: "white",
-                  textShadow: "3px 3px 2px black",
+                  textShadow: "4px 4px 1px black",
                 }}
               >
                 That is an excellent question. Many things, is probably the best
@@ -57,14 +57,14 @@ const About = () => {
               </Typography>
               <br />
               <br />
-              <IconButton color='primary' onClick={() => window.open("https://youtube.com/c/versiongamma")}>
-                <YouTubeIcon fontSize="large" />
+              <IconButton onClick={() => window.open("https://youtube.com/c/versiongamma")}>
+                <YouTubeIcon style={{fill: 'white'}} fontSize="large" />
               </IconButton>
-              <IconButton color='primary' onClick={() => window.open("https://instagram.com/variantgamma")}>
-                <InstagramIcon fontSize="large" />
+              <IconButton onClick={() => window.open("https://instagram.com/variantgamma")}>
+                <InstagramIcon style={{fill: 'white'}} fontSize="large" />
               </IconButton>
-              <IconButton color='primary' onClick={() => window.open("https://twitter.com/versiongamma")}>
-                <TwitterIcon fontSize="large" />
+              <IconButton onClick={() => window.open("https://twitter.com/versiongamma")}>
+                <TwitterIcon style={{fill: 'white'}} fontSize="large" />
               </IconButton>
             </Box>
           </Box>
