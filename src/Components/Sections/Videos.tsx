@@ -1,18 +1,14 @@
-import { Container, Divider, Fade, Hidden, Typography, Snackbar } from '@material-ui/core'
+import { Container, Fade, Snackbar } from '@material-ui/core'
 import Alert from "@material-ui/lab/Alert";
-import { useEffect, useState, Fragment } from 'react';
-import ReactPlayer from 'react-player';
-import useWindowSize from '../../hooks/useWindowSize';
+import { useEffect, useState } from 'react';
 
-type VideoAPIResponse = {
-  snippet: { description: string, title: string, resourceId: {videoId: string} }
-}
+import { VideoType } from './../../types';
+
+import Video from './../Elements/Video';
 
 const Videos: React.FunctionComponent = () => {
   const [visible, setVisible] = useState(false);
-  const windowSize = useWindowSize();
-
-  const [videos, setVideos] = useState<VideoAPIResponse[]>([]);
+  const [videos, setVideos] = useState<VideoType[]>([]);
 
   useEffect(() => {
     setVisible(true);
@@ -26,18 +22,7 @@ const Videos: React.FunctionComponent = () => {
     <Fade in={visible} mountOnEnter unmountOnExit timeout={700}>
       <Container maxWidth='md' style={{paddingTop: 40}}>
         {videos !== undefined ? videos.map(vid => (
-          <Fragment>
-            <Typography variant='h4' style={{ fontFamily: 'Josefin Sans', textAlign: 'center', paddingBottom: '2vh' }}>{vid.snippet.title}</Typography>
-            <Hidden smDown>
-              <Typography style={{paddingBottom: '2vh'}}>{vid.snippet.description.split('\n')[0]}</Typography>
-            </Hidden>
-            <ReactPlayer url={`https://www.youtube.com/watch?v=${vid.snippet.resourceId.videoId}`} controls
-              width={windowSize.width >= 960 ? 960 : '90vw'}
-              height={windowSize.width >= 960 ? 540 : windowSize.width * .9 * (9 / 16)}
-            />
-
-            <Divider style={{ margin: 50 }} />
-          </Fragment>
+         <Video {...vid} />
         )) :  
         <Snackbar open={true} autoHideDuration={6000} style={{bottom: '5vh'}}>
           <Alert severity='error'>Videos Failed to Load!</Alert>
