@@ -55,6 +55,7 @@ const App = () => {
   }
 
   const [visible, setVisible] = useState(false);
+  const [topBarHeight, setTopBarHeight] = useState(0);
   const windowSize = useWindowSize();
 
   const sections = [<About />, <GameDev />, <Software />, <Photos />, <Videos />];
@@ -64,15 +65,40 @@ const App = () => {
     update();
   }, [])
 
+  // Have to wait 1ms to have the class names load, otherwise shit hits the fan real fast
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setTopBarHeight(document.getElementsByClassName('logo')[0].clientHeight);
+    }, 1);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+
   return (
     <ThemeProvider theme={settings.darkMode === false ? lightTheme : darkTheme}>
       <CssBaseline>
         <TopNavigation update={update} settings={settings} />
         <Fade in={visible}>
           <>
-            <Box style={{paddingTop: '12vh', overflow: 'hidden', height: windowSize.width >= 960 ? windowSize.height - 56 : windowSize.height}}>
-            <Scrollbars>
-              {sections[settings.section]}
+            <Box
+              style={{
+                overflow: 'hidden',
+                paddingTop: topBarHeight,
+                height: windowSize.width >= 960 ? windowSize.height - 56 : windowSize.height
+              }}>
+              <Scrollbars>
+                { /** If first section, display background image */
+                settings.section === 0 ?
+                  <img src='https://i.imgur.com/Iwv6Ly5.jpg'
+                    width={windowSize.width}
+                    height={windowSize.width >= 960 ? windowSize.height - 56 - topBarHeight : windowSize.height - 56}
+                    alt='bg'
+                    style={{ objectFit: 'cover', position: 'absolute', zIndex: -1 }}
+                  /> : null }
+
+                {/** Display the selected section */}
+                {sections[settings.section]}         
             </Scrollbars>
             </Box>
             <Hidden smDown>

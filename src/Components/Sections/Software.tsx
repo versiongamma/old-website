@@ -9,24 +9,32 @@ const Software: React.FunctionComponent = () => {
   const [repos, setRepos] = useState<RepoType[]>();
 
   useEffect(() => {
-    setVisible(true);
-
     fetch('https://gh-pinned-repos-5l2i19um3.vercel.app/?username=versiongamma')
       .then(res => res.json())
       .then(json => { setRepos(json) });
   }, []);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setVisible(true);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <Fade in={visible} mountOnEnter unmountOnExit timeout={700}>
-      <Container maxWidth="md">
-        <Grid container spacing={3}>
-          {repos !== undefined ?
-            repos.map((repo, i) => (
-              <Repo {...repo}/>
-            )) : <></>}
-        </Grid>
-      </Container>
-    </Fade>
+    <>
+      <Fade in={visible} mountOnEnter unmountOnExit timeout={700}>
+        <Container maxWidth="md" style={{ paddingTop: 40 }}>
+          <Grid container spacing={3}>
+            {repos !== undefined ?
+              repos.map((repo, i) => (
+                <Repo {...repo} />
+              )) : <></>}
+          </Grid>
+        </Container>
+      </Fade>
+    </>
   );
 }
 

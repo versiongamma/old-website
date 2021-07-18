@@ -1,4 +1,6 @@
 import { Grid, Paper, Typography, Hidden } from '@material-ui/core'
+//@ts-ignore
+import Pll from 'react-pll'; 
 
 import LinkIcon from '@material-ui/icons/Link';
 import useWindowSize from './../../hooks/useWindowSize';
@@ -20,11 +22,9 @@ const Repo: React.FunctionComponent<RepoType> = (props) => {
         }}
         onClick={() => window.open(props.link)}
       >
-        <img
+        <Pll
           alt={props.language}
-          src={`https://cdn.jsdelivr.net/npm/programming-languages-logos/src/` +
-            `${langs[props.language] !== undefined ? langs[props.language] : props.language.toLowerCase()}/` +
-            `${langs[props.language] !== undefined ? langs[props.language] : props.language.toLowerCase()}.png`}
+          language={`${langs[props.language] !== undefined ? langs[props.language] : props.language.toLowerCase()}`}
           style={{ height: 100, float: 'left', paddingRight: 10 }} />
         <Typography variant='h5'>{props.repo}<LinkIcon style={{ float: 'right' }} /></Typography>
 

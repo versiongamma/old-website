@@ -39,7 +39,7 @@ const Photos: React.FunctionComponent = () => {
 
   return (
     <Fade in={visible} mountOnEnter unmountOnExit>
-      <Container maxWidth="xl" style={{ textAlign: 'center' }}>
+      <Container maxWidth="xl" style={{ textAlign: 'center', paddingTop: 40}}>
         {response?.data.images !== undefined ? response.data.images.map((img, i) => (
           <Photo key={i} {...img} />
         )) : wait ? '' :

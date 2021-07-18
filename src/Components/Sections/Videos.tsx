@@ -19,8 +19,8 @@ const Videos: React.FunctionComponent = () => {
   }, [])
 
   return (
-    <Fade in={visible} mountOnEnter unmountOnExit timeout={1000}>
-      <Container maxWidth='md'>
+    <Fade in={visible} mountOnEnter unmountOnExit timeout={700}>
+      <Container maxWidth='md' style={{paddingTop: 40}}>
         {videos !== undefined ? videos.map(vid => (
          <Video {...vid} />
         )) :  
