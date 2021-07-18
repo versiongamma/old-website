@@ -54,7 +54,7 @@ const About = () => {
                 <br />
                 What kind of stuff? Computer stuff, to put it simply, but if you
                 want something a little less vauge, well just take a look below!
-                Have a look around and see the dumb stuff I've conconcted over
+                Have a look around and see the dumb stuff I've concocted over
                 my many years of messing around with cameras and computers.
               </Typography>
             </Hidden>
@@ -83,7 +83,7 @@ const About = () => {
                 <br />
                 What kind of stuff? Computer stuff, to put it simply, but if you
                 want something a little less vauge, well just take a look in the top
-                left menu! Have a look around and see the dumb stuff I've conconcted over
+                left menu! Have a look around and see the dumb stuff I've concocted over
                 my many years of messing around with cameras and computers.
               </Typography>
             </Hidden>
