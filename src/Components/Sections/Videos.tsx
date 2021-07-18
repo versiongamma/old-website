@@ -24,7 +24,7 @@ const Videos: React.FunctionComponent = () => {
 
   return (
     <Fade in={visible} mountOnEnter unmountOnExit timeout={700}>
-      <Container maxWidth='md'>
+      <Container maxWidth='md' style={{paddingTop: 40}}>
         {videos !== undefined ? videos.map(vid => (
           <Fragment>
             <Typography variant='h4' style={{ fontFamily: 'Josefin Sans', textAlign: 'center', paddingBottom: '2vh' }}>{vid.snippet.title}</Typography>

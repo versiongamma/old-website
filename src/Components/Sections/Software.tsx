@@ -25,7 +25,7 @@ const Software: React.FunctionComponent = () => {
   return (
     <>
       <Fade in={visible} mountOnEnter unmountOnExit timeout={700}>
-        <Container maxWidth="md" style={{ paddingTop: 20 }}>
+        <Container maxWidth="md" style={{ paddingTop: 40 }}>
           <Grid container spacing={3}>
             {repos !== undefined ?
               repos.map((repo, i) => (

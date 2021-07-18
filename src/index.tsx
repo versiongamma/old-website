@@ -56,7 +56,6 @@ const App = () => {
 
   const [visible, setVisible] = useState(false);
   const [topBarHeight, setTopBarHeight] = useState(0);
-  const [loaded, setLoaded] = useState(false);
   const windowSize = useWindowSize();
 
   const sections = [<About />, <GameDev />, <Software />, <Photos />, <Videos />];
@@ -70,7 +69,6 @@ const App = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setTopBarHeight(document.getElementsByClassName('logo')[0].clientHeight);
-      setLoaded(true);
     }, 1);
 
     return () => clearTimeout(timer);
@@ -94,7 +92,7 @@ const App = () => {
                 settings.section === 0 ?
                   <img src='https://i.imgur.com/Iwv6Ly5.jpg'
                     width={windowSize.width}
-                    height={windowSize.height - 56 - topBarHeight}
+                    height={windowSize.width >= 960 ? windowSize.height - 56 - topBarHeight : windowSize.height - 56}
                     alt='bg'
                     style={{ objectFit: 'cover', position: 'absolute', zIndex: -1 }}
                   /> : null }
