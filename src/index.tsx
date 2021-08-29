@@ -69,7 +69,7 @@ const App = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setTopBarHeight(document.getElementsByClassName('logo')[0].clientHeight);
-    }, 1);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -89,17 +89,17 @@ const App = () => {
               }}>
               <Scrollbars>
                 { /** If first section, display background image */
-                settings.section === 0 ?
-                  <img src='https://i.imgur.com/Iwv6Ly5.jpg'
-                    width={windowSize.width}
-                    height={windowSize.width >= 960 ? windowSize.height - 56 - topBarHeight : windowSize.height - 56}
-                    alt='bg'
-                    style={{ objectFit: 'cover', position: 'absolute', zIndex: -1 }}
-                  /> : null }
+                  settings.section === 0 ?
+                    <img src='https://i.imgur.com/Iwv6Ly5.jpg'
+                      width={windowSize.width}
+                      height={windowSize.width >= 960 ? windowSize.height - 56 - topBarHeight : windowSize.height - 56}
+                      alt='bg'
+                      style={{ objectFit: 'cover', position: 'absolute', zIndex: -1 }}
+                    /> : null}
 
                 {/** Display the selected section */}
-                {sections[settings.section]}         
-            </Scrollbars>
+                {sections[settings.section]}
+              </Scrollbars>
             </Box>
             <Hidden smDown>
               <BottomNavigation
