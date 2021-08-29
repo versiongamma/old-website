@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "target": "es5",
     "module": "esnext",
     "strict": true,
@@ -21,6 +21,10 @@
     "noEmit": true
   },
   "include": [
-    "src"
+    "components",
+    "pages"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }

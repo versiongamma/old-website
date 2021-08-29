@@ -1,12 +1,11 @@
 import { Divider, Hidden, Typography, Fade, Box } from '@material-ui/core'
 import ReactPlayer from 'react-player';
-import useWindowSize from '../../hooks/useWindowSize';
+import useWindowSize from './../hooks/useWindowSize';
 import { useState } from 'react';
 
-import { VideoType } from './../../types';
 import { Skeleton } from '@material-ui/lab';
 
-const Video: React.FunctionComponent<VideoType> = (props) => {
+const Video = (props) => {
   const windowSize = useWindowSize();
   const [loading, setLoading] = useState(true);
 
@@ -21,11 +20,11 @@ const Video: React.FunctionComponent<VideoType> = (props) => {
       <Hidden smDown>
         <Typography style={{ paddingBottom: '2vh' }}>{props.snippet.description.split('\n')[0]}</Typography>
       </Hidden>
-      {loading ?
+      {/**loading ?
         <Skeleton variant='rect'
           width={windowSize.width >= 960 ? 960 : '90vw'}
-          height={windowSize.width >= 960 ? 540 : windowSize.width * .9 * (9 / 16)}
-        /> : null}
+          height={windowSize.width >= 800 ? 450 : windowSize.width * .9 * (9 / 16)}
+      /> : null*/}
       <Fade in={!loading} timeout={1000}>
         <Box>
           {/* 
@@ -35,14 +34,14 @@ const Video: React.FunctionComponent<VideoType> = (props) => {
             thumbnails at the required size
           */}
           <ReactPlayer url={`https://www.youtube.com/watch?v=${props.snippet.resourceId.videoId}`} controls
-            width={windowSize.width >= 960 ? 912 : '90vw'}
-            height={loading ? 0 : windowSize.width >= 960 ? 513 : windowSize.width * .9 * (9 / 16)}
+            width={windowSize.width >= 960 ? 800 : '90vw'}
+            height={loading ? 0 : windowSize.width >= 960 ? 450 : windowSize.width * .9 * (9 / 16)}
             onReady={() => setLoading(false)}
+            style={{position: 'sticky'}}
           />
         </Box>
       </Fade>
 
-      <Divider style={{ margin: 50 }} />
     </>
   )
 }
