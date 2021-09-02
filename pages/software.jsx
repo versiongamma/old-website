@@ -2,6 +2,8 @@ import { Grid, Box } from '@material-ui/core';
 import { useState, useEffect } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars-2';
 
+import Head from 'next/head'
+
 import Repo from './../components/Repo';
 import TopNavBar from "../components/TopNavBar";
 import useWindowSize from "../hooks/useWindowSize";
@@ -21,6 +23,11 @@ const software = () => {
 
   return (
     <>
+      <Head>
+        <title>Version Gamma | Software Development</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <TopNavBar section={1} />
 
       <Scrollbars universal autoHide style={{ height: windowSize.height - 170 }}>

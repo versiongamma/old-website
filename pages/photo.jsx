@@ -1,6 +1,8 @@
 import { Container, Grid } from "@material-ui/core";
 import { useEffect, useState } from "react";
 
+import Head from 'next/head'
+
 import TopNavBar from "../components/TopNavBar";
 import Photo from '../components/Photo';
 
@@ -23,6 +25,11 @@ const photo = () => {
 
   return (
     <>
+      <Head>
+        <title>Version Gamma | Photos</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <TopNavBar section={3} />
 
       <Scrollbars universal autoHide style={{ height: windowSize.height - 170 }}>
