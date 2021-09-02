@@ -4,12 +4,12 @@ import { useEffect, useState } from "react";
 import Head from 'next/head'
 
 import TopNavBar from "../components/TopNavBar";
-import Photo from '../components/Photo';
+import PhotoElement from '../components/PhotoElement';
 
 import { Scrollbars } from 'react-custom-scrollbars-2';
 import useWindowSize from "../hooks/useWindowSize";
 
-const photo = () => {
+const Photo = () => {
 
   const [response, setResponse] = useState();
   const windowSize = useWindowSize();
@@ -36,7 +36,7 @@ const photo = () => {
         <Grid container justifyContent='center' spacing={10}>
           {response !== undefined ? response.data.images.map((img, i) => (
             <Grid item key={i}>
-              <Photo key={i} {...img} />
+              <PhotoElement key={i} {...img} />
             </Grid>
           )) : null}
         </Grid>
@@ -45,4 +45,4 @@ const photo = () => {
   );
 }
 
-export default photo;
+export default Photo;

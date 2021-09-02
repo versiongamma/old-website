@@ -10,7 +10,7 @@ import useWindowSize from "../hooks/useWindowSize";
 
 
 
-const software = () => {
+const Software = () => {
 
   const [repos, setRepos] = useState();
   const windowSize = useWindowSize();
@@ -54,4 +54,4 @@ const software = () => {
   );
 }
 
-export default software;
+export default Software;

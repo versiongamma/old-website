@@ -4,7 +4,7 @@ import useWindowSize from '../hooks/useWindowSize';
 
 import Image from 'next/image';
 
-const Photo = (props) => {
+const PhotoElement = (props) => {
   return (
     <>
       <Image
@@ -18,4 +18,4 @@ const Photo = (props) => {
   );
 }
 
-export default Photo;
+export default PhotoElement;

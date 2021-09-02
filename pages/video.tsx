@@ -7,10 +7,10 @@ import Head from 'next/head';
 import { Scrollbars } from 'react-custom-scrollbars-2'; 
 
 import TopNavBar from "../components/TopNavBar"
-import Video from './../components/Video';
+import VideoElement from './../components/VideoElement';
 import useWindowSize from '../hooks/useWindowSize';
 
-const video = () => {
+const Video = () => {
   const [videos, setVideos] = useState([]);
   const windowSize = useWindowSize();
 
@@ -33,7 +33,7 @@ const video = () => {
           <Grid container justifyContent='center' spacing={10}>
             {videos !== undefined ? videos.map((vid, i) => (
               <Grid item key={i}>
-                <Video key={i} {...vid} />
+                <VideoElement key={i} {...vid} />
               </Grid>
             )) :
               <Snackbar open={true} autoHideDuration={6000} style={{ bottom: '5vh' }}>
@@ -47,4 +47,4 @@ const video = () => {
   )
 }
 
-export default video;
+export default Video;

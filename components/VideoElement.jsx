@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 import { Skeleton } from '@material-ui/lab';
 
-const Video = (props) => {
+const VideoElement = (props) => {
   const [loaded, setLoaded] = useState(false);
 
   return (
@@ -21,4 +21,4 @@ const Video = (props) => {
   )
 }
 
-export default Video;
+export default VideoElement;

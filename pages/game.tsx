@@ -4,7 +4,7 @@ import Head from 'next/head'
 
 import TopNavBar from "../components/TopNavBar";
 
-const game = () => {
+const Game = () => {
   return (
     <>
       <Head>
@@ -21,4 +21,4 @@ const game = () => {
   );
 }
 
-export default game;
+export default Game;
