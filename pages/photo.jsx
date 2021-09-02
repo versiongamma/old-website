@@ -1,5 +1,4 @@
-import { Container, Fade, Snackbar } from "@material-ui/core";
-import Alert from "@material-ui/lab/Alert";
+import { Container, Grid } from "@material-ui/core";
 import { useEffect, useState } from "react";
 
 import TopNavBar from "../components/TopNavBar";
@@ -27,11 +26,13 @@ const photo = () => {
       <TopNavBar section={3} />
 
       <Scrollbars universal autoHide style={{ height: windowSize.height - 170 }}>
-        <Container maxWidth="xl" style={{ textAlign: 'center', paddingTop: 40 }}>
+        <Grid container justifyContent='center' spacing={10}>
           {response !== undefined ? response.data.images.map((img, i) => (
-            <Photo key={i} {...img} />
+            <Grid item>
+              <Photo key={i} {...img} />
+            </Grid>
           )) : null}
-        </Container>
+        </Grid>
       </Scrollbars>
     </>
   );

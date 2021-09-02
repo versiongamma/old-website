@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Container, Box, Snackbar, Grid } from '@material-ui/core'
+import { Box, Snackbar, Grid } from '@material-ui/core'
 import Alert from "@material-ui/lab/Alert";
 
 import Head from 'next/head';
@@ -31,10 +31,9 @@ const video = () => {
       <TopNavBar section={4} />
 
       <Scrollbars universal autoHide style={{height: windowSize.height - 170}}>
-        <Container maxWidth='lg'>
           <Grid container justifyContent='center' spacing={10}>
             {videos !== undefined ? videos.map(vid => (
-              <Grid item xs={6}>
+              <Grid item>
                 <Video {...vid} />
               </Grid>
             )) :
@@ -42,7 +41,7 @@ const video = () => {
                 <Alert severity='error'>Videos Failed to Load!</Alert>
               </Snackbar>}
           </Grid>
-        </Container>
+
       </Scrollbars>
 
     </>
