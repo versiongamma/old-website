@@ -32,9 +32,9 @@ const video = () => {
 
       <Scrollbars universal autoHide style={{height: windowSize.height - 170}}>
           <Grid container justifyContent='center' spacing={10}>
-            {videos !== undefined ? videos.map(vid => (
-              <Grid item>
-                <Video {...vid} />
+            {videos !== undefined ? videos.map((vid, i) => (
+              <Grid item key={i}>
+                <Video key={i} {...vid} />
               </Grid>
             )) :
               <Snackbar open={true} autoHideDuration={6000} style={{ bottom: '5vh' }}>

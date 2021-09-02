@@ -28,7 +28,7 @@ const photo = () => {
       <Scrollbars universal autoHide style={{ height: windowSize.height - 170 }}>
         <Grid container justifyContent='center' spacing={10}>
           {response !== undefined ? response.data.images.map((img, i) => (
-            <Grid item>
+            <Grid item key={i}>
               <Photo key={i} {...img} />
             </Grid>
           )) : null}
