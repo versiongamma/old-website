@@ -1,5 +1,6 @@
-import { Container, Grid } from "@material-ui/core";
+import { Grid, Snackbar } from "@material-ui/core";
 import { useEffect, useState } from "react";
+import Alert from "@material-ui/lab/Alert";
 
 import Head from 'next/head'
 
@@ -38,7 +39,10 @@ const Photo = () => {
             <Grid item key={i}>
               <PhotoElement key={i} {...img} />
             </Grid>
-          )) : null}
+          )) : 
+            <Snackbar open={true} autoHideDuration={6000} style={{ bottom: '5vh' }}>
+              <Alert severity='error'>Videos Failed to Load!</Alert>
+            </Snackbar>}
         </Grid>
       </Scrollbars>
     </>
