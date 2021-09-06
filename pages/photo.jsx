@@ -39,10 +39,7 @@ const Photo = () => {
             <Grid item key={i}>
               <PhotoElement key={i} {...img} />
             </Grid>
-          )) : 
-            <Snackbar open={true} autoHideDuration={6000} style={{ bottom: '5vh' }}>
-              <Alert severity='error'>Videos Failed to Load!</Alert>
-            </Snackbar>}
+          )) : null}
         </Grid>
       </Scrollbars>
     </>
