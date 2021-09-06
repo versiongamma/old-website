@@ -3,6 +3,7 @@ import { Container, Typography, IconButton } from '@material-ui/core';
 import YouTubeIcon from "@material-ui/icons/YouTube";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import TwitterIcon from "@material-ui/icons/Twitter";
+import GitHubIcon from '@material-ui/icons/GitHub';
 
 import Head from 'next/head'
 import Image from 'next/image'
@@ -75,6 +76,9 @@ const Home = () => {
         </IconButton>
         <IconButton onClick={() => window.open("https://twitter.com/versiongamma")}>
           <TwitterIcon style={{ fill: 'white' }} fontSize="large" />
+        </IconButton>
+        <IconButton onClick={() => window.open("https://github.com/versiongamma")}>
+          <GitHubIcon style={{ fill: 'white' }} fontSize="large" />
         </IconButton>
       </Container>
     </>

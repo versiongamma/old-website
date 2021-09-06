@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Box, Snackbar, Grid } from '@material-ui/core'
+import { Snackbar, Grid } from '@material-ui/core'
 import Alert from "@material-ui/lab/Alert";
 
 import Head from 'next/head';
