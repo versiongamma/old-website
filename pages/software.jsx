@@ -28,7 +28,7 @@ const Software = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <TopNavBar section={1} />
+      <TopNavBar section={2} />
 
       <Scrollbars universal autoHide style={{ height: windowSize.height - 170 }}>
         <Box

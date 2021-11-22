@@ -34,7 +34,7 @@ const TopNavBar: React.FunctionComponent<Props> = (props) => {
 
           <Grid item xs={6}>
             <Grid container justifyContent='flex-end' alignItems='center' spacing={2}>
-              {[['About', '/'], ['Software', '/software'], ['Game Design', '/game'], ['Photos', '/photo'], ['Videos', '/video']].map((section, i) => (
+              {[['About', '/'], ['YouTube', '/video'], ['Software', '/software'], ['Game Design', '/game'], ['Photos', '/photo']].map((section, i) => (
                 <Grid item key={i}>
                   <Link href={section[1]} passHref>
                     <Button color={i === props.section ? 'primary' : 'inherit'} style={{ fontSize: 20 }}>{section[0]}</Button>

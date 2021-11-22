@@ -1,18 +1,52 @@
-import { Container, Typography, IconButton } from '@material-ui/core';
+import { Container, Typography, IconButton } from '@mui/material';
+import { styled, setup } from 'goober';
+import { createElement } from 'react';
 
-import YouTubeIcon from "@material-ui/icons/YouTube";
-import InstagramIcon from "@material-ui/icons/Instagram";
-import TwitterIcon from "@material-ui/icons/Twitter";
-import GitHubIcon from '@material-ui/icons/GitHub';
+import YouTubeIcon from "@mui/icons-material/YouTube";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import GitHubIcon from '@mui/icons-material/GitHub';
 
 import Head from 'next/head'
 import Image from 'next/image'
 
 import TopNavBar from '../components/TopNavBar';
-import useWindowSize from './../hooks/useWindowSize';
+// import useWindowSize from './../hooks/useWindowSize';
+
+setup(createElement);
+
+const TextLink = styled('a')`
+  color: #ac94d6;
+  text-decoration: none;
+  transition: filter .2s;
+
+  &:hover {
+    filter: brightness(60%);
+  }
+`;
+
+const MainContainer = styled(Container)`
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+const AboutTextHeader = styled(Typography)`
+  color: white; 
+  text-shadow: 4px 4px 1px black;
+
+`;
+
+const AboutText = styled(Typography)`
+  font-size: 2em;
+  color: white;
+  text-shadow: 3px 3px 1px black;
+`;
 
 const Home = () => {
-  const windowSize = useWindowSize();
+  //const windowSize = useWindowSize();
 
   return (
     <>
@@ -30,40 +64,22 @@ const Home = () => {
 
       <TopNavBar section={0} />
 
-      <Container
-        maxWidth="md"
-        style={{
-          textAlign: "center",
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-        }}
-      >
-        <Typography
-          variant="h1"
-          style={{ color: "white", textShadow: "3px 3px 1px black" }}
+      <MainContainer maxWidth="md">
+        <AboutTextHeader
+          variant='h1'
         >
           Who... am I?
-        </Typography>
+        </AboutTextHeader>
         <br />
-        <Typography
-          style={{
-            fontSize: "2em",
-            color: "white",
-            textShadow: "2px 2px 1px black",
-          }}
-        >
+        <AboutText>
           That is an excellent question. Many things, is probably the best
-          answer to that. I'm Matt, and I create stuff under the handle of
-          'Version Gamma'
+          answer to that, but the simplest is probably "maker of stuff"
           <br />
           <br />
-          What kind of stuff? Computer stuff, to put it simply, but if you
-          want something a little less vauge, well just take a look in the top right!
-          Have a look around and see the dumb stuff I've concocted over
-          my many years of messing around with cameras and computers.
-        </Typography>
+          Alongside my professional work as a Software Developer, I also run
+          the YouTube channel <TextLink href='https://youtube.com/c/versiongamma'>Version Gamma</TextLink>,
+          where I make videos about games, game design, and really anything I find interesting.
+        </AboutText>
 
         {/** Social Icons */}
         <br />
@@ -80,7 +96,7 @@ const Home = () => {
         <IconButton onClick={() => window.open("https://github.com/versiongamma")}>
           <GitHubIcon style={{ fill: 'white' }} fontSize="large" />
         </IconButton>
-      </Container>
+      </MainContainer>
     </>
   )
 }
