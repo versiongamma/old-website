@@ -1,12 +1,29 @@
 import { CssBaseline, ThemeProvider } from "@material-ui/core";
 import { darkTheme, lightTheme } from "./../themes/themes";
+import { setup } from "goober";
 import Head from "next/head";
-import { createContext, useState } from "react";
+import { createContext, createElement, useState, useMemo } from "react";
 
 export const DarkMode = createContext(true);
+setup(createElement);
 
 const App = ({ Component, pageProps }) => {
   const [darkMode, setDarkMode] = useState(true);
+  const [subs, setSubs] = useState(0);
+
+  useMemo(() => {
+    fetch(
+      "https://youtube.googleapis.com/youtube/v3/channels?part=statistics&id=UCTxitBg-WrN_xTHKMbAzcIA&key=" +
+        process.env.NEXT_PUBLIC_GOOGLE_API_KEY
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        setSubs(res.items[0].statistics.subscriberCount);
+      });
+  }, []);
+
+  pageProps = { ...pageProps, subs };
+
   return (
     <>
       <Head>
