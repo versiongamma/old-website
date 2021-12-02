@@ -29,7 +29,7 @@ const AboutTextHeader = styled(Typography)`
 `;
 
 const AboutText = styled(Typography)`
-  font-size: 1.7em;
+  font-size: 1.7em !important; // Typography doesn't like getting it's font resized, so this makes sure that happens
   color: white;
   text-shadow: 2px 2px 1px black, 4px 4px 1px black;
 `;
@@ -45,7 +45,7 @@ const TextLink = styled("a")`
 `;
 
 type Props = {
-  subs: number;
+  subs: number | undefined;
 };
 
 const Home = ({ subs }: Props) => {
@@ -83,9 +83,10 @@ const Home = ({ subs }: Props) => {
       <Hidden smDown>
         <TopNavBar section={0} />
 
-        <Fade in={subs > 0}>
+        <Fade in={subs === undefined || subs > 0}>
           <Main maxWidth="md">
             <AboutTextHeader variant="h1">Who... am I?</AboutTextHeader>
+            <br />
             <br />
             <AboutText>
               That is an excellent question. Many things, is probably the best
@@ -98,7 +99,10 @@ const Home = ({ subs }: Props) => {
               , where I talk about games, game design, and really anything I
               find interesting. It's a fun time, I wouldn't recommend it, but
               apparently
-              {" " + subs.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
+              {" " +
+                (subs ?? "some")
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
               people would, so there's that.
               <br />
               <br />
