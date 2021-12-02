@@ -31,7 +31,7 @@ const Photo = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <TopNavBar section={3} />
+      <TopNavBar section={4} />
 
       <Scrollbars universal autoHide style={{ height: windowSize.height - 170 }}>
         <Grid container justifyContent='center' spacing={10}>

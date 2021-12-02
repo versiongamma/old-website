@@ -12,7 +12,7 @@ const Game = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <TopNavBar section={2} />
+      <TopNavBar section={3} />
 
       <Box>
         <Typography variant="h1" style={{ textAlign: "center", paddingTop: "20%", fontFamily: "Josefin Sans" }}>Coming Soon...</Typography>
