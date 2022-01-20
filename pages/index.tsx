@@ -1,41 +1,67 @@
-import { Container, Typography, IconButton, Hidden } from "@mui/material";
-import { styled } from "goober";
-
-import YouTubeIcon from "@mui/icons-material/YouTube";
+import { Fade } from "@material-ui/core";
+import GitHubIcon from "@mui/icons-material/GitHub";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import PatreonIcon from "../icons/Patreon";
-
+import YouTubeIcon from "@mui/icons-material/YouTube";
+import { Container, Hidden, IconButton, Typography } from "@mui/material";
+import { styled } from "goober";
 import Head from "next/head";
 import Image from "next/image";
+import React from "react";
 
 import TopNavBar from "../components/TopNavBar";
-import { Fade } from "@material-ui/core";
+import PatreonIcon from "../icons/Patreon";
+
 // import useWindowSize from './../hooks/useWindowSize';
 
 const Main = styled(Container)`
   text-align: center;
   position: absolute;
-  top: 50%;
+  top: 42%;
   left: 50%;
   transform: translate(-50%, -50%);
+`;
+
+const Footer = styled("div")`
+  text-align: center;
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 50px;
+  padding: 0 10px;
 `;
 
 const AboutTextHeader = styled(Typography)`
   font-size: 6em;
   color: white;
-  text-shadow: 2px 2px 1px black, 5px 5px 1px black, 7px 7px 1px black;
+
+  @media (max-width: 900px) {
+    font-size: 4em !important;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 3em !important;
+  }
 `;
 
 const AboutText = styled(Typography)`
-  font-size: 1.7em !important; // Typography doesn't like getting it's font resized, so this makes sure that happens
+  font-size: 1.7em !important;
   color: white;
-  text-shadow: 2px 2px 1px black, 4px 4px 1px black;
+
+  @media (max-width: 900px) {
+    font-size: 1.4em !important;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 1em !important;
+  }
 `;
 
 const TextLink = styled("a")`
-  color: #ac94d6;
+  color: #b68ae6;
   text-decoration: none;
   transition: filter 0.2s;
 
@@ -44,8 +70,18 @@ const TextLink = styled("a")`
   }
 `;
 
+const iconProps: {
+  // This type declaration is done so that TS understands the
+  // unionized type of fontSize, otherwise it throws errors
+  sx: { color: string };
+  fontSize: "small" | "medium" | "large" | "inherit";
+} = {
+  sx: { color: "white" },
+  fontSize: "large",
+};
+
 type Props = {
-  subs: number | undefined;
+  subs: number;
 };
 
 const Home = ({ subs }: Props) => {
@@ -59,38 +95,27 @@ const Home = ({ subs }: Props) => {
       </Head>
 
       <Image
-        src="https://i.imgur.com/Iwv6Ly5.jpg"
+        src="https://i.imgur.com/n3NaCpH.jpg"
         layout="fill"
         objectFit="cover"
+        objectPosition="50% 60%"
         quality={100}
         alt="background"
       />
 
-      {/* This stuff is just a placeholder until I get around to mobile optimising the site */}
-      <Hidden smUp>
-        <Main>
-          <AboutText>
-            This site isn't mobile optimised yet. It will be, but it's not yet.
-            <br />
-            <br />
-            When will it be? Man idk, whenever I get around to it, gimme a
-            break.
-          </AboutText>
-        </Main>
+      <Hidden mdDown>
+        <TopNavBar section={0} />
       </Hidden>
 
-      {/* These hiddens can be removed when mobile optimisation is ready */}
-      <Hidden smDown>
-        <TopNavBar section={0} />
-
-        <Fade in={subs === undefined || subs > 0}>
+      <Fade in={subs > 0}>
+        <div>
           <Main maxWidth="md">
             <AboutTextHeader variant="h1">Who... am I?</AboutTextHeader>
             <br />
             <br />
             <AboutText>
               That is an excellent question. Many things, is probably the best
-              answer to that, but the simplest is probably "maker of stuff."
+              answer to that, but the simplest is probably "maker of stuff".
               <br />
               <br />I make videos for the YouTube channel{" "}
               <TextLink href="https://youtube.com/c/versiongamma">
@@ -110,40 +135,38 @@ const Home = ({ subs }: Props) => {
               pretending that I know how to design games, and an idiot, but I
               know you don't care about that. Except maybe that last one.
             </AboutText>
-
-            {/** Social Icons */}
-            <br />
-            <br />
+          </Main>
+          <Footer>
             <IconButton
               onClick={() => window.open("https://youtube.com/c/versiongamma")}
             >
-              <YouTubeIcon style={{ fill: "white" }} fontSize="large" />
+              <YouTubeIcon {...iconProps} />
             </IconButton>
             <IconButton
               onClick={() => window.open("https://instagram.com/variantgamma")}
             >
-              <InstagramIcon style={{ fill: "white" }} fontSize="large" />
+              <InstagramIcon {...iconProps} />
             </IconButton>
             <IconButton
               onClick={() => window.open("https://twitter.com/versiongamma")}
             >
-              <TwitterIcon style={{ fill: "white" }} fontSize="large" />
+              <TwitterIcon {...iconProps} />
             </IconButton>
             <IconButton
               onClick={() => window.open("https://github.com/versiongamma")}
             >
-              <GitHubIcon style={{ fill: "white" }} fontSize="large" />
+              <GitHubIcon {...iconProps} />
             </IconButton>
             <IconButton
               onClick={() => window.open("https://patreon.com/versiongamma")}
             >
-              <PatreonIcon style={{ fill: "white" }} fontSize="large" />
+              <PatreonIcon {...iconProps} />
             </IconButton>
-          </Main>
-        </Fade>
-      </Hidden>
+          </Footer>
+        </div>
+      </Fade>
     </>
   );
 };
 
-export default Home;
+export default React.memo(Home);

@@ -1,4 +1,4 @@
-import { Grid, Box } from '@material-ui/core';
+import { Grid, Box, Typography } from '@material-ui/core';
 import { useState, useEffect } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars-2';
 
@@ -15,11 +15,11 @@ const Software = () => {
   const [repos, setRepos] = useState();
   const windowSize = useWindowSize();
 
-  useEffect(() => {
-    fetch('https://gh-pinned-repos-5l2i19um3.vercel.app/?username=versiongamma')
-      .then(res => res.json())
-      .then(json => { setRepos(json) });
-  }, []);
+  // useEffect(() => {
+  //   fetch('https://gh-pinned-repos-5l2i19um3.vercel.app/?username=versiongamma')
+  //     .then(res => res.json())
+  //     .then(json => { setRepos(json) });
+  // }, []);
 
   return (
     <>
@@ -30,7 +30,7 @@ const Software = () => {
 
       <TopNavBar section={2} />
 
-      <Scrollbars universal autoHide style={{ height: windowSize.height - 170 }}>
+      {/* <Scrollbars universal autoHide style={{ height: windowSize.height - 170 }}>
         <Box
           style={{
             textAlign: "center",
@@ -49,7 +49,11 @@ const Software = () => {
             )) : null}
           </Grid>
         </Box>
-      </Scrollbars>
+      </Scrollbars> */}
+
+      <Box>
+        <Typography variant="h1" style={{ textAlign: "center", paddingTop: "20%", fontFamily: "Josefin Sans" }}>Coming Soon...</Typography>
+      </Box>
     </>
   );
 }

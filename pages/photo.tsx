@@ -1,35 +1,38 @@
 import { Grid } from "@material-ui/core";
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Scrollbars } from "react-custom-scrollbars-2";
 
+import PhotoElement from "../components/PhotoElement";
 import TopNavBar from "../components/TopNavBar";
 import useWindowSize from "../hooks/useWindowSize";
-import VideoElement from "./../components/VideoElement";
+import { ImgurApiResponse } from "../types";
 
-const Video = () => {
-  const [videos, setVideos] = useState([]);
+const Photo = () => {
+  const [response, setResponse] = useState<ImgurApiResponse | undefined>();
   const windowSize = useWindowSize();
 
   useEffect(() => {
-    fetch(
-      "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PUTxitBg-WrN_xTHKMbAzcIA&key=" +
-        process.env.NEXT_PUBLIC_GOOGLE_API_KEY
-    )
+    fetch("https://api.imgur.com/3/album/JKELiQA", {
+      headers: {
+        Authorization: "CLIENT-ID " + process.env.NEXT_PUBLIC_IMGUR_API_KEY,
+      },
+    })
       .then((res) => res.json())
-      .then((res) => {
-        setVideos(res.items);
+      .then((result) => {
+        console.log(result);
+        setResponse(result);
       });
   }, []);
 
   return (
     <>
       <Head>
-        <title>Version Gamma | Video</title>
+        <title>Version Gamma | Photos</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <TopNavBar section={1} />
+      <TopNavBar section={4} />
 
       <Scrollbars
         universal
@@ -37,10 +40,10 @@ const Video = () => {
         style={{ height: windowSize.height - 170 }}
       >
         <Grid container justifyContent="center" spacing={10}>
-          {videos !== undefined
-            ? videos.map((vid, i) => (
+          {response && response.data.images
+            ? response.data.images.map((img, i) => (
                 <Grid item key={i}>
-                  <VideoElement key={i} {...vid} />
+                  <PhotoElement key={i} {...img} />
                 </Grid>
               ))
             : null}
@@ -50,4 +53,4 @@ const Video = () => {
   );
 };
 
-export default Video;
+export default React.memo(Photo);
