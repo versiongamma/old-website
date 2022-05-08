@@ -61,12 +61,12 @@ const AboutText = styled(Typography)`
 `;
 
 const TextLink = styled("a")`
-  color: #b68ae6;
+  color: #c79bf7;
   text-decoration: none;
   transition: filter 0.2s;
 
   &:hover {
-    filter: brightness(60%);
+    filter: brightness(80%);
   }
 `;
 

@@ -1,29 +1,28 @@
-import { red } from '@material-ui/core/colors';
-import { createTheme } from '@material-ui/core/styles';
+import { red } from "@material-ui/core/colors";
+import { createTheme } from "@material-ui/core/styles";
 
-const pallete = {
+export const pallette = {
   primary: {
-    main: '#9448e7',
+    main: "#9448e7",
   },
   secondary: {
-    main: '#303030',
+    main: "#303030",
   },
   error: {
     main: red.A400,
   },
-}
+};
 
 const typography = {
-  fontFamily: "Assistant"
-}
+  fontFamily: "Assistant",
+};
 
 export const lightTheme = createTheme({
   typography: typography,
-  palette: pallete
-  
+  palette: pallette,
 });
 
 export const darkTheme = createTheme({
   typography: typography,
-  palette: {...pallete, type: 'dark'},
+  palette: { ...pallette, type: "dark" },
 });

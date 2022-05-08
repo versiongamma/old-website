@@ -11,3 +11,17 @@ export type ImgurPhoto = {
   height: number;
   description: string | null;
 };
+
+export type YouTubeApiResponse = {
+  snippet: {
+    resourceId: {
+      videoId: string;
+    };
+    title: string;
+    thumbnails: {
+      default: { url: string; width: number; height: number };
+      medium: { url: string; width: number; height: number };
+      high: { url: string; width: number; height: number };
+    };
+  };
+};
