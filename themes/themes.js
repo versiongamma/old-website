@@ -17,12 +17,7 @@ const typography = {
   fontFamily: "Assistant",
 };
 
-export const lightTheme = createTheme({
-  typography: typography,
-  palette: pallette,
-});
-
-export const darkTheme = createTheme({
+export const theme = createTheme({
   typography: typography,
   palette: { ...pallette, type: "dark" },
 });

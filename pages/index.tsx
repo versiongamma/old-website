@@ -12,8 +12,6 @@ import React from "react";
 import TopNavBar from "../components/TopNavBar";
 import PatreonIcon from "../icons/Patreon";
 
-// import useWindowSize from './../hooks/useWindowSize';
-
 const Main = styled(Container)`
   text-align: center;
   position: absolute;
@@ -32,6 +30,10 @@ const Footer = styled("div")`
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 50px;
   padding: 0 10px;
+
+  && {
+    margin: 1rem;
+  }
 `;
 
 const AboutTextHeader = styled(Typography)`
@@ -101,6 +103,7 @@ const Home = ({ subs }: Props) => {
         objectPosition="50% 60%"
         quality={100}
         alt="background"
+        priority
       />
 
       <Hidden mdDown>

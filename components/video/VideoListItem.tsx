@@ -13,21 +13,21 @@ import {
 import { styled } from "goober";
 
 import ReadMoreIcon from "@mui/icons-material/ReadMore";
-import { Typography } from "@material-ui/core";
 
-const ListItemTitle = styled(MuiListItemText)`
+const ListItemText = styled(MuiListItemText)`
+  margin: 0 2rem;
+
   .MuiListItemText-primary {
     font-size: 1.2rem;
-    margin: 0 2rem;
+  }
+
+  .MuiListItemText-secondary {
+    color: #cccccc;
   }
 `;
 
 const VideoElement = ({
-  snippet: {
-    resourceId: { videoId },
-    thumbnails,
-    title,
-  },
+  snippet: { thumbnails, title, description },
 }: YouTubeApiResponse) => {
   return (
     <ListItem
@@ -55,7 +55,7 @@ const VideoElement = ({
         }}
       /> */}
         </ListItemIcon>
-        <ListItemTitle>{title}</ListItemTitle>
+        <ListItemText primary={title} secondary={""} />
       </ListItemButton>
     </ListItem>
   );

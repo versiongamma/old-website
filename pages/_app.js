@@ -1,14 +1,12 @@
 import { CssBaseline, ThemeProvider } from "@material-ui/core";
-import { darkTheme, lightTheme } from "./../themes/themes";
+import { theme } from "./../themes/themes";
 import { setup } from "goober";
 import Head from "next/head";
 import { createContext, createElement, useState, useMemo } from "react";
 
-export const DarkMode = createContext(true);
 setup(createElement);
 
 const App = ({ Component, pageProps }) => {
-  const [darkMode, setDarkMode] = useState(true);
   const [subs, setSubs] = useState(0);
 
   useMemo(() => {
@@ -33,13 +31,11 @@ const App = ({ Component, pageProps }) => {
         ></link>
       </Head>
 
-      <DarkMode.Provider value={[darkMode, setDarkMode]}>
-        <ThemeProvider theme={darkMode ? { ...darkTheme } : { ...lightTheme }}>
-          <CssBaseline>
-            <Component {...pageProps} />
-          </CssBaseline>
-        </ThemeProvider>
-      </DarkMode.Provider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline>
+          <Component {...pageProps} />
+        </CssBaseline>
+      </ThemeProvider>
     </>
   );
 };

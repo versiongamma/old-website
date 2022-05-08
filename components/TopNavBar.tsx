@@ -4,15 +4,7 @@ import Image from "next/image";
 import NextLink from "next/link";
 import React, { useContext } from "react";
 
-import { DarkMode } from "./../pages/_app";
-import DarkModeToggle from "./DarkModeToggle";
-
-type LinkProps = {
-  $white: boolean;
-} & ButtonProps;
-
-const Link = styled<LinkProps>(Button)`
-  color: ${({ $white }) => ($white ? "#fff" : "#000")};
+const Link = styled(Button)`
   font-size: 20px;
 `;
 
@@ -20,7 +12,6 @@ const pages = [
   { name: "About", href: "/" },
   { name: "YouTube", href: "/video" },
   { name: "Software", href: "/software" },
-  { name: "Game Design", href: "/game" },
   { name: "Photos", href: "/photo" },
 ];
 
@@ -30,7 +21,6 @@ type Props = {
 
 const TopNavBar = ({ section }: Props) => {
   // @ts-ignore
-  const [darkMode] = useContext(DarkMode);
 
   return (
     <>
@@ -39,11 +29,7 @@ const TopNavBar = ({ section }: Props) => {
           <Grid item xs={6}>
             <Image
               alt="logo"
-              src={
-                darkMode || section === 0
-                  ? "https://i.imgur.com/Jpy6jiE.png"
-                  : "https://i.imgur.com/jA3OUSL.png"
-              }
+              src={"https://i.imgur.com/Jpy6jiE.png"}
               width={330}
               height={104}
             />
@@ -59,10 +45,7 @@ const TopNavBar = ({ section }: Props) => {
               {pages.map((page, i) => (
                 <Grid item key={i}>
                   <NextLink href={page.href} passHref>
-                    <Link
-                      variant={section === i ? "outlined" : "text"}
-                      $white={darkMode || section === 0}
-                    >
+                    <Link variant={section === i ? "outlined" : "text"}>
                       {page.name}
                     </Link>
                   </NextLink>
@@ -72,8 +55,6 @@ const TopNavBar = ({ section }: Props) => {
           </Grid>
         </Grid>
       </Box>
-
-      <DarkModeToggle />
     </>
   );
 };

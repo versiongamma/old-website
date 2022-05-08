@@ -32,7 +32,7 @@ const Photo = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <TopNavBar section={4} />
+      <TopNavBar section={3} />
 
       <Scrollbars
         universal
