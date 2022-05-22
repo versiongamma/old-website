@@ -8,24 +8,16 @@ import { Scrollbars } from "react-custom-scrollbars-2";
 import TopNavBar from "../components/TopNavBar";
 import VideoListItem from "../components/video/VideoListItem";
 import useWindowSize from "../hooks/useWindowSize";
-import { YouTubeApiResponse } from "../types";
-
-const FETCH_VIDEOS_BY_UPLOAD =
-  "https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=UUTxitBg-WrN_xTHKMbAzcIA&key=";
+import { YouTubeAPIVideo } from "../types";
 
 const List = styled(MuiList)``;
 
-const Video = () => {
-  const [videos, setVideos] = useState<YouTubeApiResponse[]>([]);
-  const windowSize = useWindowSize();
+type Props = {
+  videos: YouTubeAPIVideo[];
+};
 
-  useEffect(() => {
-    fetch(FETCH_VIDEOS_BY_UPLOAD + process.env.NEXT_PUBLIC_GOOGLE_API_KEY)
-      .then((res) => res.json())
-      .then((res) => {
-        setVideos(res.items);
-      });
-  }, []);
+const Video = ({ videos }: Props) => {
+  const windowSize = useWindowSize();
 
   return (
     <>
@@ -54,16 +46,12 @@ const Video = () => {
         <>
           <Container maxWidth="md">
             <List>
-              {videos !== undefined
-                ? videos.map((video) => (
-                    <Grid item key={video.snippet.resourceId.videoId}>
-                      <VideoListItem
-                        key={video.snippet.resourceId.videoId}
-                        {...video}
-                      />
-                    </Grid>
-                  ))
-                : null}
+              {videos &&
+                videos.map((video) => (
+                  <Grid item key={video.id}>
+                    <VideoListItem key={video.id} {...video} />
+                  </Grid>
+                ))}
             </List>
           </Container>
         </>

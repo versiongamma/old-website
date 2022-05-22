@@ -6,10 +6,10 @@ import { Scrollbars } from "react-custom-scrollbars-2";
 import PhotoElement from "../components/PhotoElement";
 import TopNavBar from "../components/TopNavBar";
 import useWindowSize from "../hooks/useWindowSize";
-import { ImgurApiResponse } from "../types";
+import { ImgurAPIResponse } from "../types";
 
 const Photo = () => {
-  const [response, setResponse] = useState<ImgurApiResponse | undefined>();
+  const [response, setResponse] = useState<ImgurAPIResponse | undefined>();
   const windowSize = useWindowSize();
 
   useEffect(() => {

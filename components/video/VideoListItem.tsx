@@ -1,18 +1,15 @@
-import ReactPlayer from "react-player";
-import { useState } from "react";
-import Image from "next/image";
-
-import { YouTubeApiResponse } from "../../types";
+import ReadMoreIcon from "@mui/icons-material/ReadMore";
 import {
-  IconButton,
   ListItem,
-  ListItemIcon,
   ListItemButton,
+  ListItemIcon,
   ListItemText as MuiListItemText,
 } from "@mui/material";
 import { styled } from "goober";
+import Image from "next/image";
+import NextLink from "next/link";
 
-import ReadMoreIcon from "@mui/icons-material/ReadMore";
+import { YouTubeAPIVideo } from "../../types";
 
 const ListItemText = styled(MuiListItemText)`
   margin: 0 2rem;
@@ -27,36 +24,30 @@ const ListItemText = styled(MuiListItemText)`
 `;
 
 const VideoElement = ({
-  snippet: { thumbnails, title, description },
-}: YouTubeApiResponse) => {
+  snippet: {
+    thumbnails,
+    title,
+    resourceId: { videoId },
+  },
+}: YouTubeAPIVideo) => {
   return (
-    <ListItem
-      secondaryAction={
-        <IconButton edge="end">
-          <ReadMoreIcon />
-        </IconButton>
-      }
-    >
-      <ListItemButton>
-        <ListItemIcon>
-          <Image
-            src={thumbnails.medium.url}
-            alt="video"
-            width={thumbnails.medium.width / 2}
-            height={thumbnails.medium.height / 2}
-          />
-          {/* <ReactPlayer
-        url={`https://www.youtube.com/watch?v=${snippet.resourceId.videoId}`}
-        controls
-        width={600}
-        height={loaded ? 337 : 0}
-        onReady={() => {
-          setLoaded(true);
-        }}
-      /> */}
-        </ListItemIcon>
-        <ListItemText primary={title} secondary={""} />
-      </ListItemButton>
+    <ListItem>
+      <NextLink href={`/video/${videoId}`} passHref>
+        <ListItemButton>
+          <ListItemIcon>
+            <Image
+              src={thumbnails.medium.url}
+              alt="video"
+              width={thumbnails.medium.width / 2}
+              height={thumbnails.medium.height / 2}
+            />
+          </ListItemIcon>
+          <ListItemText primary={title} secondary={""} />
+          <ListItemIcon>
+            <ReadMoreIcon sx={{ color: "white" }} />
+          </ListItemIcon>
+        </ListItemButton>
+      </NextLink>
     </ListItem>
   );
 };

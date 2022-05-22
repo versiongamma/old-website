@@ -1,4 +1,4 @@
-export type ImgurApiResponse = {
+export type ImgurAPIResponse = {
   data: { title: string; link: string; images: ImgurPhoto[] };
   status: number;
   success: boolean;
@@ -12,9 +12,10 @@ export type ImgurPhoto = {
   description: string | null;
 };
 
-export type YouTubeApiResponse = {
+export type YouTubeAPIVideo = {
   id: string;
   snippet: {
+    resourceId: { videoId: string };
     title: string;
     description: string;
     thumbnails: {
@@ -23,4 +24,22 @@ export type YouTubeApiResponse = {
       high: { url: string; width: number; height: number };
     };
   };
+};
+
+export type YouTubeAPIResponse = {
+  items: YouTubeAPIVideo[];
+};
+
+export type VideoDetails = {
+  _id: string;
+  videoId: string;
+  references: {
+    description: string;
+    url: string;
+    timestamp: string;
+  }[];
+  music: {
+    name: string;
+    timestamp: string;
+  }[];
 };
