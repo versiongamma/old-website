@@ -1,53 +1,21 @@
-import {
-  Container,
-  Container as MuiContainer,
-  Grid,
-  Typography,
-} from "@material-ui/core";
-import MuiYoutubeIcon from "@mui/icons-material/YouTube";
+import { Container, Grid, List as MuiList } from "@mui/material";
 import { styled } from "goober";
 import Head from "next/head";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Scrollbars } from "react-custom-scrollbars-2";
 
 import TopNavBar from "../components/TopNavBar";
+import VideoGridItem from "../components/video/VideoGridItem";
 import useWindowSize from "../hooks/useWindowSize";
-import VideoElement from "../components/video/VideoIcon";
-import { List } from "@mui/material";
+import { YouTubeAPIVideo } from "../types";
 
-const TopContainer = styled(MuiContainer)`
-  margin-bottom: 4rem;
-  text-align: center;
-`;
+type Props = {
+  videos: YouTubeAPIVideo[];
+};
 
-const VideoContainer = styled(MuiContainer)`
-  background-color: rgba(0, 0, 0, 0.3);
-  border-radius: 10rem;
-`;
-
-const Text = styled(Typography)`
-  font-size: 1.6rem;
-`;
-
-const YouTubeIcon = styled(MuiYoutubeIcon)`
-  font-size: 64px;
-  margin-top: 1rem;
-`;
-
-const FETCH_VIDEOS_BY_VIEWS =
-  "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PUTxitBg-WrN_xTHKMbAzcIA&key=";
-
-const Video = () => {
-  const [videos, setVideos] = useState([]);
+const Video = ({ videos }: Props) => {
   const windowSize = useWindowSize();
-
-  useEffect(() => {
-    fetch(FETCH_VIDEOS_BY_VIEWS + process.env.NEXT_PUBLIC_GOOGLE_API_KEY)
-      .then((res) => res.json())
-      .then((res) => {
-        setVideos(res.items);
-      });
-  }, []);
 
   return (
     <>
@@ -55,6 +23,16 @@ const Video = () => {
         <title>Version Gamma | Video</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <Image
+        src="https://i.imgur.com/5pHkLhw.jpg"
+        layout="fill"
+        objectFit="cover"
+        objectPosition="50% 60%"
+        quality={100}
+        alt="background"
+        priority
+      />
 
       <TopNavBar section={1} />
 
@@ -64,16 +42,13 @@ const Video = () => {
         style={{ height: windowSize.height - 170 }}
       >
         <>
-          <Container maxWidth="md">
-            <List>
-              {videos !== undefined
-                ? videos.map((video, index) => (
-                    <Grid item key={index}>
-                      <VideoElement key={index} {...video} />
-                    </Grid>
-                  ))
-                : null}
-            </List>
+          <Container maxWidth="lg">
+            <Grid container justifyContent="center">
+              {videos &&
+                videos.map((video) => (
+                  <VideoGridItem key={video.id} {...video} />
+                ))}
+            </Grid>
           </Container>
         </>
       </Scrollbars>

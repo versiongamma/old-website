@@ -1,7 +1,7 @@
 import { red } from "@material-ui/core/colors";
 import { createTheme } from "@material-ui/core/styles";
 
-export const pallette = {
+export const palette = {
   primary: {
     main: "#9448e7",
   },
@@ -17,12 +17,7 @@ const typography = {
   fontFamily: "Assistant",
 };
 
-export const lightTheme = createTheme({
+export const theme = createTheme({
   typography: typography,
-  palette: pallette,
-});
-
-export const darkTheme = createTheme({
-  typography: typography,
-  palette: { ...pallette, type: "dark" },
+  palette: { ...palette, type: "dark" },
 });
