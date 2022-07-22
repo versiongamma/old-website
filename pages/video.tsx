@@ -1,24 +1,21 @@
-import { useEffect, useState } from 'react';
-import { Snackbar, Grid } from '@material-ui/core'
-import Alert from "@material-ui/lab/Alert";
+import { Container, Grid, List as MuiList } from "@mui/material";
+import { styled } from "goober";
+import Head from "next/head";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { Scrollbars } from "react-custom-scrollbars-2";
 
-import Head from 'next/head';
+import TopNavBar from "../components/TopNavBar";
+import VideoGridItem from "../components/video/VideoGridItem";
+import useWindowSize from "../hooks/useWindowSize";
+import { YouTubeAPIVideo } from "../types";
 
-import { Scrollbars } from 'react-custom-scrollbars-2'; 
+type Props = {
+  videos: YouTubeAPIVideo[];
+};
 
-import TopNavBar from "../components/TopNavBar"
-import VideoElement from './../components/VideoElement';
-import useWindowSize from '../hooks/useWindowSize';
-
-const Video = () => {
-  const [videos, setVideos] = useState([]);
+const Video = ({ videos }: Props) => {
   const windowSize = useWindowSize();
-
-  useEffect(() => {
-    fetch('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PUTxitBg-WrN_xTHKMbAzcIA&key=' + process.env.NEXT_PUBLIC_GOOGLE_API_KEY)
-      .then(res => res.json())
-      .then(res => { setVideos(res.items) });
-  }, [])
 
   return (
     <>
@@ -27,24 +24,36 @@ const Video = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <Image
+        src="https://i.imgur.com/5pHkLhw.jpg"
+        layout="fill"
+        objectFit="cover"
+        objectPosition="50% 60%"
+        quality={100}
+        alt="background"
+        priority
+      />
+
       <TopNavBar section={1} />
 
-      <Scrollbars universal autoHide style={{height: windowSize.height - 170}}>
-          <Grid container justifyContent='center' spacing={10}>
-            {videos !== undefined ? videos.map((vid, i) => (
-              <Grid item key={i}>
-                <VideoElement key={i} {...vid} />
-              </Grid>
-            )) :
-              <Snackbar open={true} autoHideDuration={6000} style={{ bottom: '5vh' }}>
-                <Alert severity='error'>Videos Failed to Load!</Alert>
-              </Snackbar>}
-          </Grid>
-
+      <Scrollbars
+        universal
+        autoHide
+        style={{ height: windowSize.height - 170 }}
+      >
+        <>
+          <Container maxWidth="lg">
+            <Grid container justifyContent="center">
+              {videos &&
+                videos.map((video) => (
+                  <VideoGridItem key={video.id} {...video} />
+                ))}
+            </Grid>
+          </Container>
+        </>
       </Scrollbars>
-
     </>
-  )
-}
+  );
+};
 
 export default Video;
