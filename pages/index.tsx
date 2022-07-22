@@ -75,10 +75,10 @@ const TextLink = styled("a")`
 const iconProps: {
   // This type declaration is done so that TS understands the
   // unionized type of fontSize, otherwise it throws errors
-  sx: { color: string };
+  sx: { color: string; margin: string };
   fontSize: "small" | "medium" | "large" | "inherit";
 } = {
-  sx: { color: "white" },
+  sx: { color: "white", margin: "0.4rem" },
   fontSize: "large",
 };
 
