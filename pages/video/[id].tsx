@@ -2,7 +2,7 @@ import {
   Container,
   Grid,
   IconButton,
-  Paper,
+  Paper as MuiPaper,
   Skeleton,
   Typography as MuiTypography,
 } from "@mui/material";
@@ -17,13 +17,60 @@ import ReactPlayer from "react-player";
 
 import TopNavBar from "../../components/TopNavBar";
 import useWindowSize from "../../hooks/useWindowSize";
-import { VideoDetails, YouTubeAPIVideo } from "../../types";
+import { VideoDetails, VideoDetailItem, YouTubeAPIVideo } from "../../types";
 import { styled } from "goober";
 
-const VideoTitle = styled(MuiTypography)`
+const VideoTitle = styled("p")`
   margin-top: 2rem;
   margin-bottom: 1rem;
+  font-size: 2.5rem;
+  text-align: center;
 `;
+
+const VideoDescription = styled("p")`
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+`;
+
+const VideoDetailsPaper = styled(MuiPaper)`
+  background-color: #303030;
+  color: white;
+  padding: 0rem 1rem;
+  height
+`;
+
+const VideoDetailsListTitle = styled("p")`
+  font-size: 2rem;
+`;
+
+const VideoDetailsListItem = styled("p")`
+  font-size: 1rem;
+  margin: 0;
+`;
+
+type VideoDetailsPaneProps = {
+  title: string;
+  data: VideoDetailItem[];
+};
+
+const VideoDetailsPane = ({ title, data }: VideoDetailsPaneProps) => {
+  return (
+    <Grid item xs={6}>
+      <VideoDetailsPaper>
+        <VideoDetailsListTitle>{title}</VideoDetailsListTitle>
+        {data.map(({ name, timestamp }, index) => {
+          return (
+            <VideoDetailsListItem key={name}>
+              <a href="">{`[${index + 1}] (${timestamp})`}</a>
+              {` - ${name}`}
+            </VideoDetailsListItem>
+          );
+        })}
+      </VideoDetailsPaper>
+    </Grid>
+  );
+};
 
 type Props = {
   videos: YouTubeAPIVideo[] | null;
@@ -85,9 +132,7 @@ const VideoDetailsPage = ({ videos }: Props) => {
             </NextLink>
             <Grid container justifyContent="center" spacing={2}>
               <Grid item xs={12}>
-                <VideoTitle variant="h4" align="center">
-                  {youtubeAPIVideoData?.snippet.title}
-                </VideoTitle>
+                <VideoTitle>{youtubeAPIVideoData?.snippet.title}</VideoTitle>
               </Grid>
               {loadingPlayer && (
                 <Skeleton variant="rectangular" width={640} height={360} />
@@ -101,21 +146,22 @@ const VideoDetailsPage = ({ videos }: Props) => {
                   setLoadingPlayer(false);
                 }}
               />
-              <Grid item xs={6}>
-                <Paper sx={{ background: "#303030" }}>
-                  {videoData?.references?.map((reference, index) => {
-                    console.log("reference", reference);
-                    return (
-                      <MuiTypography
-                        key={reference.description}
-                        sx={{ color: "white" }}
-                      >
-                        {`[${index}] - ${reference.description}`}
-                      </MuiTypography>
-                    );
-                  })}
-                </Paper>
+              <Grid item xs={12}>
+                <VideoDescription>
+                  {videoData ? videoData.description : ""}
+                </VideoDescription>
               </Grid>
+
+              {videoData?.references && (
+                <VideoDetailsPane
+                  data={videoData?.references}
+                  title="References"
+                />
+              )}
+
+              {videoData?.music && (
+                <VideoDetailsPane data={videoData?.music} title="Music" />
+              )}
             </Grid>
           </Container>
         </>

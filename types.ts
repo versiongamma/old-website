@@ -30,16 +30,16 @@ export type YouTubeAPIResponse = {
   items: YouTubeAPIVideo[];
 };
 
+export type VideoDetailItem = {
+  name: string;
+  timestamp: string;
+  link?: string;
+};
+
 export type VideoDetails = {
   _id: string;
   videoId: string;
-  references: {
-    description: string;
-    url: string;
-    timestamp: string;
-  }[];
-  music: {
-    name: string;
-    timestamp: string;
-  }[];
+  description: string;
+  references: VideoDetailItem[];
+  music: VideoDetailItem[];
 };

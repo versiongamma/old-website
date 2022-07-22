@@ -6,11 +6,9 @@ import { useEffect, useState } from "react";
 import { Scrollbars } from "react-custom-scrollbars-2";
 
 import TopNavBar from "../components/TopNavBar";
-import VideoListItem from "../components/video/VideoListItem";
+import VideoGridItem from "../components/video/VideoGridItem";
 import useWindowSize from "../hooks/useWindowSize";
 import { YouTubeAPIVideo } from "../types";
-
-const List = styled(MuiList)``;
 
 type Props = {
   videos: YouTubeAPIVideo[];
@@ -44,15 +42,13 @@ const Video = ({ videos }: Props) => {
         style={{ height: windowSize.height - 170 }}
       >
         <>
-          <Container maxWidth="md">
-            <List>
+          <Container maxWidth="lg">
+            <Grid container justifyContent="center">
               {videos &&
                 videos.map((video) => (
-                  <Grid item key={video.id}>
-                    <VideoListItem key={video.id} {...video} />
-                  </Grid>
+                  <VideoGridItem key={video.id} {...video} />
                 ))}
-            </List>
+            </Grid>
           </Container>
         </>
       </Scrollbars>
