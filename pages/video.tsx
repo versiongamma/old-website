@@ -1,26 +1,21 @@
-import { Grid } from "@material-ui/core";
+import { Container, Grid, List as MuiList } from "@mui/material";
+import { styled } from "goober";
 import Head from "next/head";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Scrollbars } from "react-custom-scrollbars-2";
 
 import TopNavBar from "../components/TopNavBar";
+import VideoGridItem from "../components/video/VideoGridItem";
 import useWindowSize from "../hooks/useWindowSize";
-import VideoElement from "./../components/VideoElement";
+import { YouTubeAPIVideo } from "../types";
 
-const Video = () => {
-  const [videos, setVideos] = useState([]);
+type Props = {
+  videos: YouTubeAPIVideo[];
+};
+
+const Video = ({ videos }: Props) => {
   const windowSize = useWindowSize();
-
-  useEffect(() => {
-    fetch(
-      "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PUTxitBg-WrN_xTHKMbAzcIA&key=" +
-        process.env.NEXT_PUBLIC_GOOGLE_API_KEY
-    )
-      .then((res) => res.json())
-      .then((res) => {
-        setVideos(res.items);
-      });
-  }, []);
 
   return (
     <>
@@ -29,6 +24,16 @@ const Video = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <Image
+        src="https://i.imgur.com/5pHkLhw.jpg"
+        layout="fill"
+        objectFit="cover"
+        objectPosition="50% 60%"
+        quality={100}
+        alt="background"
+        priority
+      />
+
       <TopNavBar section={1} />
 
       <Scrollbars
@@ -36,15 +41,16 @@ const Video = () => {
         autoHide
         style={{ height: windowSize.height - 170 }}
       >
-        <Grid container justifyContent="center" spacing={10}>
-          {videos !== undefined
-            ? videos.map((vid, i) => (
-                <Grid item key={i}>
-                  <VideoElement key={i} {...vid} />
-                </Grid>
-              ))
-            : null}
-        </Grid>
+        <>
+          <Container maxWidth="lg">
+            <Grid container justifyContent="center">
+              {videos &&
+                videos.map((video) => (
+                  <VideoGridItem key={video.id} {...video} />
+                ))}
+            </Grid>
+          </Container>
+        </>
       </Scrollbars>
     </>
   );

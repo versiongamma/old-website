@@ -1,4 +1,4 @@
 module.exports = {
   reactStrictMode: true,
-  images: {domains: ['i.imgur.com']}
-}
+  images: { domains: ["i.imgur.com", "i.ytimg.com"] },
+};
