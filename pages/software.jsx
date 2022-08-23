@@ -2,10 +2,11 @@ import { Grid, Box, Typography } from '@material-ui/core';
 import { useState, useEffect } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars-2';
 
-import Head from 'next/head'
+import Head from 'next/head';
+import Image from 'next/image';
 
 import Repo from './../components/Repo';
-import TopNavBar from "../components/TopNavBar";
+import TopNavBar from "../components/topnavbar";
 import useWindowSize from "../hooks/useWindowSize";
 
 const Software = () => {
@@ -26,7 +27,19 @@ const Software = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <TopNavBar section={2} />
+      <TopNavBar section={2} background hide/>
+
+      <Image
+        src="https://i.imgur.com/gAT8u7V.jpg"
+        layout="fill"
+        objectFit="cover"
+        objectPosition="50% 60%"
+        quality={100}
+        alt="background"
+        priority
+      />
+
+      <Typography variant="h1" style={{ textAlign: "center", marginTop: "20%", fontFamily: "Josefin Sans", position: "relative", zIndex: 999 }}>Coming Soon...</Typography>
 
       {/* <Scrollbars universal autoHide style={{ height: windowSize.height - 170 }}>
         <Box
@@ -48,10 +61,6 @@ const Software = () => {
           </Grid>
         </Box>
       </Scrollbars> */}
-
-      <Box>
-        <Typography variant="h1" style={{ textAlign: "center", paddingTop: "20%", fontFamily: "Josefin Sans" }}>Coming Soon...</Typography>
-      </Box>
     </>
   );
 }

@@ -2,9 +2,10 @@ import { Grid } from "@material-ui/core";
 import Head from "next/head";
 import React, { useEffect, useState } from "react";
 import { Scrollbars } from "react-custom-scrollbars-2";
+import Image from "next/image";
 
 import PhotoElement from "../components/PhotoElement";
-import TopNavBar from "../components/TopNavBar";
+import TopNavBar from "../components/topnavbar";
 import useWindowSize from "../hooks/useWindowSize";
 import { ImgurAPIResponse } from "../types";
 
@@ -32,7 +33,17 @@ const Photo = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <TopNavBar section={3} />
+      <TopNavBar section={4} background hide />
+
+      <Image
+        src="https://i.imgur.com/gAT8u7V.jpg"
+        layout="fill"
+        objectFit="cover"
+        objectPosition="50% 60%"
+        quality={100}
+        alt="background"
+        priority
+      />
 
       <Scrollbars
         universal

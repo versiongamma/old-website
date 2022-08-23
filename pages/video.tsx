@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Scrollbars } from "react-custom-scrollbars-2";
 
-import TopNavBar from "../components/TopNavBar";
+import TopNavBar from "../components/topnavbar";
 import VideoGridItem from "../components/video/VideoGridItem";
 import useWindowSize from "../hooks/useWindowSize";
 import { YouTubeAPIVideo } from "../types";
@@ -25,7 +25,7 @@ const Video = ({ videos }: Props) => {
       </Head>
 
       <Image
-        src="https://i.imgur.com/5pHkLhw.jpg"
+        src="https://i.imgur.com/gAT8u7V.jpg"
         layout="fill"
         objectFit="cover"
         objectPosition="50% 60%"
@@ -34,7 +34,7 @@ const Video = ({ videos }: Props) => {
         priority
       />
 
-      <TopNavBar section={1} />
+      <TopNavBar section={1} background />
 
       <Scrollbars
         universal

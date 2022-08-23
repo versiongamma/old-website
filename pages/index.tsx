@@ -9,7 +9,7 @@ import Head from "next/head";
 import Image from "next/image";
 import React from "react";
 
-import TopNavBar from "../components/TopNavBar";
+import TopNavBar from "../components/topnavbar";
 import PatreonIcon from "../icons/Patreon";
 
 const Main = styled(Container)`

@@ -15,7 +15,7 @@ import { useEffect, useState } from "react";
 import { Scrollbars } from "react-custom-scrollbars-2";
 import ReactPlayer from "react-player";
 
-import TopNavBar from "../../components/TopNavBar";
+import TopNavBar from "../../components/topnavbar";
 import useWindowSize from "../../hooks/useWindowSize";
 import { VideoDetails, VideoDetailItem, YouTubeAPIVideo } from "../../types";
 import { styled } from "goober";
@@ -127,7 +127,7 @@ const VideoDetailsPage = ({ videos }: Props) => {
           <Container maxWidth="md">
             <NextLink href={"/video"} passHref>
               <IconButton>
-                <ArrowBackIcon fontSize="large" />
+                <ArrowBackIcon fontSize="large" style={{ color: "white" }} />
               </IconButton>
             </NextLink>
             <Grid container justifyContent="center" spacing={2}>
