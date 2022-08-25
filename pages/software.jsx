@@ -5,7 +5,7 @@ import { Scrollbars } from 'react-custom-scrollbars-2';
 import Head from 'next/head'
 
 import Repo from './../components/Repo';
-import TopNavBar from "../components/TopNavBar";
+import TopNavBar from "../ui/src/components/banner";
 import useWindowSize from "../hooks/useWindowSize";
 
 const Software = () => {

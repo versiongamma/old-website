@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Scrollbars } from "react-custom-scrollbars-2";
 
 import PhotoElement from "../components/PhotoElement";
-import TopNavBar from "../components/TopNavBar";
+import TopNavBar from "../ui/src/components/banner";
 import useWindowSize from "../hooks/useWindowSize";
 import { ImgurAPIResponse } from "../types";
 
