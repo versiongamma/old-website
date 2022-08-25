@@ -2,7 +2,7 @@ import { CssBaseline, ThemeProvider } from "@material-ui/core";
 import { theme } from "../themes/themes";
 import { setup } from "goober";
 import Head from "next/head";
-import type AppProps from "next/app";
+import type { AppProps } from "next/app";
 import { createElement, useState, useMemo } from "react";
 
 import { YouTubeAPIVideo } from "../types";
