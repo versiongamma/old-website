@@ -1,10 +1,10 @@
 export type ImgurAPIResponse = {
-  data: { title: string; link: string; images: ImgurPhoto[] };
+  data: { title: string; link: string; images: ImgurAPIPhoto[] };
   status: number;
   success: boolean;
 };
 
-export type ImgurPhoto = {
+export type ImgurAPIPhoto = {
   id: number;
   link: string;
   width: number;
@@ -30,16 +30,16 @@ export type YouTubeAPIResponse = {
   items: YouTubeAPIVideo[];
 };
 
-export type VideoDetailItem = {
+export type YouTubeAPIVideoDetailItem = {
   name: string;
   timestamp: string;
   link?: string;
 };
 
-export type VideoDetails = {
+export type YouTubeAPIVideoDetails = {
   _id: string;
   videoId: string;
   description: string;
-  references: VideoDetailItem[];
-  music: VideoDetailItem[];
+  references: YouTubeAPIVideoDetailItem[];
+  music: YouTubeAPIVideoDetailItem[];
 };

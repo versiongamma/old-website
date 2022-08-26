@@ -1,19 +1,17 @@
-import { Fade } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import YouTubeIcon from "@mui/icons-material/YouTube";
-import { Hidden, IconButton, Typography } from "@mui/material";
+import { Fade, IconButton, Typography } from "@mui/material";
 import { styled } from "goober";
-import React from "react";
-
-import Banner from "../components/banner";
+import React, { useMemo, useState } from "react";
+import { usePageData } from "../hooks/use-page-data";
 import PatreonIcon from "../icons/Patreon";
 
 const Main = styled("div")`
   text-align: center;
   position: absolute;
-  top: 42%;
+  top: 33%;
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 900px;
@@ -81,15 +79,11 @@ const iconProps: {
   fontSize: "large",
 };
 
-type Props = {
-  subs: number;
-};
-
-const Home = ({ subs }: Props) => {
-  //const windowSize = useWindowSize();
+const Home = () => {
+  const { subs } = usePageData();
 
   return (
-    <Fade in={subs > 0}>
+    <Fade in={!!subs}>
       <div>
         <Main>
           <AboutTextHeader variant="h1">Who... am I?</AboutTextHeader>

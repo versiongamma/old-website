@@ -1,13 +1,5 @@
 import { Container, Grid, Typography } from "@mui/material";
-import { useState } from "react";
-import { Scrollbars } from "react-custom-scrollbars-2";
 import { styled } from "goober";
-
-import Head from "next/head";
-import Image from "next/image";
-
-import Banner from "../components/banner";
-import useWindowSize from "../hooks/useWindowSize";
 
 const GameContainer = styled("div")`
   display: flex;
@@ -37,9 +29,6 @@ const TextLink = styled("a")`
 `;
 
 const Games = () => {
-  const [repos, setRepos] = useState();
-  const windowSize = useWindowSize();
-
   return (
     <>
       <Container maxWidth="lg" style={{ marginTop: 40, marginBottom: 50 }}>

@@ -1,7 +1,6 @@
-import { Button } from "@mui/material";
 import { styled } from "goober";
-import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import React from "react";
+import { Link, LinkProps, useLocation } from "react-router-dom";
 
 type NavBarContainerProps = {
   $background: boolean;
@@ -25,16 +24,25 @@ const ContentsContainer = styled("div")`
   align-items: center;
 `;
 
-const LinksContainer = styled("div")`
+type LinkButtonProps = {
+  $outline: boolean;
+} & LinkProps;
+
+const LinkButton = styled<LinkButtonProps>(Link as any)`
   && {
-    a {
-      margin: 10px;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 0.8rem;
+    margin: 0.6rem;
+    border-radius: 0.5rem;
+    border: ${({ $outline }) => ($outline ? "1px" : 0)} solid white;
+    transition: background-color 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
     }
   }
-`;
-
-const Link = styled(Button)`
-  font-size: 20px;
 `;
 type Props = {
   pages: {
@@ -58,17 +66,16 @@ const Banner = ({ pages, background }: Props) => {
           height={104}
         />
 
-        <LinksContainer>
+        <div>
           {pages.map((page) => (
-            <Link
-              href={page.href}
-              variant={page.href === pathname ? "outlined" : "text"}
-              color="inherit"
+            <LinkButton
+              to={page.href}
+              $outline={pathname.split("/")[1] === page.href.split("/")[1]}
             >
               {page.name}
-            </Link>
+            </LinkButton>
           ))}
-        </LinksContainer>
+        </div>
       </ContentsContainer>
     </BannerContainer>
   );

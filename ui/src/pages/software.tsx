@@ -1,8 +1,5 @@
 import { Typography } from "@mui/material";
 
-import TopNavBar from "../components/banner";
-import useWindowSize from "../hooks/useWindowSize";
-
 const Software = () => {
   return (
     <>

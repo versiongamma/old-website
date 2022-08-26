@@ -1,13 +1,13 @@
 import React from "react";
 
-import { ImgurPhoto } from "../types";
+import { ImgurAPIPhoto } from "../types";
 
 const ImgurPhotoComponent = ({
   link,
   description,
   width,
   height,
-}: ImgurPhoto) => {
+}: ImgurAPIPhoto) => {
   return (
     <>
       <img

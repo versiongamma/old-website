@@ -1,21 +1,26 @@
-import ReadMoreIcon from "@mui/icons-material/ReadMore";
 import {
   Button as MuiButton,
   ButtonProps as MuiButtonProps,
 } from "@mui/material";
 import { styled } from "goober";
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { YouTubeAPIVideo } from "../types";
 
 type VideoThumbnailButtonProps = {
   $width: number;
+  $height: number;
 } & MuiButtonProps;
 
 const VideoThumbnailButton = styled<VideoThumbnailButtonProps>(MuiButton)`
   && {
     flex-direction: column;
-    width: ${({ $width }) => $width}px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: ${({ $width }) => $width + 20}px;
+    height: ${({ $height }) => $height + 50}px;
+    margin: 0.4rem;
 
     span {
       overflow-wrap: break-word;
@@ -37,8 +42,11 @@ const VideoThumbnail = ({
   },
 }: YouTubeAPIVideo) => {
   return (
-    <a href={`/video/${videoId}`}>
-      <VideoThumbnailButton $width={thumbnails.medium.width}>
+    <Link to={`/videos/${videoId}`}>
+      <VideoThumbnailButton
+        $width={thumbnails.medium.width}
+        $height={thumbnails.medium.height}
+      >
         <img
           src={thumbnails.medium.url}
           alt="video"
@@ -47,7 +55,7 @@ const VideoThumbnail = ({
         />
         <span style={{ marginTop: "0.2rem" }}>{title}</span>
       </VideoThumbnailButton>
-    </a>
+    </Link>
   );
 };
 
