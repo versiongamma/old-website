@@ -81,7 +81,7 @@ const Games = () => {
                   <DetailsContainer>
                     <Typography variant="h4">Redacted</Typography>
                     <Text>
-                      - NavMesh
+                      - NavMesh s
                     </Text>
                     <TextLink href="">Source Code</TextLink>
                   </DetailsContainer>
