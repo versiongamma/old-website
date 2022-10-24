@@ -1,65 +1,32 @@
-import { Fade } from "@material-ui/core";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import YouTubeIcon from "@mui/icons-material/YouTube";
-import { Container, Hidden, IconButton, Typography } from "@mui/material";
+/* eslint-disable @next/next/no-img-element */
+import { Container } from "@mui/material";
+import { Grid, Box, Typography, StylesProvider } from "@material-ui/core";
+import { useState, useEffect } from "react";
+import { Scrollbars } from "react-custom-scrollbars-2";
 import { styled } from "goober";
+
 import Head from "next/head";
 import Image from "next/image";
-import React from "react";
 
 import TopNavBar from "../components/topnavbar";
-import PatreonIcon from "../icons/Patreon";
+import useWindowSize from "../hooks/useWindowSize";
 
-const Main = styled(Container)`
-  text-align: center;
-  position: absolute;
-  top: 42%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+const GameContainer = styled("div")`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
-const Footer = styled("div")`
-  text-align: center;
-  position: absolute;
-  bottom: 0%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  background-color: rgba(0, 0, 0, 0.4);
-  border-radius: 50px;
-  padding: 0 10px;
-
-  && {
-    margin: 1rem;
-  }
+const DetailsContainer = styled("div")`
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
 `;
 
-const AboutTextHeader = styled(Typography)`
-  font-size: 6em;
-  color: white;
-
-  @media (max-width: 900px) {
-    font-size: 4em !important;
-  }
-
-  @media (max-width: 600px) {
-    font-size: 3em !important;
-  }
-`;
-
-const AboutText = styled(Typography)`
-  font-size: 1.7em !important;
-  color: white;
-
-  @media (max-width: 900px) {
-    font-size: 1.4em !important;
-  }
-
-  @media (max-width: 600px) {
-    font-size: 1em !important;
-  }
+const Text = styled("p")`
+  font-size: 0.8rem;
+  word-wrap: break-word;
+  margin: 0.2rem 0;
 `;
 
 const TextLink = styled("a")`
@@ -72,32 +39,26 @@ const TextLink = styled("a")`
   }
 `;
 
-const iconProps: {
-  // This type declaration is done so that TS understands the
-  // unionized type of fontSize, otherwise it throws errors
-  sx: { color: string; margin: string };
-  fontSize: "small" | "medium" | "large" | "inherit";
-} = {
-  sx: { color: "white", margin: "0.4rem" },
-  fontSize: "large",
-};
+const Games = () => {
+  const windowSize = useWindowSize();
 
-type Props = {
-  subs: number;
-};
-
-const Home = ({ subs }: Props) => {
-  //const windowSize = useWindowSize();
+  // useEffect(() => {
+  //   fetch('https://gh-pinned-repos-5l2i19um3.vercel.app/?username=versiongamma')
+  //     .then(res => res.json())
+  //     .then(json => { setRepos(json) });
+  // }, []);
 
   return (
     <>
       <Head>
-        <title>Version Gamma</title>
+        <title>Version Gamma | Game Development</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <TopNavBar section={3} background hide />
+
       <Image
-        src="https://i.imgur.com/n3NaCpH.jpg"
+        src="https://i.imgur.com/gAT8u7V.jpg"
         layout="fill"
         objectFit="cover"
         objectPosition="50% 60%"
@@ -106,70 +67,139 @@ const Home = ({ subs }: Props) => {
         priority
       />
 
-      <Hidden mdDown>
-        <TopNavBar section={0} />
-      </Hidden>
+      <Scrollbars
+        universal
+        autoHide
+        style={{ height: windowSize.height - 170 }}
+      >
+        <>
+          <Container maxWidth="lg" style={{ marginTop: 40, marginBottom: 50 }}>
+            <Grid container justifyContent="center" spacing={3}>
 
-      <Fade in={subs > 0}>
-        <div>
-          <Main maxWidth="md">
-            <AboutTextHeader variant="h1">Who... am I?</AboutTextHeader>
-            <br />
-            <br />
-            <AboutText>
-              That is an excellent question. Many things, is probably the best
-              answer to that, but the simplest is probably "maker of stuff".
-              <br />
-              <br />I make videos for the YouTube channel{" "}
-              <TextLink href="https://youtube.com/c/versiongamma">
-                Version Gamma
-              </TextLink>
-              , where I talk about games, game design, and really anything I
-              find interesting. It's a fun time, I wouldn't recommend it, but
-              apparently
-              {" " +
-                (subs ?? "some")
-                  .toString()
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
-              people would, so there's that.
-              <br />
-              <br />
-              I'm also a Software Engineer, an appreciator of photography,
-              pretending that I know how to design games, and an idiot, but I
-              know you don't care about that. Except maybe that last one.
-            </AboutText>
-          </Main>
-          <Footer>
-            <IconButton
-              onClick={() => window.open("https://youtube.com/c/versiongamma")}
-            >
-              <YouTubeIcon {...iconProps} />
-            </IconButton>
-            <IconButton
-              onClick={() => window.open("https://instagram.com/variantgamma")}
-            >
-              <InstagramIcon {...iconProps} />
-            </IconButton>
-            <IconButton
-              onClick={() => window.open("https://twitter.com/versiongamma")}
-            >
-              <TwitterIcon {...iconProps} />
-            </IconButton>
-            <IconButton
-              onClick={() => window.open("https://github.com/versiongamma")}
-            >
-              <GitHubIcon {...iconProps} />
-            </IconButton>
-            <IconButton
-              onClick={() => window.open("https://patreon.com/versiongamma")}
-            >
-              <PatreonIcon {...iconProps} />
-            </IconButton>
-          </Footer>
-        </div>
-      </Fade>
+            <Grid item xs={12}>
+                <GameContainer>
+                  <DetailsContainer>
+                    <Typography variant="h4">Redacted</Typography>
+                    <Text>
+                      - NavMesh
+                    </Text>
+                    <TextLink href="">Source Code</TextLink>
+                  </DetailsContainer>
+                  <img
+                    src="img/balls.webp"
+                    alt=""
+                    width={600}
+                    style={{
+                      clipPath: "inset(0 14% 0% 13%)",
+                      marginRight: -90,
+                    }}
+                  />
+                </GameContainer>
+              </Grid>
+
+            <Grid item xs={12}>
+                <GameContainer>
+                  <DetailsContainer>
+                    <Typography variant="h4">Horde</Typography>
+                    <Text>Horde (or HORDE) was the first complete game project I created in the C++ engine. A 2D, horde based shooter (wow)
+                      where you use a variety of weapons to fight through rounds of enemies. This game includes rudimentary pathfinding using a
+                      graph system for the enemies, UI
+                    </Text>
+                    <TextLink href="">Source Code</TextLink>
+                  </DetailsContainer>
+                  <img
+                    src="img/balls.webp"
+                    alt=""
+                    width={600}
+                    style={{
+                      clipPath: "inset(0 14% 0% 13%)",
+                      marginRight: -90,
+                    }}
+                  />
+                </GameContainer>
+              </Grid>
+
+            <Grid item xs={12}>
+                <GameContainer>
+                  <DetailsContainer>
+                    <Typography variant="h4">Asteroids Clone</Typography>
+                    <Text>Although this Asteroids Clone was never fully completed, creating it meant implementing a bunch of
+                      features into the C++ engine that would later be very useful. I integrated the framework FMOD for sound,
+                      added a lot of debugging features including viewing the currently loaded textures, log trails and entity tracking,
+                      and added (and then later revised) a method for storing, processing and drawing entities in the scene.
+                    </Text>
+                    <TextLink href="">Source Code</TextLink>
+                  </DetailsContainer>
+                  <img
+                    src="img/asteroidsv2.webp"
+                    alt=""
+                    width={600}
+                    style={{
+                      clipPath: "inset(0 14%)",
+                      marginRight: -90,
+                    }}
+                  />
+                </GameContainer>
+              </Grid>
+
+              <Grid item xs={12}>
+                <GameContainer>
+                  <DetailsContainer>
+                    <Typography variant="h4">Pseudo Bullet Hell</Typography>
+                    <Text>This project was the beginning of me using my C++ engine, utilising the XInput API as it was build into SDL,
+                      adding debug windows with the IMGUI framework, and creating actual game logic, including scoring, lives, and
+                      spawning and despawning objects.
+                    </Text>
+                    <TextLink href="">Source Code</TextLink>
+                  </DetailsContainer>
+                  <img
+                    src="img/ballgame.webp"
+                    alt=""
+                    width={600}
+                    style={{
+                      clipPath: "inset(0 14% 0% 13%)",
+                      marginRight: -90,
+                    }}
+                  />
+                </GameContainer>
+              </Grid>
+
+              <Grid item xs={12}>
+                <GameContainer>
+                  <DetailsContainer>
+                    <Typography variant="h4">Game Engine V0.1</Typography>
+                    <Text>This project was the beginnings of my C++ Game Development. Although basic, this engine was the building block for
+                      my future projects, implementing rendering with OpenGL, window management with SDL, and was setup for the basics of game
+                      logic, creating init, process and draw states. To demo this engine, a simple scene of bouncing balls was created.
+                    </Text>
+                    <TextLink href="">Source Code</TextLink>
+                  </DetailsContainer>
+                  <img
+                    src="img/balls.webp"
+                    alt=""
+                    width={600}
+                    style={{
+                      clipPath: "inset(0 14% 0% 13%)",
+                      marginRight: -90,
+                    }}
+                  />
+                </GameContainer>
+              </Grid>
+
+              <DetailsContainer>
+                <Typography variant="h3">References</Typography>
+
+                <Text>https://www.fmod.com/docs/2.02/api/core-guide.html</Text>
+                <Text>https://wiki.libsdl.org/</Text>
+                <Text>https://glew.sourceforge.net/</Text>
+                <Text>https://github.com/ilyanikolaevsky/navmesh</Text>
+              </DetailsContainer>
+            </Grid>
+          </Container>
+        </>
+      </Scrollbars>
     </>
   );
 };
 
-export default React.memo(Home);
+export default Games;

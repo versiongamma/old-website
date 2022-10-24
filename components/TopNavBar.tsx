@@ -69,7 +69,7 @@ const TopNavBar = ({ section, background, hide }: Props) => {
         </NextLink>
         <LinksContainer>
           {pages.map((page, index) => {
-            if (hide && (index === 0 || index == 1)) return;
+            if (hide && (index === 0 || index === 1 || index === 2 || index === 4)) return;
             return (
               <NextLink href={page.href} key={page.name} passHref>
                 <Link
