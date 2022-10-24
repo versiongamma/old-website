@@ -6,7 +6,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 
 import Repo from './../components/Repo';
-import TopNavBar from "../components/topnavbar";
+import TopNavBar from "../components/TopNavBar";
 import useWindowSize from "../hooks/useWindowSize";
 
 const Software = () => {

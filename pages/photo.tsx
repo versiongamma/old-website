@@ -5,7 +5,7 @@ import { Scrollbars } from "react-custom-scrollbars-2";
 import Image from "next/image";
 
 import PhotoElement from "../components/PhotoElement";
-import TopNavBar from "../components/topnavbar";
+import TopNavBar from "../components/TopNavBar";
 import useWindowSize from "../hooks/useWindowSize";
 import { ImgurAPIResponse } from "../types";
 

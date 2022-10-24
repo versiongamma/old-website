@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Scrollbars } from "react-custom-scrollbars-2";
 
-import TopNavBar from "../components/topnavbar";
+import TopNavBar from "../components/TopNavBar";
 import VideoGridItem from "../components/video/VideoGridItem";
 import useWindowSize from "../hooks/useWindowSize";
 import { YouTubeAPIVideo } from "../types";
