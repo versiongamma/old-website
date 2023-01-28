@@ -7,8 +7,9 @@ const Software = () => {
         variant="h1"
         style={{
           textAlign: "center",
-          paddingTop: "15%",
+          paddingTop: "20%",
           fontFamily: "Josefin Sans",
+          color: "white",
         }}
       >
         Coming Soon...

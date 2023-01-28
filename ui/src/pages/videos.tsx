@@ -1,9 +1,6 @@
 import { styled } from "goober";
-import { useMemo, useState } from "react";
-
 import VideoThumbnail from "../components/video-thumbnail";
 import { usePageData } from "../hooks/use-page-data";
-import { YouTubeAPIVideo } from "../types";
 
 const Main = styled("div")`
   display: flex;
@@ -20,8 +17,8 @@ const VideosContainer = styled("div")`
     flex-grow: 1;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-around;
-    max-width: 1200px;
+    justify-content: safe center;
+    margin: 0 5rem;
   }
 `;
 

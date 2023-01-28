@@ -5,7 +5,7 @@ import {
 import { styled } from "goober";
 import React from "react";
 import { Link } from "react-router-dom";
-
+import theme from "../themes/theme";
 import { YouTubeAPIVideo } from "../types";
 
 type VideoThumbnailButtonProps = {
@@ -13,20 +13,31 @@ type VideoThumbnailButtonProps = {
   $height: number;
 } & MuiButtonProps;
 
-const VideoThumbnailButton = styled<VideoThumbnailButtonProps>(MuiButton)`
+const VideoThumbnailButton = styled<VideoThumbnailButtonProps>((props) => (
+  // TODO: Figure out why the transient props don't work for mui
+  <MuiButton
+    {...(Object.fromEntries(
+      Object.entries(props).filter(([key]) => key[0] !== "$")
+    ) as any)}
+  />
+))`
   && {
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    width: ${({ $width }) => $width + 20}px;
-    height: ${({ $height }) => $height + 50}px;
+    width: ${({ $width }) => $width + 35}px;
     margin: 0.4rem;
+    padding: 1rem;
+
+    &:hover {
+      background-color: ${theme.button.hover};
+    }
 
     span {
       overflow-wrap: break-word;
       text-transform: none;
       text-align: left;
-      color: #fff;
+      color: white;
       font-family: Josefin Sans;
       font-size: 1rem;
       line-height: 1.2rem;

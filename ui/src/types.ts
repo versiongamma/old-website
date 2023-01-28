@@ -43,3 +43,10 @@ export type YouTubeAPIVideoDetails = {
   references: YouTubeAPIVideoDetailItem[];
   music: YouTubeAPIVideoDetailItem[];
 };
+
+export type PageData = {
+  name: string;
+  href: string;
+  backgroundImage: string;
+  component: (props: { pageData: PageData }) => JSX.Element | null;
+};

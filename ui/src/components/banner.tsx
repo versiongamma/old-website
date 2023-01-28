@@ -1,6 +1,7 @@
 import { styled } from "goober";
 import React from "react";
 import { Link, LinkProps, useLocation } from "react-router-dom";
+import { PageData } from "../types";
 
 type NavBarContainerProps = {
   $background: boolean;
@@ -28,9 +29,19 @@ type LinkButtonProps = {
   $outline: boolean;
 } & LinkProps;
 
-const LinkButton = styled<LinkButtonProps>(Link as any)`
+const LinkButton = styled<LinkButtonProps>((props) => (
+  <Link
+    // Yes this sucks, but styled components doesn't like
+    // transient props of the link component due to it having to
+    // be typecast to any, so we have to manually filter them out
+    {...(Object.fromEntries(
+      Object.entries(props).filter(([key]) => key[0] !== "$")
+    ) as any)}
+  />
+))`
   && {
     color: white;
+    font-size: 0.8vw;
     text-decoration: none;
     text-transform: uppercase;
     padding: 0.8rem;
@@ -44,12 +55,9 @@ const LinkButton = styled<LinkButtonProps>(Link as any)`
     }
   }
 `;
+
 type Props = {
-  pages: {
-    name: string;
-    href: string;
-    element: JSX.Element;
-  }[];
+  pages: PageData[];
   background?: boolean;
 };
 
@@ -69,6 +77,7 @@ const Banner = ({ pages, background }: Props) => {
         <div>
           {pages.map((page) => (
             <LinkButton
+              key={page.name}
               to={page.href}
               $outline={pathname.split("/")[1] === page.href.split("/")[1]}
             >

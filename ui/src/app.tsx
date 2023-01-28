@@ -3,7 +3,6 @@ import Scrollbars from "react-custom-scrollbars-2";
 import { Route, Routes, useLocation } from "react-router-dom";
 
 import Banner from "./components/banner";
-import { usePageData } from "./hooks/use-page-data";
 import useWindowSize from "./hooks/use-window-size";
 import Games from "./pages/games";
 import Home from "./pages/home";
@@ -11,7 +10,8 @@ import Photo from "./pages/photos";
 import Software from "./pages/software";
 import Video from "./pages/video-details";
 import Videos from "./pages/videos";
-import { theme } from "./themes/themes";
+import { theme } from "./themes/mui-theme";
+import { PageData } from "./types";
 
 const DEFAULT_BACKGROUND_IMAGE = "https://i.imgur.com/5pHkLhw.jpg";
 const HOME_BACKGROUND_IMAGE = "https://i.imgur.com/n3NaCpH.jpg";
@@ -19,36 +19,36 @@ const HOME_BACKGROUND_IMAGE = "https://i.imgur.com/n3NaCpH.jpg";
 const App = () => {
   const [windowSize] = useWindowSize();
 
-  const pages = [
+  const pages: PageData[] = [
     {
       name: "About",
       href: "/",
       backgroundImage: HOME_BACKGROUND_IMAGE,
-      element: <Home />,
+      component: Home,
     },
     {
       name: "YouTube",
       href: "/videos",
       backgroundImage: DEFAULT_BACKGROUND_IMAGE,
-      element: <Videos />,
+      component: Videos,
     },
     {
       name: "Software",
       href: "/software",
       backgroundImage: DEFAULT_BACKGROUND_IMAGE,
-      element: <Software />,
+      component: Software,
     },
     {
       name: "Game Development",
       href: "/games",
       backgroundImage: DEFAULT_BACKGROUND_IMAGE,
-      element: <Games />,
+      component: Games,
     },
     {
       name: "Photos",
       href: "/photos",
       backgroundImage: DEFAULT_BACKGROUND_IMAGE,
-      element: <Photo />,
+      component: Photo,
     },
   ];
 
@@ -70,7 +70,7 @@ const App = () => {
             backgroundPosition: "center center",
           }}
         >
-          <Banner pages={pages} background />
+          <Banner pages={pages} background={pathname === "/"} />
 
           <Scrollbars
             universal
@@ -79,7 +79,11 @@ const App = () => {
           >
             <Routes>
               {pages.map((page) => (
-                <Route path={page.href} element={page.element} />
+                <Route
+                  key={page.name}
+                  path={page.href}
+                  element={<page.component pageData={page} />}
+                />
               ))}
               <Route path="/videos/:id" element={<Video />} />
             </Routes>

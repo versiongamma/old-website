@@ -2,19 +2,21 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import YouTubeIcon from "@mui/icons-material/YouTube";
-import { Fade, IconButton, Typography } from "@mui/material";
+import { Fade, IconButton } from "@mui/material";
 import { styled } from "goober";
-import React, { useMemo, useState } from "react";
+import React from "react";
+
 import { usePageData } from "../hooks/use-page-data";
 import PatreonIcon from "../icons/Patreon";
+import theme from "../themes/theme";
 
 const Main = styled("div")`
   text-align: center;
   position: absolute;
-  top: 33%;
+  top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 900px;
+  max-width: 50vw;
 `;
 
 const Footer = styled("div")`
@@ -33,34 +35,22 @@ const Footer = styled("div")`
   }
 `;
 
-const AboutTextHeader = styled(Typography)`
-  font-size: 6em;
+const AboutTextHeader = styled("p")`
+  font-size: 5vw;
   color: white;
-
-  @media (max-width: 900px) {
-    font-size: 4em !important;
-  }
-
-  @media (max-width: 600px) {
-    font-size: 3em !important;
-  }
+  margin: 0;
+  padding: 0;
 `;
 
-const AboutText = styled(Typography)`
-  font-size: 1.7em !important;
+const AboutText = styled("p")`
+  font-size: 1.3vw;
   color: white;
-
-  @media (max-width: 900px) {
-    font-size: 1.4em !important;
-  }
-
-  @media (max-width: 600px) {
-    font-size: 1em !important;
-  }
+  margin: 0;
+  padding: 0;
 `;
 
 const TextLink = styled("a")`
-  color: #c79bf7;
+  color: ${theme.text.link};
   text-decoration: none;
   transition: filter 0.2s;
 
@@ -86,7 +76,7 @@ const Home = () => {
     <Fade in={!!subs}>
       <div>
         <Main>
-          <AboutTextHeader variant="h1">Who... am I?</AboutTextHeader>
+          <AboutTextHeader>Who... am I?</AboutTextHeader>
           <br />
           <br />
           <AboutText>
