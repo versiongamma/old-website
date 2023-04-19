@@ -13,7 +13,7 @@ const ImgurPhotoComponent = ({
       <img
         className="image"
         src={link.replace(".jpg", "l.jpg")}
-        alt={description ?? "no description"}
+        alt={description ?? ""}
         width={500}
         height={(500 * height) / width}
       />
