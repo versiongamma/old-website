@@ -1,6 +1,6 @@
 import { styled } from "goober";
 import VideoThumbnail from "../components/video-thumbnail";
-import { usePageData } from "../hooks/use-page-data";
+import { usePageData } from "../utils/use-page-data";
 
 const Main = styled("div")`
   display: flex;
@@ -24,6 +24,7 @@ const VideosContainer = styled("div")`
 
 const Videos = () => {
   const { videos } = usePageData();
+  console.log(videos);
   return (
     <Main>
       <VideosContainer>

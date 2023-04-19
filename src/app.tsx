@@ -3,12 +3,10 @@ import Scrollbars from "react-custom-scrollbars-2";
 import { Route, Routes, useLocation } from "react-router-dom";
 
 import Banner from "./components/banner";
-import useWindowSize from "./hooks/use-window-size";
+import useWindowSize from "./utils/use-window-size";
 import Games from "./pages/games";
 import Home from "./pages/home";
 import Photo from "./pages/photos";
-import Software from "./pages/software";
-import Video from "./pages/video-details";
 import Videos from "./pages/videos";
 import { theme } from "./themes/mui-theme";
 import { PageData } from "./types";
@@ -17,7 +15,7 @@ const DEFAULT_BACKGROUND_IMAGE = "https://i.imgur.com/5pHkLhw.jpg";
 const HOME_BACKGROUND_IMAGE = "https://i.imgur.com/n3NaCpH.jpg";
 
 const App = () => {
-  const [windowSize] = useWindowSize();
+  const windowSize = useWindowSize();
 
   const pages: PageData[] = [
     {
@@ -31,12 +29,6 @@ const App = () => {
       href: "/videos",
       backgroundImage: DEFAULT_BACKGROUND_IMAGE,
       component: Videos,
-    },
-    {
-      name: "Software",
-      href: "/software",
-      backgroundImage: DEFAULT_BACKGROUND_IMAGE,
-      component: Software,
     },
     {
       name: "Game Development",
@@ -85,7 +77,6 @@ const App = () => {
                   element={<page.component pageData={page} />}
                 />
               ))}
-              <Route path="/videos/:id" element={<Video />} />
             </Routes>
           </Scrollbars>
         </div>

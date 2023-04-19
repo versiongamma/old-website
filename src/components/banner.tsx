@@ -2,6 +2,9 @@ import { styled } from "goober";
 import React from "react";
 import { Link, LinkProps, useLocation } from "react-router-dom";
 import { PageData } from "../types";
+import useResponsiveDimension, {
+  ScreenSize,
+} from "../utils/use-responsive-dimension";
 
 type NavBarContainerProps = {
   $background: boolean;
@@ -19,9 +22,14 @@ const BannerContainer = styled<NavBarContainerProps>("div")`
   z-index: 999;
 `;
 
-const ContentsContainer = styled("div")`
+type ContentsContainerProps = {
+  $onlyLogo: boolean;
+};
+
+const ContentsContainer = styled<ContentsContainerProps>("div")`
   display: flex;
-  justify-content: space-between;
+  justify-content: ${({ $onlyLogo }) =>
+    $onlyLogo ? "center" : "space-between"};
   align-items: center;
 `;
 
@@ -41,7 +49,7 @@ const LinkButton = styled<LinkButtonProps>((props) => (
 ))`
   && {
     color: white;
-    font-size: 0.8vw;
+    font-size: 1.2rem;
     text-decoration: none;
     text-transform: uppercase;
     padding: 0.8rem;
@@ -63,28 +71,30 @@ type Props = {
 
 const Banner = ({ pages, background }: Props) => {
   const { pathname } = useLocation();
+  const screenSize = useResponsiveDimension();
 
   return (
     <BannerContainer $background={background ?? false}>
-      <ContentsContainer>
+      <ContentsContainer $onlyLogo={screenSize !== ScreenSize.DESKTOP}>
         <img
           alt="logo"
           src={"https://i.imgur.com/Jpy6jiE.png"}
           width={330}
           height={104}
         />
-
-        <div>
-          {pages.map((page) => (
-            <LinkButton
-              key={page.name}
-              to={page.href}
-              $outline={pathname.split("/")[1] === page.href.split("/")[1]}
-            >
-              {page.name}
-            </LinkButton>
-          ))}
-        </div>
+        {screenSize === ScreenSize.DESKTOP && (
+          <div>
+            {pages.map((page) => (
+              <LinkButton
+                key={page.name}
+                to={page.href}
+                $outline={pathname.split("/")[1] === page.href.split("/")[1]}
+              >
+                {page.name}
+              </LinkButton>
+            ))}
+          </div>
+        )}
       </ContentsContainer>
     </BannerContainer>
   );

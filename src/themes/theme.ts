@@ -7,7 +7,7 @@ const color = {
 const theme = {
   text: {
     primary: "white",
-    link: "#c78bf7;",
+    link: { versiongamma: "#c78bf7", joyous: "#eb6122" },
   },
 
   button: {

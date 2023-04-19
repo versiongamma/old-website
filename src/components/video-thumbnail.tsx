@@ -4,9 +4,14 @@ import {
 } from "@mui/material";
 import { styled } from "goober";
 import React from "react";
-import { Link } from "react-router-dom";
 import theme from "../themes/theme";
 import { YouTubeAPIVideo } from "../types";
+
+const getVideoLink = (videoId: string) => `https://youtu.be/${videoId}`;
+
+const Link = styled("a")`
+  height: 260px;
+`;
 
 type VideoThumbnailButtonProps = {
   $width: number;
@@ -53,7 +58,7 @@ const VideoThumbnail = ({
   },
 }: YouTubeAPIVideo) => {
   return (
-    <Link to={`/videos/${videoId}`}>
+    <Link href={getVideoLink(videoId)} target="_blank" rel="noreferrer">
       <VideoThumbnailButton
         $width={thumbnails.medium.width}
         $height={thumbnails.medium.height}

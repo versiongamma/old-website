@@ -2,7 +2,7 @@ import { styled } from "goober";
 import React, { useEffect, useState } from "react";
 
 import ImgurPhoto from "../components/imgur-photo";
-import { usePageData } from "../hooks/use-page-data";
+import { usePageData } from "../utils/use-page-data";
 import { ImgurAPIResponse } from "../types";
 
 const ImagesContainer = styled("div")`
